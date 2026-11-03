@@ -17,12 +17,6 @@ Traceback (most recent call last):
 TypeError: TableForm._latex() missing 1 required positional argument: 'printer'
 ```
 
-### Expected
-```pycon
->>> _ = sstr(TableForm)
->>> _ = latex(TableForm)
-```
-
 ### Why it is wrong
 Printing a class object should not crash (`sstr(Symbol)` gives `<class 'sympy.core.symbol.Symbol'>`); here e.g. printing a list or dict that contains such a class fails.
 

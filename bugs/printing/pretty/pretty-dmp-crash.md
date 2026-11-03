@@ -13,11 +13,6 @@ Traceback (most recent call last):
 AttributeError: 'DMP_Python' object has no attribute 'ring'
 ```
 
-### Expected
-```pycon
->>> _ = pretty(Poly(x**2 + 1, x).rep)
-```
-
 ### Why it is wrong
 `str` and `repr` of the same object work; the pretty printer (and hence the interactive display of a `Poly.rep`) crashes instead of falling back to something printable.
 

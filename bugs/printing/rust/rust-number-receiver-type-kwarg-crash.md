@@ -21,13 +21,6 @@ Traceback (most recent call last):
 TypeError: StrPrinter._print_UnevaluatedExpr() got an unexpected keyword argument '_type'
 ```
 
-### Expected
-```pycon
->>> _ = rust_code(Rational(1, 2)**x)
->>> _ = rust_code(sin(S.Half))
->>> _ = rust_code(UnevaluatedExpr(2)**x)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; a rational number as the receiver of a method call (`sin(1/2)`, `(1/2)**x`) is common.
 

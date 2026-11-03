@@ -12,11 +12,6 @@ Traceback (most recent call last):
 IndexError: list index out of range
 ```
 
-### Expected
-```pycon
->>> _ = pretty(Array([]))
-```
-
 ### Why it is wrong
 `Array([])` is a valid (shape `(0,)`) array and `str` prints it as `[]`, but the pretty printer fails on it.
 

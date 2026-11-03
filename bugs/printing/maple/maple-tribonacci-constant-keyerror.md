@@ -14,11 +14,6 @@ Traceback (most recent call last):
 KeyError: TribonacciConstant
 ```
 
-### Expected
-```pycon
->>> _ = maple_code(TribonacciConstant + x)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; the constant has a closed form (`(1 + (19 - 3*sqrt(33))^(1/3) + (19 + 3*sqrt(33))^(1/3))/3`) that can be printed.
 

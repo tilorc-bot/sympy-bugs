@@ -15,11 +15,6 @@ Traceback (most recent call last):
 TypeError: StrPrinter._print_Integer() got an unexpected keyword argument 'joiner'
 ```
 
-### Expected
-```pycon
->>> _ = str(Variable(x, type=real, attrs=[dimension(10)]))
-```
-
 ### Why it is wrong
 `dimension(10)` is the documented way to declare a Fortran array; the Variable can be code-printed (`fcode` gives `real*8, dimension(10) :: x`) but `str`/`print` of it, or of any AST containing it, crashes.
 

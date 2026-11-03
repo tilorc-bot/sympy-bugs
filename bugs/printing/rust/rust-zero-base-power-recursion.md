@@ -13,11 +13,6 @@ Traceback (most recent call last):
 RecursionError: maximum recursion depth exceeded...
 ```
 
-### Expected
-```pycon
->>> _ = rust_code(0**x)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression.
 

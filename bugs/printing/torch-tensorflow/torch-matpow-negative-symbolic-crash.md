@@ -21,12 +21,6 @@ Traceback (most recent call last):
 TypeError: can't multiply sequence by non-int of type 'Symbol'
 ```
 
-### Expected
-```pycon
->>> _ = torch_code(MatPow(A, -1))
->>> _ = torch_code(MatPow(A, n))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression. PyTorch has both `torch.linalg.inv` (already used for `Inverse(A)`) and `torch.linalg.matrix_power(A, n)`, which also takes negative and runtime integer exponents.
 

@@ -13,11 +13,6 @@ Traceback (most recent call last):
 ValueError: Invalid method for symbolic Range
 ```
 
-### Expected
-```pycon
->>> _ = pretty(Range(0, m))
-```
-
 ### Why it is wrong
 `Range(0, m)` is a valid object (`str` prints `Range(0, m)`), but the pretty printer cannot display it, so `pprint` and the interactive Unicode display of any expression containing it fail.
 

@@ -13,11 +13,6 @@ Traceback (most recent call last):
 AttributeError: '...' object has no attribute 'ring'
 ```
 
-### Expected
-```pycon
->>> _ = latex(Poly(x**2 + 1, x).rep)
-```
-
 ### Why it is wrong
 `str` and `repr` of the same object work; the LaTeX printer (and hence notebook display of a `Poly.rep`) crashes instead of falling back to something printable.
 

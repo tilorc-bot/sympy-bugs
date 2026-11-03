@@ -14,11 +14,6 @@ Traceback (most recent call last):
 TypeError: ...doprint() got an unexpected keyword argument 'strict'
 ```
 
-### Expected
-```pycon
->>> _ = torch_code(x, strict=False)
-```
-
 ### Why it is wrong
 `torch_code(expr, **settings)` accepts printer settings like the other `*_code` functions, but every printer setting (`strict`, `fully_qualified_modules`, `user_functions`, ...) makes it fail.
 

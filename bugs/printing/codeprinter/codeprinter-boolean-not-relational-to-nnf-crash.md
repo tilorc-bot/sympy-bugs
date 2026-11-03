@@ -22,13 +22,6 @@ Traceback (most recent call last):
 ValueError: Illegal operator <class 'sympy.core.relational.StrictLessThan'> in expression
 ```
 
-### Expected
-```pycon
->>> _ = ccode(Xor(e, y < 0))
->>> _ = pycode(Equivalent(e, y < 0))
->>> _ = fcode(ITE(e, y < 0, z < 0))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression. The same printers handle `Not(x < 0, evaluate=False)` and `Not(x + 1 < 0)` without `evaluate=False`.
 

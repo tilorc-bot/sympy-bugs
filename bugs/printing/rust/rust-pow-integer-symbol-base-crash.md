@@ -18,12 +18,6 @@ Traceback (most recent call last):
 TypeError: cannot create mpf from i
 ```
 
-### Expected
-```pycon
->>> _ = rust_code(sqrt(i))
->>> _ = rust_code(i**x)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; the square root of an integer variable is common in generated code.
 

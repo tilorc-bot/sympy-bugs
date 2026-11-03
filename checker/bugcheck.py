@@ -16,10 +16,13 @@ for fixes, --sympy must be a git checkout.
 
 import argparse
 import concurrent.futures
+import ast
 import datetime
+import doctest
 import hashlib
 import html
 import json
+import keyword
 import os
 import re
 import subprocess
@@ -29,6 +32,8 @@ import tempfile
 TIMEOUT = 60
 # codecheck (compile and run printed C/C++/Rust code) and its vendored helper
 LIB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib")
+sys.path.insert(0, LIB_DIR)
+from bugcheck_trace import def_index, enclosing  # noqa: E402  (standard library only)
 COMPILED = re.compile(r"\b(compiles|compile_errors|run_code)\(")
 TEST_TIMEOUT = 1500
 TEST_WORKERS = int(os.environ.get("BUGCHECK_TEST_WORKERS", "2"))
@@ -40,6 +45,8 @@ SECTION_ALIASES = {
     "source": "source", "encountered": "encountered",
 }
 REQUIRED = ["kind", "actual", "expected", "why"]
+# Kinds whose Expected may be left out: the checker infers it from Actual (infer_expected).
+EXPECTED_OPTIONAL = ("crash", "hang")
 KINDS = ["crash", "hang", "wrong-meaning", "invalid-output", "lossy", "ignored-setting",
          "cosmetic", "internal"]
 ENV_ERRORS = ("NameError", "ImportError", "ModuleNotFoundError", "SyntaxError")
@@ -139,8 +146,14 @@ def read_bug(path, root):
     if not first.startswith("# "):
         problems.append("first line must be `# Title`")
     for sec in REQUIRED:
-        if not s.get(sec):
+        if not s.get(sec) and not (sec == "expected" and kind in EXPECTED_OPTIONAL):
             problems.append(f"missing section `### {sec.replace('why', 'Why it is wrong').title()}`")
+    expected, inferred = doctest_source(s.get("expected", "")), False
+    if not s.get("expected") and kind in EXPECTED_OPTIONAL:
+        expected, inferred = infer_expected(doctest_source(s.get("actual", "")), kind), True
+        if not expected and doctest_source(s.get("actual", "")):
+            problems.append("no `### Expected`, and none can be inferred: Actual shows no exception"
+                            if kind == "crash" else "no `### Expected`, and Actual has no examples")
     if kind and kind not in KINDS:
         problems.append(f"unknown kind `{kind}` (use one of: {', '.join(KINDS)})")
     links = direct_tracker_links(body)
@@ -157,16 +170,92 @@ def read_bug(path, root):
         "id": bid, "path": path, "title": first.lstrip("# ").strip(), "text": text,
         "kind": kind if kind in KINDS else None,
         "actual": doctest_source(s.get("actual", "")),
-        "expected": doctest_source(s.get("expected", "")),
+        "expected": expected, "expected_inferred": inferred,
         "workaround": doctest_source(s.get("workaround", "")),
         "fixes": [{"source": "suggested fix", "diff": d} for d in diffs(s.get("fix", ""))],
         "caused_by": caused_by, "related": related,
         "tracker": sorted({int(n) for n in re.findall(
             r"redirect\.github\.com/sympy/sympy/(?:issues|pull)/(\d+)", s.get("related", ""))}),
         "encountered": [l for l in s.get("encountered", "").split("\n") if l.strip()],
-        "evidence": "compiled" if COMPILED.search(doctest_source(s.get("expected", ""))) else "printed",
+        "evidence": "compiled" if COMPILED.search(expected) else "printed",
         "problems": problems,
+        **note_refs(s.get("notes", "")),
     }
+
+
+def as_silent_statement(source):
+    """A doctest source line that runs `source` and prints nothing: `_ = expr` for an
+    expression (`print(x)` becomes `_ = x`), the statement itself otherwise."""
+    src = source.rstrip("\n")
+    try:
+        tree = ast.parse(src, mode="eval")
+    except SyntaxError:
+        return src
+    body = tree.body
+    if (isinstance(body, ast.Call) and isinstance(body.func, ast.Name) and body.func.id == "print"
+            and len(body.args) == 1 and not body.keywords
+            and not isinstance(body.args[0], ast.Starred)):
+        src = ast.get_source_segment(src, body.args[0]) or src
+    return "_ = " + src
+
+
+def infer_expected(actual, kind):
+    """The Expected block of a crash or hang bug that does not write one.
+
+    crash: every Actual example whose output is a traceback must run without raising.
+    hang: every Actual example must finish (within the timeout); examples that show a
+    traceback must still raise it, the others are run without checking their output.
+    """
+    try:
+        examples = doctest.DocTestParser().get_examples(actual)
+    except ValueError:
+        return ""
+    out = []
+    for ex in examples:
+        raises = ex.exc_msg is not None
+        if kind == "crash" and not raises:
+            continue
+        if kind == "hang" and raises:
+            lines, want = ex.source.rstrip("\n").split("\n"), ex.want
+        else:
+            lines, want = as_silent_statement(ex.source).split("\n"), ""
+        out.append(">>> " + "\n... ".join(lines) + "\n" + want)
+    return "".join(out)
+
+
+NOTE_SPAN = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
+NOTE_FILE = re.compile(r"((?:[\w-]+/)*[\w-]+\.py)(?::([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*))?")
+NOTE_DOTTED = re.compile(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)+")
+NOTE_NAME = re.compile(r"[A-Za-z_]\w*")
+
+
+def note_refs(notes):
+    """Functions and files named in "Notes on fixing", for locating the bug in SymPy:
+    `sympy/printing/latex.py:LatexPrinter._print_Mod`, `LatexPrinter._print_Mod`, `latex.py`,
+    and bare names (`_print_Mod`, `precedence()`, `latex_escape`, `_kw`). The child resolves
+    them (bugcheck_trace.resolve_refs); anything that is not SymPy's is dropped there."""
+    text = FENCE.sub("", notes or "")
+    refs, files, seen = [], [], set()
+    for span in NOTE_SPAN.findall(text):
+        name = span.strip()
+        name = name[:-2] if name.endswith("()") else name
+        ref = None
+        m = NOTE_FILE.fullmatch(name)
+        if m:
+            if "tests/" in m.group(1) or os.path.basename(m.group(1)).startswith("test_"):
+                continue
+            if m.group(1) not in files:
+                files.append(m.group(1))
+            if m.group(2):
+                ref = {"ref": span, "file": m.group(1), "name": m.group(2)}
+        elif NOTE_DOTTED.fullmatch(name):
+            ref = {"ref": span, "file": None, "name": name}
+        elif NOTE_NAME.fullmatch(name) and len(name) > 2 and not keyword.iskeyword(name):
+            ref = {"ref": span, "file": None, "name": name}
+        if ref and (ref["file"], ref["name"]) not in seen:
+            seen.add((ref["file"], ref["name"]))
+            refs.append(ref)
+    return {"notes_refs": refs, "notes_files": files}
 
 
 def find_bugs(root):
@@ -179,9 +268,12 @@ def find_bugs(root):
 # ---------------------------------------------------------------- execution
 
 CHILD = r'''
-import doctest, json, sys, time, traceback
+import doctest, json, os, sys, time, traceback
+import bugcheck_trace
 
 hits = {}
+hit_code = {}      # printer method key -> code object of the method it ran
+hit_classes = {}   # printer class name -> class
 try:
     from sympy.printing.printer import Printer
     _orig = Printer._print
@@ -196,11 +288,32 @@ try:
                     meth = "_print_" + cls.__name__
                     break
         key = type(self).__name__ + "." + (meth or "emptyPrinter")
+        if key not in hits:
+            try:
+                hit_classes.setdefault(type(self).__name__, type(self))
+                owner = type(expr) if meth is not None and meth == pm else type(self)
+                hit_code[key] = bugcheck_trace._attr_code(owner, meth or "emptyPrinter")
+            except Exception:
+                pass
         hits[key] = hits.get(key, 0) + 1
         return _orig(self, expr, **kw)
+    _traced.__wrapped__ = _orig  # so Notes naming `Printer._print` find SymPy's code
     Printer._print = _traced
+    import sympy
+    tracer = bugcheck_trace.Tracer(os.path.dirname(os.path.dirname(os.path.abspath(sympy.__file__))))
 except Exception:
-    pass
+    tracer = None
+
+
+def _raised(rec, exc=None):
+    """Where in SymPy the example raised (Actual only: the tracer runs only then)."""
+    if tracer is None:
+        return
+    exc = tracer.take_exception() or exc
+    if exc is not None and tracer.tool is not None:
+        where = tracer.raised_at(exc)
+        if where:
+            rec["raised"] = where
 
 
 class Checker(doctest.OutputChecker):
@@ -216,18 +329,22 @@ class Runner(doctest.DocTestRunner):
         super().__init__(checker=Checker(), optionflags=doctest.ELLIPSIS, verbose=False)
         self.records = []
     def report_start(self, out, test, example):
-        pass
+        if tracer is not None:
+            tracer.take_exception()
     def report_success(self, out, test, example, got):
         self.records.append({"source": example.source, "ok": True,
                              "want": example.want, "got": got})
+        _raised(self.records[-1])
     def report_failure(self, out, test, example, got):
         self.records.append({"source": example.source, "ok": False,
                              "want": example.want, "got": got})
+        _raised(self.records[-1])
     def report_unexpected_exception(self, out, test, example, exc_info):
         exc = exc_info[1]
         tb = "".join(traceback.format_exception(*exc_info))[-1500:]
         self.records.append({"source": example.source, "ok": False, "want": example.want,
                              "got": tb, "exc": type(exc).__name__})
+        _raised(self.records[-1], exc)
 
 
 def run(src, globs, name):
@@ -250,7 +367,14 @@ def compile_log(phase, start):
     cc = sys.modules.get("codecheck")
     return [dict(e, phase=phase) for e in (cc.LOG[start:] if cc else [])]
 
-res["actual"], after = run(job["actual"], {"__name__": "__bugcheck__"}, "actual")
+if tracer is not None:
+    tracer.start()
+try:
+    res["actual"], after = run(job["actual"], {"__name__": "__bugcheck__"}, "actual")
+finally:
+    if tracer is not None:
+        tracer.stop()
+hits_in_actual = set(hits)
 n = len(sys.modules["codecheck"].LOG) if "codecheck" in sys.modules else 0
 res["compiled"] = compile_log("actual", 0)
 res["expected"], _ = run(job["expected"], dict(after), "expected")
@@ -259,6 +383,18 @@ actual_hits = dict(hits)
 res["workaround"], _ = run(job.get("workaround", ""), dict(after), "workaround")
 res["printer_hits"] = actual_hits
 res["seconds"] = round(time.time() - t0, 2)
+# Where the code involved lives (resolved after all blocks ran, so it cannot affect them).
+if tracer is not None:
+    try:
+        res["printer_locations"] = {k: tracer.code_location(c) for k, c in hit_code.items()
+                                    if k in hits_in_actual and c is not None
+                                    and tracer._in_sympy(c.co_filename)}
+        context = [hit_classes[k.split(".")[0]] for k in sorted(actual_hits, key=lambda k: -actual_hits[k])
+                   if k.split(".")[0] in hit_classes]
+        res["notes_refs"] = bugcheck_trace.resolve_refs(
+            tracer, job.get("notes_refs", []), job.get("notes_files", []), list(dict.fromkeys(context)))
+    except Exception as e:
+        res["locate_error"] = repr(e)[:300]
 sys.stdout.write("\x00BUGCHECK\x00" + json.dumps(res, default=str))
 '''
 
@@ -278,6 +414,7 @@ def execute(bug, sympy_dir, timeout=TIMEOUT):
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONHASHSEED"] = "0"  # some printers order terms by hash; keep runs reproducible
     job = {k: bug[k] for k in ("actual", "expected", "workaround")}
+    job["notes_refs"], job["notes_files"] = bug.get("notes_refs", []), bug.get("notes_files", [])
     with tempfile.TemporaryDirectory() as cwd:
         try:
             p = subprocess.run([sys.executable, "-c", CHILD], input=json.dumps(job), text=True,
@@ -290,12 +427,14 @@ def execute(bug, sympy_dir, timeout=TIMEOUT):
     return json.loads(p.stdout.rsplit(marker, 1)[1])
 
 
-def examples(block):
-    """Every doctest example with what master printed (trimmed), for showing the evidence."""
+def examples(block, inferred=False):
+    """Every doctest example with what master printed (trimmed), for showing the evidence.
+    inferred: the block is the Expected the checker inferred for a crash/hang bug."""
     out = []
     for ex in (block or {}).get("examples", []):
         out.append({"source": ex["source"], "ok": ex["ok"], "want": (ex.get("want") or "")[-1500:],
-                    "got": (ex.get("got") or "")[-1500:], **({"exc": ex["exc"]} if ex.get("exc") else {})})
+                    "got": (ex.get("got") or "")[-1500:], **({"exc": ex["exc"]} if ex.get("exc") else {}),
+                    **({"inferred": True} if inferred else {})})
     return out
 
 
@@ -452,6 +591,144 @@ def check_fix(fix, bid, bugs, baseline, sympy_dir, jobs, scope):
         os.unlink(patch)
 
 
+# ---------------------------------------------------------------- locations
+
+# Printer methods that almost every bug reaches; they say nothing about where a bug is.
+GENERIC_METHODS = {
+    "emptyPrinter", "_print_Symbol", "_print_Dummy", "_print_Integer", "_print_int",
+    "_print_float", "_print_str", "_print_bool", "_print_NoneType", "_print_Add", "_print_Mul",
+    "_print_Pow", "_print_Rational", "_print_Half", "_print_One", "_print_Zero",
+    "_print_NegativeOne", "_print_Float", "_print_tuple", "_print_list", "_print_Tuple",
+    "_print_dict", "_print_set", "_print_Basic", "_print_Expr", "_print_Atom",
+}
+HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+\d+(?:,\d+)? @@")
+
+
+def diff_hunks(diff):
+    """[{"path", "start", "old": old-side lines, "changed": (first, last) index into old}]"""
+    hunks, path, cur = [], None, None
+    for line in diff.rstrip("\n").split("\n"):
+        if line.startswith("--- "):
+            path, cur = (line[6:].split("\t")[0] if line.startswith("--- a/") else None), None
+        elif line.startswith("+++ "):
+            continue
+        elif HUNK.match(line):
+            cur = {"path": path, "start": int(HUNK.match(line).group(1)), "old": [], "idx": []}
+            if path:
+                hunks.append(cur)
+        elif cur is not None and line[:1] in (" ", "-", "+", ""):
+            if line.startswith("-"):
+                cur["idx"].append(len(cur["old"]))
+                cur["old"].append(line[1:])
+            elif line.startswith("+"):
+                # an insertion: the old lines on either side of it
+                cur["idx"] += [len(cur["old"]) - 1, len(cur["old"])]
+            else:  # context ("" is a blank context line whose space was stripped)
+                cur["old"].append(line[1:])
+    for h in hunks:
+        n = max(len(h["old"]), 1)
+        idx = [min(max(i, 0), n - 1) for i in h["idx"]] or [0]
+        h["changed"] = (min(idx), max(idx))
+    return hunks
+
+
+def file_at(sympy_dir, rev, path, cache):
+    if (rev, path) not in cache:
+        p = git(sympy_dir, "show", f"{rev}:{path}", check=False)
+        cache[rev, path] = p.stdout if p.returncode == 0 else None
+    return cache[rev, path]
+
+
+def fix_locations(diff, sympy_dir, rev, verified, cache):
+    """The original lines a suggested fix changes, grouped by the function they are in."""
+    out = {}
+    for h in diff_hunks(diff):
+        path = h["path"]
+        if not path.endswith(".py") or "/tests/" in path:
+            continue
+        src = file_at(sympy_dir, rev, path, cache)
+        if src is None:
+            continue
+        lines = src.split("\n")
+        # Where the hunk really is (git apply tolerates offsets): the match of its old side
+        # nearest to the line its header names.
+        old, at = h["old"], h["start"] - 1
+        if old:
+            hits = [k for k in range(len(lines) - len(old) + 1)
+                    if lines[k] == old[0] and lines[k:k + len(old)] == old]
+            if hits:
+                at = min(hits, key=lambda k: abs(k - at))
+        start, end = at + 1 + h["changed"][0], at + 1 + h["changed"][1]
+        if ("index", rev, path) not in cache:
+            cache["index", rev, path] = def_index(src)
+        found = enclosing(cache["index", rev, path], start, end)
+        func = found[0] if found else None
+        key = (path, func)
+        if key in out:
+            out[key]["start"] = min(out[key]["start"], start)
+            out[key]["end"] = max(out[key]["end"], end)
+        else:
+            out[key] = {"path": path, "start": start, "end": end, "function": func,
+                        "how": "fix", "confirmed": bool(verified)}
+    return list(out.values())
+
+
+def method_rarity(records):
+    """How many bugs reach each printer method (from status records)."""
+    df = {}
+    for s in records:
+        for m in s.get("printer_methods", []):
+            df[m] = df.get(m, 0) + 1
+    return df
+
+
+def locate(b, r, fixes, sympy_dir, rev, df, cache):
+    """Where in SymPy's code the bug lives: (locations, warnings). See SPEC.md."""
+    found, warnings = [], []
+    by_hash = {diff_hash(f["diff"]): f["diff"] for f in b["fixes"]}
+    for fx in fixes:
+        if fx.get("applies") and fx.get("diff") in by_hash and sympy_dir and rev:
+            found += fix_locations(by_hash[fx["diff"]], sympy_dir, rev, fx.get("verified"), cache)
+    if b["kind"] == "crash":
+        for ex in (r.get("actual") or {}).get("examples", []):
+            if ex.get("raised") and ex["ok"] and ex["want"].startswith("Traceback ("):
+                found.append({**ex["raised"], "how": "raises", "confirmed": True})
+    named, unconfirmed = [], []
+    for ref in r.get("notes_refs", []):
+        if ref.get("location"):
+            loc = {**ref["location"], "how": "notes", "confirmed": ref["executed"]}
+            (named if ref["executed"] else unconfirmed).append(loc)
+            if not ref["executed"] and not ref.get("data"):
+                warnings.append(f"`{ref['ref']}` (Notes on fixing, {loc['path']}:{loc['start']}) "
+                                "never runs in the Actual block")
+        elif ref.get("missing"):
+            warnings.append(f"`{ref['ref']}` (Notes on fixing) is not defined in SymPy")
+    found += named
+    if not found:
+        # Fallback: the least common printer methods the Actual block reached.
+        hits = r.get("printer_hits", {})
+        fams = printer_families(hits)
+        keys = [k for k in sorted(hits, key=lambda k: -hits[k]) if k in r.get("printer_locations", {})
+                and (family(k.split(".")[0]) != "str" or fams == ["str"])]
+        # Generic methods only when nothing else ran: emptyPrinter (a missing handler), else
+        # e.g. _print_Integer for a bug in how integers are printed.
+        keys = ([k for k in keys if k.split(".", 1)[1] not in GENERIC_METHODS]
+                or [k for k in keys if k.endswith(".emptyPrinter")] or keys)
+        files = set(b.get("notes_files", []))
+        keys.sort(key=lambda k: (not any(r["printer_locations"][k]["path"].endswith(f)
+                                         for f in files), df.get(k, 0)))
+        found += [{**r["printer_locations"][k], "how": "reached", "confirmed": False}
+                  for k in keys[:2]]
+    found += unconfirmed
+    out, seen = [], set()
+    for loc in found:
+        if (loc["path"], loc["function"]) not in seen:
+            seen.add((loc["path"], loc["function"]))
+            out.append({k: loc[k] for k in ("path", "start", "end", "function", "how",
+                                            "confirmed")})
+    return out[:3], warnings
+
+
 # ---------------------------------------------------------------- status
 
 def sympy_head(sympy_dir):
@@ -512,7 +789,9 @@ def cmd_status(args):
                                       key=lambda k: -r["printer_hits"][k])[:12],
             "actual_failure": first_failure(r.get("actual")),
             "expected_failure": first_failure(r.get("expected")),
-            "examples": {k: examples(r.get(k)) for k in ("actual", "expected")},
+            "locations": [], "location_warnings": [],  # filled in below
+            "examples": {"actual": examples(r.get("actual")),
+                         "expected": examples(r.get("expected"), b["expected_inferred"])},
             "compiled": [{**c, "source": c["source"][-4000:], "output": c["output"][-2000:]}
                          for c in r.get("compiled", [])],
             "workaround": None if not b["workaround"] else bool(
@@ -544,6 +823,11 @@ def cmd_status(args):
                 rec["fixes"].append(res)
         out[i] = rec
         print(f"{v:13} {i}", file=sys.stderr)
+    # Where each bug lives in SymPy's code; "reached" ranks methods by how many bugs reach them.
+    df, cache = method_rarity(out.values()), {}
+    for i in sorted(selected):
+        out[i]["locations"], out[i]["location_warnings"] = locate(
+            bugs[i], raw[i], out[i]["fixes"], args.sympy, head, df, cache)
     result = {"sympy": head, "sympy_date": head_date, "checked": today, "run": run_info(args.sympy),
               "bugs": dict(sorted(out.items()))}
     with open(args.out, "w") as f:
@@ -569,6 +853,9 @@ def cmd_check(args):
         all_bugs = bugs
     raw = run_all(all_bugs, sorted(all_bugs), args.sympy, args.jobs)
     baseline = {i: verdict(all_bugs[i], raw[i])[0] for i in raw}
+    status_file = os.path.join(os.path.dirname(root), "status.json")
+    df, cache = method_rarity(json.load(open(status_file))["bugs"].values()
+                              if os.path.exists(status_file) else []), {}
     report = []
     for i in sorted(bugs):
         b = bugs[i]
@@ -580,6 +867,9 @@ def cmd_check(args):
         if args.fixes and b["fixes"] and v == "reproduces":
             for fx in b["fixes"]:
                 rec["fixes"].append(check_fix(fx, i, all_bugs, baseline, args.sympy, args.jobs, "full"))
+        fixes = rec["fixes"] or [{"diff": diff_hash(f["diff"]), "applies": True} for f in b["fixes"]]
+        rec["locations"], rec["location_warnings"] = locate(
+            b, raw[i], fixes, args.sympy, sympy_head(args.sympy), df, cache)
         report.append(rec)
     if args.json:
         json.dump(report, sys.stdout, indent=1)
@@ -596,6 +886,11 @@ def cmd_check(args):
                     print(f"    {key}: >>> {f['source'].strip()}")
                     print("      want: " + (f.get("want") or "").strip().replace("\n", "\n            "))
                     print("      got:  " + (f.get("got") or "").strip()[-600:].replace("\n", "\n            "))
+        for loc in rec["locations"]:
+            print(f"    at: {loc['path']}:{loc['start']}-{loc['end']} {loc['function']} "
+                  f"[{loc['how']}{'' if loc['confirmed'] else ', unconfirmed'}]")
+        for w in rec["location_warnings"]:
+            print(f"    location warning: {w}")
         for fx in rec["fixes"]:
             print(f"    fix: applies={fx.get('applies')} fixes_this={fx.get('fixes_this')} "
                   f"tests={fx.get('tests', {}).get('summary')} verified={fx.get('verified')} "
@@ -717,7 +1012,9 @@ def cmd_site(args):
         rows.append({
             "id": i, "title": b["title"], "kind": b["kind"], "verdict": s.get("verdict"),
             "explanation": s.get("explanation"), "printers": s.get("printers", []),
-            "methods": s.get("printer_methods", []), "score": score, "score_parts": parts,
+            "methods": s.get("printer_methods", []), "locations": s.get("locations", []),
+            "location_warnings": s.get("location_warnings", []),
+            "score": score, "score_parts": parts,
             "fix": fix_state(s.get("fixes", []), bool(b["fixes"])),
             "fixes": s.get("fixes", []), "workaround": s.get("workaround"),
             "caused_by": b["caused_by"], "dependents": dependents.get(i, []),

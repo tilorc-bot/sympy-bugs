@@ -25,7 +25,8 @@ aim for under ~80 characters.
 ## Sections
 
 Sections are `### ` headings. **Kind**, **Actual**, **Expected** and **Why it is wrong**
-are required; the rest are optional.
+are required (Expected is optional for `crash` and `hang` bugs, see below); the rest are
+optional.
 
 ### Kind
 
@@ -70,8 +71,21 @@ right output is unambiguous:
 - two different expressions must print differently: `latex(a) != latex(b)` → `True`
 - printed code computes the right value: `eval(pycode(e), {...})` vs `e.subs(...)`
 - round trips: `eval(srepr(e)) == e`, `parse_expr(str(e)) == e`
-- crash: `>>> _ = latex(expr)` (no output: passes iff no exception)
+- crash: `>>> _ = latex(expr)` (no output: passes iff no exception), or leave Expected out
 - the setting takes effect: `'{,}' in latex(e, decimal_separator='comma')`
+
+**Crash and hang bugs may leave Expected out.** The checker then infers it from Actual:
+
+- `crash`: every Actual example whose output is a traceback must run without raising. An
+  expression `latex(e)` is run as `_ = latex(e)` (`print(latex(e))` as `_ = latex(e)`), a
+  statement as written; neither may print anything. The other Actual examples (imports,
+  setup) are not repeated: Expected runs in the same session.
+- `hang`: every Actual example must finish within the timeout. Examples whose output is a
+  traceback must still raise it; the others are run as above, without checking their output.
+
+The inferred block is reported in `status.json` like a written one, each example flagged
+`"inferred": true`. Write Expected yourself when it should check more than "does not raise",
+e.g. the output, a different call, or that one of several raising calls keeps raising.
 
 **C, C++ and Rust code can be compiled and run.** For bugs in those printers, prove the claim
 with the compiler instead of only inspecting the string (`checker/lib/codecheck.py`, built on
@@ -117,7 +131,11 @@ tracker; link an issue there deliberately, by filing or commenting on the tracke
 
 ### Notes on fixing
 
-Where the cause is (`file.py:function`), what a fix needs, why it is not simple.
+Where the cause is (`file.py:function`), what a fix needs, why it is not simple. Name
+functions so the checker can find them: `sympy/printing/latex.py:LatexPrinter._print_Mod`,
+`LatexPrinter._print_Mod`, or `_print_Mod` next to the file it is in. The checker records the
+ones the Actual block runs as the bug's location, and warns about named functions that never
+run (`location_warnings`).
 
 ### Workaround
 
@@ -151,7 +169,35 @@ to the priority score.
 | `sympy`, `checked` | the SymPy commit and date of the check |
 | `first_reproduced`, `last_reproduced`, `fixed_between` | SymPy commits; `fixed_between` brackets the commit that fixed it |
 | `printers`, `printer_methods` | printers and `_print_*` methods the Actual block reaches |
+| `locations` | where in SymPy's code the bug lives, most certain first (below) |
+| `location_warnings` | functions named in Notes on fixing that never run in Actual, or do not exist |
+| `examples` | every Actual and Expected example with what master printed; inferred Expected examples have `"inferred": true` |
 | `fixes` | per suggested fix: `applies`, `fixes_this`, `tests`, `verified`, `also_fixes`, `breaks` |
 | `problems` | format problems (missing sections, unknown kind, direct tracker links, broken links) |
 
-A pull request fails its check if a changed bug does not reproduce on master or has problems.
+A pull request fails its check if a changed bug does not reproduce on master or has problems
+(location warnings do not fail it).
+
+### Locations
+
+`locations` lists 1 to 3 places in SymPy's source, line numbers at the checked commit
+(`sympy`), paths relative to the SymPy root:
+
+```json
+{"path": "sympy/printing/latex.py", "start": 1883, "end": 1888,
+ "function": "LatexPrinter._print_Mod", "how": "fix", "confirmed": true}
+```
+
+`function` is the qualified name of the enclosing function, or of a variable assigned in a
+module or class body (`known_fcns_src1`, `C89CodePrinter.type_mappings`) when the lines are
+one; `null` elsewhere at module level. `how` says where the location comes from, most
+certain first:
+
+| how | lines | confirmed |
+|---|---|---|
+| `fix` | the original lines a suggested fix that applies changes, per enclosing function | the fix is verified |
+| `raises` | `crash` only: the innermost line inside `sympy/` of the exception an Actual example raises | always |
+| `notes` | a function (or module/class variable) named in Notes on fixing, whole definition | the function ran during Actual (never for a variable) |
+| `reached` | only when there is no `fix`, `raises` or confirmed `notes` location: up to two printer methods Actual reached that the fewest bugs reach, preferring the files the notes name and skipping generic ones (`_print_Symbol`, `_print_Add`, `emptyPrinter`, ...) unless nothing else ran | never |
+
+Duplicates (same function) keep the first, more certain entry; unconfirmed `notes` come last.

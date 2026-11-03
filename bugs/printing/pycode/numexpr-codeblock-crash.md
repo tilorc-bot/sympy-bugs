@@ -15,11 +15,6 @@ Traceback (most recent call last):
 TypeError: CodePrinter._print_CodeBlock() takes 2 positional arguments but 3 were given
 ```
 
-### Expected
-```pycon
->>> _ = NumExprPrinter().doprint(CodeBlock(Assignment(x, 1)))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid code block.
 

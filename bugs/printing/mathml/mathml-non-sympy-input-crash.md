@@ -17,12 +17,6 @@ Traceback (most recent call last):
 AttributeError: 'str' object has no attribute 'toxml'
 ```
 
-### Expected
-```pycon
->>> _ = mathml(1.5)
->>> _ = mathml({x: 1})
-```
-
 ### Why it is wrong
 Every other printer accepts plain Python numbers and containers (or sympifies them); here a float gives an obscure internal error.
 

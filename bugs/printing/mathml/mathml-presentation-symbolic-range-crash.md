@@ -13,11 +13,6 @@ Traceback (most recent call last):
 ValueError: Invalid method for symbolic Range
 ```
 
-### Expected
-```pycon
->>> _ = mathml(Range(x, y), printer='presentation')
-```
-
 ### Why it is wrong
 Printing must not fail for a valid object.
 

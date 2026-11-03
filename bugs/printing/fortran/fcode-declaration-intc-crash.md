@@ -14,11 +14,6 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 2)
 ```
 
-### Expected
-```pycon
->>> _ = fcode(Declaration(Variable(x, type=intc)), standard=2003, source_format='free')
-```
-
 ### Why it is wrong
 `intc` is the one type with an entry in `FCodePrinter.type_modules` (it needs `use iso_c_binding, only: c_int`), and declaring a variable of that type always fails.
 
