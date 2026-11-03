@@ -12,16 +12,23 @@ invalid-output
 (A - B)[0]
 >>> print(cxxcode(F))
 (A - B)[0]
+>>> from codecheck import compile_errors, run_code
+>>> print(compile_errors('c', ccode(F), A=[float], B=[float]))
+error: subscripted value is neither array nor pointer nor vector
+>>> print(compile_errors('c++', cxxcode(F), A=[float], B=[float]))
+error: invalid types '...[int]' for array subscript
 ```
 
 ### Expected
 ```pycon
->>> eval(ccode(F), {'A': [5, 0, 0, 0], 'B': [2, 0, 0, 0]})
-3
+>>> run_code('c', ccode(F), A=[5.0, 0.0, 0.0, 0.0], B=[2.0, 0.0, 0.0, 0.0])
+3.0
+>>> run_code('c++', cxxcode(F), A=[5.0, 0.0, 0.0, 0.0], B=[2.0, 0.0, 0.0, 0.0])
+3.0
 ```
 
 ### Why it is wrong
-`A` and `B` are flat C arrays, so `A - B` is pointer arithmetic (or an error) and cannot be indexed. gcc 15.2 reports: `subscripted value is neither array nor pointer nor vector`. The element is `A[0] - B[0]`, which is what `ccode((A - B)[0, 0])` prints.
+`A` and `B` are flat C arrays, so `A - B` is pointer arithmetic (or an error) and cannot be indexed. gcc reports: `subscripted value is neither array nor pointer nor vector` (g++: `invalid types 'long int[int]' for array subscript`). The element is `A[0] - B[0]`, which is what `ccode((A - B)[0, 0])` prints.
 
 ### Notes on fixing
 `sympy/printing/c.py:C89CodePrinter._print_MatrixElement` parenthesizes `expr.parent` and appends a flat index, which is only valid when the parent is a `MatrixSymbol`. When the parent is a matrix expression it could print the evaluated entry instead (`expr.parent[expr.i, expr.j]`, which gives `A[0, 0] - B[0, 0]`), or raise. The same pattern is in `jscode.py` and `fortran.py` (separate issues).

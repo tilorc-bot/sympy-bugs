@@ -12,16 +12,25 @@ wrong-meaning
 x == y == z
 >>> print(ccode(Eq(Eq(x, y), z, evaluate=False)))
 x == y == z
+>>> from codecheck import run_code
+>>> point = dict(x=0.0, y=1.0, z=2.0)
+>>> run_code('c', ccode(Eq(x, Eq(y, z), evaluate=False)), **point)
+0.0
+>>> run_code('c', ccode(Eq(Eq(x, y), z, evaluate=False)), **point)
+0.0
+>>> run_code('c', 'x == (y == z)', **point)
+1.0
 ```
 
 ### Expected
 ```pycon
->>> ccode(Eq(x, Eq(y, z), evaluate=False)) != ccode(Eq(Eq(x, y), z, evaluate=False))
+>>> (run_code('c', ccode(Eq(x, Eq(y, z), evaluate=False)), **point)
+...  != run_code('c', ccode(Eq(Eq(x, y), z, evaluate=False)), **point))
 True
 ```
 
 ### Why it is wrong
-The arguments of a relational are printed without parentheses, so two different expressions print identically. C parses `x == y == z` as `(x == y) == z`, so `Eq(x, Eq(y, z))` is compiled as the other expression.
+The arguments of a relational are printed without parentheses, so two different expressions print identically. C parses `x == y == z` as `(x == y) == z`, so `Eq(x, Eq(y, z))` is compiled as the other expression: at `(x, y, z) = (0, 1, 2)`, gcc's code returns 0 for both, while `x == (y == z)` is 1.
 
 ### Related
 [sympy/sympy#11366](https://redirect.github.com/sympy/sympy/issues/11366)

@@ -14,6 +14,11 @@ A[i**2*m + j]
 fn_
 >>> print(rust_code(A[Symbol('fn'), 0]))
 A[fn*m]
+>>> from codecheck import compile_errors
+>>> 'cannot be dereferenced' in compile_errors('rust', rust_code(A[i**2, j]), A=[float], i=int, j=int, m=int)
+True
+>>> print(compile_errors('rust', rust_code(A[Symbol('fn'), 0]), A=[float], m=int))
+error: expected expression, found keyword `fn`...
 ```
 
 ### Expected
@@ -25,7 +30,7 @@ True
 ```
 
 ### Why it is wrong
-The index is a SymPy expression formatted with `str()`, so `**` (not a Rust operator) appears and reserved words are not renamed; the generated code does not compile.
+The index is a SymPy expression formatted with `str()`, so `**` (not a Rust operator) appears and reserved words are not renamed; the generated code does not compile (rustc reads `i**2` as `i*(*2)`, "type `{integer}` cannot be dereferenced", and `fn` as the keyword).
 
 ### Notes on fixing
 `sympy/printing/rust.py:RustCodePrinter._print_MatrixElement` formats both `expr.parent` and `expr.j + expr.i*expr.parent.shape[1]` directly into the string; they should go through `self._print`/`self.parenthesize`. The same pattern exists in `c.py` and `jscode.py` (separate issues).

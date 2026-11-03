@@ -15,12 +15,21 @@ invalid-output
 x + 1
 >>> print(rust_code(cos(2*x)))
 (2*x).cos()
+>>> from codecheck import compiles, compile_errors
+>>> print(compile_errors('rust', rust_code(2/x), x=float))
+error[E0277]: cannot divide `{integer}` by `f64`...
+>>> print(compile_errors('rust', rust_code(2*x), x=float))
+error[E0277]: cannot multiply `{integer}` by `f64`...
+>>> print(compile_errors('rust', rust_code(x + 1), x=float))
+error[E0277]: cannot add `{integer}` to `f64`...
+>>> print(compile_errors('rust', rust_code(cos(2*x)), x=float))
+error[E0277]: cannot multiply `{integer}` by `f64`...
 ```
 
 ### Expected
 ```pycon
->>> rust_code(2/x) != '2/x', rust_code(2*x) != '2*x', rust_code(x + 1) != 'x + 1'
-(True, True, True)
+>>> [compiles('rust', rust_code(e), x=float) for e in (2/x, 2*x, x + 1, cos(2*x))]
+[True, True, True, True]
 ```
 
 ### Why it is wrong

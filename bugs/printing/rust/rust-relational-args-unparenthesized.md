@@ -12,16 +12,23 @@ invalid-output
 x == y == z
 >>> print(rust_code(Eq(Eq(x, y), z, evaluate=False)))
 x == y == z
+>>> from codecheck import compiles, compile_errors
+>>> 'comparison operators cannot be chained' in compile_errors('rust', rust_code(Eq(x, Eq(y, z), evaluate=False)), x=bool, y=float, z=float)
+True
+>>> 'comparison operators cannot be chained' in compile_errors('rust', rust_code(Eq(Eq(x, y), z, evaluate=False)), x=float, y=float, z=bool)
+True
 ```
 
 ### Expected
 ```pycon
->>> rust_code(Eq(x, Eq(y, z), evaluate=False)) != rust_code(Eq(Eq(x, y), z, evaluate=False))
+>>> compiles('rust', rust_code(Eq(x, Eq(y, z), evaluate=False)), x=bool, y=float, z=float)
+True
+>>> compiles('rust', rust_code(Eq(Eq(x, y), z, evaluate=False)), x=float, y=float, z=bool)
 True
 ```
 
 ### Why it is wrong
-The arguments of a relational are printed without parentheses, so two different expressions print identically. Rust rejects chained comparisons (`x == y == z` does not compile). (Not executed with rustc: checked against the language reference.)
+The arguments of a relational are printed without parentheses, so two different expressions print identically. rustc rejects `x == y == z`: comparison operators cannot be chained.
 
 ### Related
 [sympy/sympy#11366](https://redirect.github.com/sympy/sympy/issues/11366)

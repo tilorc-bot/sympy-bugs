@@ -13,16 +13,23 @@ wrong-meaning
 for (i = 10; i < 0; i += -1) {
    x += i;
 }
+>>> from codecheck import run_code
+>>> run_code('c', ccode(For(i, Range(10, 0, -1), [aug_assign(x, '+', i)])),
+...          assign_to=('x', float), x=0.0, i=0)
+0.0
+>>> sum(Range(10, 0, -1))
+55
 ```
 
 ### Expected
 ```pycon
->>> 'i < 0' in ccode(For(i, Range(10, 0, -1), [aug_assign(x, '+', i)]))
-False
+>>> run_code('c', ccode(For(i, Range(10, 0, -1), [aug_assign(x, '+', i)])),
+...          assign_to=('x', float), x=0.0, i=0)
+55.0
 ```
 
 ### Why it is wrong
-`Range(10, 0, -1)` is `10, 9, ..., 1`, but the printed loop condition `i < 0` is false at the start, so the body never executes. The original reviewer compiled and ran this with gcc; it was not executed here.
+`Range(10, 0, -1)` is `10, 9, ..., 1`, but the printed loop condition `i < 0` is false at the start, so the body never executes: compiled with gcc and started from `x = 0`, the loop leaves `x` at 0 instead of 55.
 
 ### Notes on fixing
 `sympy/printing/c.py:C89CodePrinter._print_For` always uses `<`; for a negative step it needs `>` (and for a symbolic step the sign is unknown). The same method also formats `start`/`stop`/`step` with `str()` (separate issue).

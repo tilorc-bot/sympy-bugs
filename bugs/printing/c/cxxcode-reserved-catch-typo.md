@@ -11,16 +11,21 @@ invalid-output
 class_
 >>> print(cxxcode(Symbol('catch')))
 catch
+>>> from codecheck import compiles
+>>> name = cxxcode(Symbol('catch'))
+>>> compiles('c++', name, **{name: float})
+False
 ```
 
 ### Expected
 ```pycon
->>> cxxcode(Symbol('catch')) != 'catch'
+>>> name = cxxcode(Symbol('catch'))
+>>> compiles('c++', name, **{name: float})
 True
 ```
 
 ### Why it is wrong
-`catch` is a C++ keyword, so a variable named `catch` does not compile; other keywords are renamed.
+`catch` is a C++ keyword, so a variable named `catch` does not compile (g++ rejects a parameter or expression `catch`); other keywords are renamed.
 
 ### Notes on fixing
 `sympy/printing/cxx.py:reserved['C++98']` contains `'catch,'` instead of `'catch'`; the C++11 and C++17 lists are built from it.

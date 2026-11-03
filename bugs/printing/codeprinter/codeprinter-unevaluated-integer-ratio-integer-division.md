@@ -9,16 +9,21 @@ wrong-meaning
 >>> e = Mul(2, Pow(3, -1, evaluate=False), evaluate=False)
 >>> ccode(e), glsl_code(e), fcode(e, source_format='free')
 ('2/3', '2/3', '2/3')
+>>> from codecheck import run_code
+>>> run_code('c', ccode(e)), float(e)
+(0.0, 0.6666666666666666)
 ```
 
 ### Expected
 ```pycon
->>> ['.' in s for s in (ccode(e), glsl_code(e), fcode(e, source_format='free'))]
-[True, True, True]
+>>> abs(run_code('c', ccode(e)) - float(e)) < 1e-12
+True
+>>> ['.' in s for s in (glsl_code(e), fcode(e, source_format='free'))]
+[True, True]
 ```
 
 ### Why it is wrong
-In C, GLSL and Fortran, `2/3` is integer division and evaluates to 0, but the expression is 2/3. Evaluated Rationals are printed correctly (`ccode(Rational(2, 3))` gives `2.0/3.0`), so only unevaluated input (e.g. from `parse_expr(..., evaluate=False)` or `UnevaluatedExpr`) is affected. Expected checks for a floating-point literal, which any fix will need.
+In C, GLSL and Fortran, `2/3` is integer division and evaluates to 0 (the compiled C returns 0.0), but the expression is 2/3. Evaluated Rationals are printed correctly (`ccode(Rational(2, 3))` gives `2.0/3.0`), so only unevaluated input (e.g. from `parse_expr(..., evaluate=False)` or `UnevaluatedExpr`) is affected. Expected runs the C code and checks the GLSL and Fortran output for a floating-point literal, which any fix will need.
 
 ### Related
 [sympy/sympy#4428](https://redirect.github.com/sympy/sympy/issues/4428)

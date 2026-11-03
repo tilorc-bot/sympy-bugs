@@ -65,6 +65,25 @@ right output is unambiguous:
 - crash: `>>> _ = latex(expr)` (no output: passes iff no exception)
 - the setting takes effect: `'{,}' in latex(e, decimal_separator='comma')`
 
+**C, C++ and Rust code can be compiled and run.** For bugs in those printers, prove the claim
+with the compiler instead of only inspecting the string (`checker/lib/codecheck.py`, built on
+the `check_printed_code` helper from tilorc-bot/sympy PR #60):
+
+```pycon
+>>> from codecheck import compiles, compile_errors, run_code
+>>> print(compile_errors('c', ccode(Mod(i, j)), i=float, j=float))   # invalid code
+error: invalid operands to binary % (have 'double' and 'double')
+>>> run_code('c', ccode(Mod(x, y)), x=-1.0, y=3.0), float(Mod(-1, 3))   # wrong value
+(-1.0, 2.0)
+```
+
+Expected then says `compiles(...)` is `True`, or that `run_code(...)` equals SymPy's value.
+Languages: `'c'` (C99), `'c89'`, `'c11'`, `'c++'`, `'rust'`. Symbol types are keywords
+(`x=float`, `i=int`, `b=bool`, `A=[float]`); for `run_code` the values give the types. Bugs
+verified this way get `"evidence": "compiled"` in `status.json` and the
+`verified-by-compiler` label on their issue. Compiler messages differ between versions, so
+match them with `...` or with `'fragment' in compile_errors(...)`.
+
 ### Why it is wrong
 
 One or two sentences: why this is a bug and what it costs a user.

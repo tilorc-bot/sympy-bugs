@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
+      - name: Compilers for printed C, C++ and Rust code
+        run: gcc --version | head -1 && g++ --version | head -1 && rustc --version
       - name: Install SymPy master
         run: |
           git clone --depth 1 https://github.com/sympy/sympy sympy-master

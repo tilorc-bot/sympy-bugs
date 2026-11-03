@@ -27,6 +27,9 @@ import sys
 import tempfile
 
 TIMEOUT = 60
+# codecheck (compile and run printed C/C++/Rust code) and its vendored helper
+LIB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib")
+COMPILED = re.compile(r"\b(compiles|compile_errors|run_code)\(")
 TEST_TIMEOUT = 1500
 TEST_WORKERS = int(os.environ.get("BUGCHECK_TEST_WORKERS", "2"))
 
@@ -161,6 +164,7 @@ def read_bug(path, root):
         "tracker": sorted({int(n) for n in re.findall(
             r"redirect\.github\.com/sympy/sympy/(?:issues|pull)/(\d+)", s.get("related", ""))}),
         "encountered": [l for l in s.get("encountered", "").split("\n") if l.strip()],
+        "evidence": "compiled" if COMPILED.search(doctest_source(s.get("expected", ""))) else "printed",
         "problems": problems,
     }
 
@@ -261,7 +265,8 @@ def clean_env():
 
 def execute(bug, sympy_dir, timeout=TIMEOUT):
     env = clean_env()
-    env["PYTHONPATH"] = os.path.abspath(sympy_dir) + os.pathsep + env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = os.pathsep.join([os.path.abspath(sympy_dir), LIB_DIR,
+                                         env.get("PYTHONPATH", "")])
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONHASHSEED"] = "0"  # some printers order terms by hash; keep runs reproducible
     job = {k: bug[k] for k in ("actual", "expected", "workaround")}
@@ -463,7 +468,7 @@ def cmd_status(args):
             "workaround": None if not b["workaround"] else bool(
                 r.get("workaround") and r["workaround"]["passed"]),
             "caused_by": b["caused_by"], "related": b["related"], "tracker": b["tracker"],
-            "encountered": len(b["encountered"]),
+            "encountered": len(b["encountered"]), "evidence": b["evidence"],
             "first_reproduced": prev.get("first_reproduced") or (head if v == "reproduces" else None),
             "last_reproduced": head if v == "reproduces" else prev.get("last_reproduced"),
             "fixed_between": prev.get("fixed_between"),
@@ -679,11 +684,11 @@ def cmd_site(args):
 ISSUE_MARKER = re.compile(r"<!-- bug-id: (\S+) -->")
 SYNC_LABEL_PREFIXES = ("kind:", "printer:", "priority:")
 SYNC_LABELS = {"reproduces", "fixed-on-master", "needs-update", "fix-verified", "fix-unchecked",
-               "fix-failing", "fix-stale", "root-cause", "removed"}
+               "fix-failing", "fix-stale", "root-cause", "removed", "verified-by-compiler"}
 LABEL_COLORS = {"reproduces": "d73a4a", "fixed-on-master": "0e8a16", "needs-update": "fbca04",
                 "fix-verified": "1d76db", "fix-unchecked": "c5def5", "fix-failing": "e99695",
                 "fix-stale": "ededed", "root-cause": "b60205", "removed": "ededed",
-                "priority:high": "b60205", "priority:medium": "d93f0b", "priority:low": "fef2c0"}
+                "verified-by-compiler": "0e8a16", "priority:high": "b60205", "priority:medium": "d93f0b", "priority:low": "fef2c0"}
 
 
 def gh(*args, input=None):
@@ -731,6 +736,8 @@ def issue_body(i, b, s, dependents, numbers, repo):
         "fixed": "**Fixed on SymPy master.** The Expected block now passes",
         "changed": "**Behaviour changed on SymPy master.** The file needs updating",
     }.get(v, f"**{v}**: {s.get('explanation', '')}")
+    if s.get("evidence") == "compiled" and v == "reproduces":
+        head += "; the printed code was compiled and run to confirm it"
     if s.get("first_reproduced") and v == "reproduces":
         head += f"; first confirmed at sympy/sympy@`{s['first_reproduced'][:10]}`"
     if s.get("fixed_between"):
@@ -800,6 +807,8 @@ def issue_labels(i, b, s, dependents):
         labels.add("fix-" + st)
     if dependents.get(i):
         labels.add("root-cause")
+    if s.get("evidence") == "compiled":
+        labels.add("verified-by-compiler")
     score, _ = priority(i, {**s, "kind": b["kind"]}, dependents)
     if v == "reproduces":
         labels.add("priority:" + ("high" if score >= 45 else "medium" if score >= 30 else "low"))

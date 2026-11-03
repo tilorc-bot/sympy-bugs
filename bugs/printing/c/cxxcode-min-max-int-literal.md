@@ -12,17 +12,21 @@ invalid-output
 std::min(2, x)
 >>> print(cxxcode(Max(x, 2), standard='c++98'))
 std::max(2, x)
+>>> from codecheck import compile_errors, compiles
+>>> print(compile_errors('c++', cxxcode(Min(x, 2)), x=float))
+error: no matching function for call to 'min(int, double...)'
+>>> print(compile_errors('c++', cxxcode(Max(x, 2), standard='c++98'), x=float))
+error: no matching function for call to 'max(int, double...)'
 ```
 
 ### Expected
 ```pycon
->>> import re
->>> re.search(r'std::(min|max)\(-?\d+,', cxxcode(Min(x, 2)) + cxxcode(Max(x, 2))) is None
-True
+>>> compiles('c++', cxxcode(Min(x, 2)), x=float), compiles('c++', cxxcode(Max(x, 2), standard='c++98'), x=float)
+(True, True)
 ```
 
 ### Why it is wrong
-`std::min`/`std::max` are templates `min(const T&, const T&)`; with an `int` literal and a `double` variable, template argument deduction fails ("no matching function for call to min(int, double)"). The original reviewer compiled this with g++; it was not executed here.
+`std::min`/`std::max` are templates `min(const T&, const T&)`; with an `int` literal and a `double` variable, template argument deduction fails (g++: "no matching function for call to 'min(int, double&)'").
 
 ### Related
 [sympy/sympy#20557](https://redirect.github.com/sympy/sympy/issues/20557)

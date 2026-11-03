@@ -13,17 +13,19 @@ if (x <= 2.0) {
 } else {
     x
 }
+>>> from codecheck import compiles, compile_errors
+>>> print(compile_errors('rust', rust_code(Max(2, x)), x=float))
+error[E0308]: `if` and `else` have incompatible types: expected integer, found `f64`...
 ```
 
 ### Expected
 ```pycon
->>> import re
->>> re.search(r'\{\s*2\s*\}', rust_code(Max(2, x))) is None
+>>> compiles('rust', rust_code(Max(2, x)), x=float)
 True
 ```
 
 ### Why it is wrong
-Both arms of a Rust `if` expression must have the same type; `2` is an integer literal and `x` an `f64`, so this does not compile. (The condition already uses the float literal `2.0`.) The reviewer checked this against the Rust reference only (no rustc).
+Both arms of a Rust `if` expression must have the same type; `2` is an integer literal and `x` an `f64`, so rustc rejects it (`if` and `else` have incompatible types). (The condition already uses the float literal `2.0`.)
 
 ### Notes on fixing
 `rust_code` rewrites `Max` to `Piecewise` (`_rewrite_known_functions` in `sympy/printing/rust.py`), and `RustCodePrinter._print_Piecewise` prints each branch expression as is. Integer branch values must be printed as `f64` literals when the other branches are real (or `Max`/`Min` could be printed with `f64::max`/`f64::min`, e.g. `x.max(2.0)`).

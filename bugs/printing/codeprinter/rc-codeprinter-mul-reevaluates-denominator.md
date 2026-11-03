@@ -18,17 +18,22 @@ x/1.0/y
 x/1/y
 >>> print(octave_code(e))
 x./1./y
+>>> from codecheck import run_code
+>>> run_code('c', ccode(e), x=6.0, y=2.0), e.subs({x: 6, y: 2})
+(3.0, 12)
 ```
 
 ### Expected
 ```pycon
+>>> run_code('c', ccode(e), x=6.0, y=2.0)
+12.0
 >>> v = {'x': 6, 'y': 2}
->>> [eval(printer(e), v) == 12 for printer in (pycode, ccode, jscode)]
-[True, True, True]
+>>> [eval(printer(e), v) == 12 for printer in (pycode, jscode)]
+[True, True]
 ```
 
 ### Why it is wrong
-`x/(1/y)` equals `x*y`, but the generated code computes `(x/1)/y = x/y`. The same expression arises from `parse_expr('x/(1/y)', evaluate=False)`, and the wrong code is silently emitted by every printer derived from `CodePrinter`.
+`x/(1/y)` equals `x*y`, but the generated code computes `(x/1)/y = x/y` (compiled with gcc, `ccode(e)` gives 3 at `(x, y) = (6, 2)`). The same expression arises from `parse_expr('x/(1/y)', evaluate=False)`, and the wrong code is silently emitted by every printer derived from `CodePrinter`.
 
 ### Notes on fixing
 `sympy/printing/codeprinter.py:CodePrinter._print_Mul` moves a factor `Pow(b, -1)` to the denominator as `Pow(b, 1)`, which evaluates to `b`. When `b` is itself `Pow(y, -1)` it has Pow precedence, so `parenthesize(b, PRECEDENCE["Mul"])` adds no parentheses, yet it prints as `1/y`. `StrPrinter._print_Mul` already handles this case (`pow_paren`, issue [sympy/sympy#14160](https://redirect.github.com/sympy/sympy/issues/14160)), which is why `str(e)` is right.
