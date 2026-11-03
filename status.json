@@ -2061,18 +2061,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -3240,18 +3229,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -3667,18 +3645,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -6028,18 +5995,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 0,
-      "doc": 0,
-      "comment": 0,
-      "blank": 2,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -6646,18 +6602,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 3
-     }
+     "breaks": []
     }
    ]
   },
@@ -7565,18 +7510,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 3,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -9854,18 +9788,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 2,
-      "tdel": 2,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -9977,18 +9900,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 3,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 5
-     }
+     "breaks": []
     }
    ]
   },
@@ -10269,18 +10181,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 6,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 3,
-      "tdel": 3,
-      "other": 0,
-      "size": 10
-     }
+     "breaks": []
     }
    ]
   },
@@ -10479,18 +10380,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 1,
-      "doc": 0,
-      "comment": 1,
-      "blank": 0,
-      "tadd": 1,
-      "tdel": 1,
-      "other": 0,
-      "size": 5
-     }
+     "breaks": []
     }
    ]
   },
@@ -11433,18 +11323,7 @@
       "printing/latex/latex-limit-power-point-double-superscript",
       "printing/pretty/pretty-limit-direction-glued-to-point"
      ],
-     "breaks": [],
-     "size": {
-      "add": 6,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 8
-     }
+     "breaks": []
     }
    ]
   },
@@ -12430,18 +12309,7 @@
      "also_fixes": [
       "printing/latex/latex-mod-negative-arg"
      ],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 3
-     }
+     "breaks": []
     }
    ]
   },
@@ -13255,18 +13123,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 0,
-      "doc": 0,
-      "comment": 0,
-      "blank": 1,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -13378,18 +13235,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -15346,18 +15192,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 2,
-      "tdel": 2,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -16806,18 +16641,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 3,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 7
-     }
+     "breaks": []
     }
    ]
   },
@@ -18703,18 +18527,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -19089,18 +18902,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 2,
-      "tdel": 2,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -19507,18 +19309,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 3,
-      "tdel": 3,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -19930,18 +19721,7 @@
      "also_fixes": [
       "printing/latex/latex-mod-negative-arg"
      ],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -20451,18 +20231,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -21829,18 +21598,7 @@
      "also_fixes": [
       "printing/pretty/pretty-transpose-1x1-blockmatrix"
      ],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 0,
-      "doc": 0,
-      "comment": 0,
-      "blank": 1,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -22451,18 +22209,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 5
-     }
+     "breaks": []
     }
    ]
   },
@@ -23795,18 +23542,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 6,
-      "del": 13,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 19
-     }
+     "breaks": []
     }
    ]
   },
@@ -24141,18 +23877,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 3,
-      "del": 0,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 3
-     }
+     "breaks": []
     }
    ]
   },
@@ -25041,18 +24766,7 @@
       "printing/pretty/pretty-transpose-1x1-blockmatrix",
       "printing/pretty/pretty-vector-dot-power-unparenthesized"
      ],
-     "breaks": [],
-     "size": {
-      "add": 35,
-      "del": 2,
-      "doc": 7,
-      "comment": 4,
-      "blank": 2,
-      "tadd": 8,
-      "tdel": 8,
-      "other": 0,
-      "size": 37
-     }
+     "breaks": []
     }
    ]
   },
@@ -25379,18 +25093,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -25621,18 +25324,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -26428,18 +26120,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -28495,18 +28176,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -29332,18 +29002,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 4,
-      "del": 0,
-      "doc": 0,
-      "comment": 0,
-      "blank": 2,
-      "tadd": 4,
-      "tdel": 4,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
@@ -29451,18 +29110,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -29744,18 +29392,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 1,
-      "tdel": 1,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -32551,18 +32188,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -34935,18 +34561,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -35172,18 +34787,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 5,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 6
-     }
+     "breaks": []
     }
    ]
   },
@@ -36483,18 +36087,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 1,
-      "del": 1,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 2
-     }
+     "breaks": []
     }
    ]
   },
@@ -36925,18 +36518,7 @@
      },
      "verified": true,
      "also_fixes": [],
-     "breaks": [],
-     "size": {
-      "add": 2,
-      "del": 2,
-      "doc": 0,
-      "comment": 0,
-      "blank": 0,
-      "tadd": 0,
-      "tdel": 0,
-      "other": 0,
-      "size": 4
-     }
+     "breaks": []
     }
    ]
   },
