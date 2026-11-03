@@ -17,6 +17,9 @@ mpmath.log(x)/mpmath.log(2)**2
 
 ### Expected
 ```pycon
+>>> import mpmath
+>>> abs(eval(MpmathPrinter().doprint(log2(x)**2), {'mpmath': mpmath, 'x': 8}) - 9) < 1e-12
+True
 >>> abs(lambdify(x, log2(x)**2, 'mpmath')(8) - 9) < 1e-12
 True
 ```

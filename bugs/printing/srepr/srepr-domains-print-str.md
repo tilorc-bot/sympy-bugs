@@ -19,8 +19,12 @@ lossy
 
 ### Expected
 ```pycon
->>> [eval(srepr(d), ns) == d for d in (RealField(prec=100), QQ.algebraic_field(sqrt(2)), ZZ[x])]
-[True, True, True]
+>>> eval(srepr(RealField(prec=100)), ns) == RealField(prec=100)
+True
+>>> eval(srepr(QQ.algebraic_field(sqrt(2))), ns) == QQ.algebraic_field(sqrt(2))
+True
+>>> eval(srepr(ZZ[x]), ns) == ZZ[x]
+True
 ```
 
 ### Why it is wrong

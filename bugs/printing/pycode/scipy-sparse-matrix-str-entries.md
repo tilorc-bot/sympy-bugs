@@ -18,9 +18,11 @@ NameError: name 'exp' is not defined
 
 ### Expected
 ```pycon
->>> import math
->>> m = lambdify(x, SparseMatrix([[exp(x), 0], [0, 1]]), 'scipy')(1.0)
->>> math.isclose(m.toarray()[0, 0], math.e)
+>>> import math, numpy, scipy.sparse
+>>> ns = {'numpy': numpy, 'scipy': scipy, 'x': 1.0}
+>>> math.isclose(eval(SciPyPrinter().doprint(SparseMatrix([[exp(x), 0], [0, 1]])), ns).toarray()[0, 0], math.e)
+True
+>>> math.isclose(lambdify(x, SparseMatrix([[exp(x), 0], [0, 1]]), 'scipy')(1.0).toarray()[0, 0], math.e)
 True
 ```
 

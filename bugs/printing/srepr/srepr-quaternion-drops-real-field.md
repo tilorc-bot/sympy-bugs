@@ -17,6 +17,8 @@ True
 
 ### Expected
 ```pycon
+>>> srepr(q) != srepr(Quaternion(1, 2, 3, 4))
+True
 >>> eval(srepr(q), ns).real_field
 False
 ```

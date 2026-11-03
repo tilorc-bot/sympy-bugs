@@ -19,9 +19,13 @@ e = X*Y
 
 ### Expected
 ```pycon
->>> ns = {}
->>> exec('from sympy import *\n' + python(p), ns)
->>> ns['e'] == p
+>>> def run(code):
+...     ns = {}
+...     exec('from sympy import *\n' + code, ns)
+...     return ns['e']
+>>> run(python(p)) == p
+True
+>>> run(python(X*Y)) == X*Y
 True
 ```
 

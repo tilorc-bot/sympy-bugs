@@ -18,6 +18,9 @@ TypeError: cannot determine truth value of Relational...
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(And(x > 0, y > 0)), {'sympy': sympy, 'x': x, 'y': y}) == And(x > 0, y > 0)
+True
 >>> lambdify((x, y), And(x > 0, y > 0), 'sympy')(x, y) == And(x > 0, y > 0)
 True
 ```

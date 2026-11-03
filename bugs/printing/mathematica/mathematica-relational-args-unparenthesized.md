@@ -18,6 +18,8 @@ x == y == z
 ```pycon
 >>> mathematica_code(Eq(x, Eq(y, z), evaluate=False)) != mathematica_code(Eq(Eq(x, y), z, evaluate=False))
 True
+>>> mathematica_code(Eq(Eq(x, y), z, evaluate=False)) != 'x == y == z'
+True
 ```
 
 ### Why it is wrong

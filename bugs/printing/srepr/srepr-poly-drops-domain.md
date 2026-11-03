@@ -21,8 +21,12 @@ False
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (p, q)]
-[True, True]
+>>> srepr(p) != srepr(Poly(x**2 + 1, x))
+True
+>>> eval(srepr(p), ns) == p
+True
+>>> eval(srepr(q), ns) == q
+True
 ```
 
 ### Why it is wrong

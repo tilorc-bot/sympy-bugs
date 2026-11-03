@@ -18,9 +18,12 @@ invalid-output
 ### Expected
 ```pycon
 >>> import re
->>> codes = [smtlib_code(Integer(-1)), smtlib_code(Rational(-3, 7)), smtlib_code(-x, auto_declare=False)]
->>> [re.search(r'(?<![\w.])-\d', c) for c in codes]
-[None, None, None]
+>>> re.search(r'(?<![\w.])-\d', smtlib_code(Integer(-1))) is None
+True
+>>> re.search(r'(?<![\w.])-\d', smtlib_code(Rational(-3, 7))) is None
+True
+>>> re.search(r'(?<![\w.])-\d', smtlib_code(-x, auto_declare=False)) is None
+True
 ```
 
 ### Why it is wrong

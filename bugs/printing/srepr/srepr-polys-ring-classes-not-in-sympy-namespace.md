@@ -23,8 +23,12 @@ NameError: name 'PolyElement' is not defined
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (R, X + 1, QQ.old_poly_ring(x))]
-[True, True, True]
+>>> eval(srepr(R), ns) == R
+True
+>>> eval(srepr(X + 1), ns) == X + 1
+True
+>>> eval(srepr(QQ.old_poly_ring(x)), ns) == QQ.old_poly_ring(x)
+True
 ```
 
 ### Why it is wrong

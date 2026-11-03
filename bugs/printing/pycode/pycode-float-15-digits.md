@@ -17,6 +17,8 @@ False
 
 ### Expected
 ```pycon
+>>> eval(pycode(c*x), {'x': 1.0}) == float(c)
+True
 >>> lambdify(x, c*x, 'math')(1.0) == float(c)
 True
 ```

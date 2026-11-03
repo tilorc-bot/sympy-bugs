@@ -13,9 +13,11 @@ e = _x + 1
 
 ### Expected
 ```pycon
->>> ns = {}
->>> exec('from sympy import *\n' + python(e), ns)
->>> len(ns['e'].free_symbols)
+>>> def run(code):
+...     ns = {}
+...     exec('from sympy import *\n' + code, ns)
+...     return ns['e']
+>>> len(run(python(e)).free_symbols)
 1
 ```
 

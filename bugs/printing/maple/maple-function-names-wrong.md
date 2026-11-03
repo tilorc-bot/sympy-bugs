@@ -22,9 +22,17 @@ polygamma(n, x)
 
 ### Expected
 ```pycon
->>> exprs = [sign(x), gamma(x), atan2(y, x), loggamma(x), polygamma(n, x)]
->>> [maple_code(e).split('(')[0] in ('sign', 'gamma', 'atan2', 'loggamma', 'polygamma') for e in exprs]
-[False, False, False, False, False]
+>>> names = ('sign', 'gamma', 'atan2', 'loggamma', 'polygamma')
+>>> maple_code(sign(x)).split('(')[0] in names
+False
+>>> maple_code(gamma(x)).split('(')[0] in names
+False
+>>> maple_code(atan2(y, x)).split('(')[0] in names
+False
+>>> maple_code(loggamma(x)).split('(')[0] in names
+False
+>>> maple_code(polygamma(n, x)).split('(')[0] in names
+False
 ```
 
 ### Why it is wrong

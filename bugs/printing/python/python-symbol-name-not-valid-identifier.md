@@ -14,9 +14,11 @@ e = a'b
 
 ### Expected
 ```pycon
->>> ns = {}
->>> exec('from sympy import *\n' + python(e), ns)
->>> ns['e'] == e
+>>> def run(code):
+...     ns = {}
+...     exec('from sympy import *\n' + code, ns)
+...     return ns['e']
+>>> run(python(e)) == e
 True
 ```
 

@@ -18,8 +18,14 @@ lossy
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (QQ(1, 2), GF(5)(3), ZZ_I(1, 2))]
-[True, True, True]
+>>> '1/2' in srepr(X/2)
+False
+>>> eval(srepr(QQ(1, 2)), ns) == QQ(1, 2)
+True
+>>> eval(srepr(GF(5)(3)), ns) == GF(5)(3)
+True
+>>> eval(srepr(ZZ_I(1, 2)), ns) == ZZ_I(1, 2)
+True
 ```
 
 ### Why it is wrong

@@ -19,6 +19,10 @@ TypeError: only integer scalar arrays can be converted to a scalar index
 
 ### Expected
 ```pycon
+>>> import math, scipy.special
+>>> ns = {'numpy': numpy, 'scipy': scipy, 'math': math, 'k': numpy.array([1, 2, 3])}
+>>> [float(v) for v in eval(NumPyPrinter().doprint(factorial(k)), ns)]
+[1.0, 2.0, 6.0]
 >>> [float(v) for v in lambdify(k, factorial(k), 'numpy')(numpy.array([1, 2, 3]))]
 [1.0, 2.0, 6.0]
 ```

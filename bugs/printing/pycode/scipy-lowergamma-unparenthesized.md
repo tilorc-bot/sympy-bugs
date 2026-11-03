@@ -18,7 +18,10 @@ scipy.special.gamma(a)*scipy.special.gammainc(a, x)**2
 
 ### Expected
 ```pycon
->>> import math
+>>> import math, numpy, scipy.special
+>>> ns = {'numpy': numpy, 'scipy': scipy, 'a': 3.0, 'x': 1.5}
+>>> math.isclose(eval(SciPyPrinter().doprint(lowergamma(a, x)**2), ns), float(N(lowergamma(3, 1.5)**2)))
+True
 >>> math.isclose(lambdify((a, x), lowergamma(a, x)**2, 'scipy')(3.0, 1.5), float(N(lowergamma(3, 1.5)**2)))
 True
 ```

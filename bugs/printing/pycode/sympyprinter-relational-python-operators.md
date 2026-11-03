@@ -16,6 +16,9 @@ False
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(Eq(x, y)), {'sympy': sympy, 'x': x, 'y': y}) == Eq(x, y)
+True
 >>> lambdify((x, y), Eq(x, y), 'sympy')(x, y) == Eq(x, y)
 True
 ```

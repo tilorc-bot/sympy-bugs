@@ -19,8 +19,12 @@ lossy
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (f, f(x), g)]
-[True, True, True]
+>>> eval(srepr(f), ns) == f
+True
+>>> tuple(eval(s, ns) for s in (srepr(f(x)), srepr(g))) == (f(x), g)
+True
+>>> f(x).is_real, eval(srepr(f(x)), ns).is_real
+(True, True)
 ```
 
 ### Why it is wrong

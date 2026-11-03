@@ -25,11 +25,17 @@ x./1./y
 
 ### Expected
 ```pycon
->>> run_code('c', ccode(e), x=6.0, y=2.0)
-12.0
 >>> v = {'x': 6, 'y': 2}
->>> [eval(printer(e), v) == 12 for printer in (pycode, jscode)]
-[True, True]
+>>> eval(pycode(e), v) == 12
+True
+>>> run_code('c', ccode(e), x=3.0, y=5.0)
+15.0
+>>> eval(jscode(e), v) == 12
+True
+>>> eval(octave_code(e).replace('./', '/').replace('.*', '*'), v) == 12
+True
+>>> run_code('c', ccode(e), x=6.0, y=2.0), e.subs({x: 6, y: 2})
+(12.0, 12)
 ```
 
 ### Why it is wrong

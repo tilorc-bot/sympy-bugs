@@ -17,6 +17,8 @@ False
 
 ### Expected
 ```pycon
+>>> srepr(a) != srepr(AlgebraicNumber(sqrt(2)))
+True
 >>> eval(srepr(a), ns) == a
 True
 ```

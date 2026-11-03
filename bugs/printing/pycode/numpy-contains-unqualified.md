@@ -20,6 +20,8 @@ equal(mod(x, 1), 0)
 >>> import numpy
 >>> bool(eval(NumPyPrinter().doprint(Contains(x, S.Integers)), {'numpy': numpy, 'x': 2.0}))
 True
+>>> 'numpy' in dict(p.module_imports)
+True
 ```
 
 ### Why it is wrong

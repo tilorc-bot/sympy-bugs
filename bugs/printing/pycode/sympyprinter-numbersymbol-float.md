@@ -16,6 +16,9 @@ lossy
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(pi*x), {'sympy': sympy, 'x': y}) == pi*y
+True
 >>> lambdify(x, pi*x, 'sympy')(y) == pi*y
 True
 ```

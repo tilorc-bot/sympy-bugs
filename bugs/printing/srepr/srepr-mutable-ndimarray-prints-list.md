@@ -19,6 +19,8 @@ lossy
 ```pycon
 >>> eval(srepr(a), ns) == a
 True
+>>> type(eval(srepr(a), ns)) is type(a)
+True
 ```
 
 ### Why it is wrong
