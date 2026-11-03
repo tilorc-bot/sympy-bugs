@@ -14,8 +14,10 @@ False
 
 ### Expected
 ```pycon
->>> rcode(S.true), rcode(S.false)
-('TRUE', 'FALSE')
+>>> rcode(S.true)
+'TRUE'
+>>> rcode(S.false)
+'FALSE'
 ```
 
 ### Why it is wrong

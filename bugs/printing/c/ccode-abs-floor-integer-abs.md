@@ -21,9 +21,10 @@ abs(ceil(x))
 
 ### Expected
 ```pycon
->>> [run_code('c', ccode(Abs(floor(x))), x=-3e9),
-...  run_code('c89', ccode(Abs(ceiling(x)), standard='c89'), x=-3e9)]
-[3000000000.0, 3000000000.0]
+>>> run_code('c', ccode(Abs(floor(x))), x=-3e9)
+3000000000.0
+>>> run_code('c89', ccode(Abs(ceiling(x)), standard='c89'), x=-3e9)
+3000000000.0
 ```
 
 ### Why it is wrong

@@ -26,7 +26,9 @@ error: expected expression before 'float'
 ```pycon
 >>> '**' in ccode(A[i**2, j])
 False
->>> compiles('c', ccode(A[Symbol('float'), 0]), A=[float], m=int, float_=int)
+>>> "invalid type argument of unary '*'" in compile_errors('c', ccode(A[i**2, j]), A=[float], i=int, j=int, m=int)
+False
+>>> compile_errors('c', ccode(A[Symbol('float'), 0]), A=[float], m=int, float_=int) == ''
 True
 ```
 

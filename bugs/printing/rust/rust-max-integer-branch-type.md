@@ -20,7 +20,7 @@ error[E0308]: `if` and `else` have incompatible types: expected integer, found `
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(Max(2, x)), x=float)
+>>> compile_errors('rust', rust_code(Max(2, x)), x=float) == ''
 True
 ```
 

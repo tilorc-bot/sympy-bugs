@@ -15,8 +15,12 @@ x + eulergamma + catalan + golden
 
 ### Expected
 ```pycon
->>> [julia_code(c) in ('e', 'eulergamma', 'catalan', 'golden') for c in (E, EulerGamma, Catalan, GoldenRatio)]
-[False, False, False, False]
+>>> import re
+>>> 'e' in re.findall(r'[\w.]+', julia_code(E*x))
+False
+>>> [n for n in re.findall(r'[\w.]+', julia_code(x + EulerGamma + Catalan + GoldenRatio))
+...  if n in ('eulergamma', 'catalan', 'golden')]
+[]
 ```
 
 ### Why it is wrong

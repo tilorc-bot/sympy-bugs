@@ -21,7 +21,10 @@ x + x
 ### Expected
 ```pycon
 >>> values = {rust_code(s): v for s, v in [(d, 1.0), (x, 2.0)]}
->>> run_code('rust', rust_code(d + x), **values) == (d + x).subs({d: 1.0, x: 2.0})
+>>> len(values)
+2
+>>> from operator import eq
+>>> eq(run_code('rust', rust_code(d + x), **values), (d + x).subs({d: 1.0, x: 2.0}))
 True
 ```
 

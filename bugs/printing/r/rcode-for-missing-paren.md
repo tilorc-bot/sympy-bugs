@@ -16,8 +16,9 @@ for(x in seq(from=0, to=9, by=2){
 
 ### Expected
 ```pycon
->>> line = rcode(For(x, Range(0, 10, 2), [Assignment(y, x*y)])).splitlines()[0]
->>> line.count('(') == line.count(')')
+>>> def balanced(code):
+...     return code.count('(') == code.count(')')
+>>> balanced(rcode(For(x, Range(0, 10, 2), [Assignment(y, x*y)])))
 True
 ```
 

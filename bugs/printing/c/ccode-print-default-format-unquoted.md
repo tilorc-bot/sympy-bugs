@@ -20,7 +20,7 @@ error: expected expression before '%' token
 
 ### Expected
 ```pycon
->>> compiles('c', printf + ccode(Print([x])), x=float)
+>>> compile_errors('c', printf + ccode(Print([x])), x=float) == ''
 True
 ```
 

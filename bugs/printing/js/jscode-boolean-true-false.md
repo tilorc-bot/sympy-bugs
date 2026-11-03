@@ -15,8 +15,10 @@ False
 
 ### Expected
 ```pycon
->>> jscode(S.true), jscode(S.false)
-('true', 'false')
+>>> jscode(S.true)
+'true'
+>>> jscode(S.false)
+'false'
 ```
 
 ### Why it is wrong

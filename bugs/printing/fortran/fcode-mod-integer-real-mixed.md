@@ -20,8 +20,10 @@ modulo(i, x)
 >>> def passes_bare_i(code):
 ...     call = ast.parse(re.sub(r'(\d)d(\d)', r'\1e\2', code.strip())).body[0].value
 ...     return any(isinstance(a, ast.Name) and a.id == 'i' for a in call.args)
->>> [passes_bare_i(fcode(e, standard=95, source_format='free')) for e in (Mod(x, i), Mod(i, x))]
-[False, False]
+>>> passes_bare_i(fcode(Mod(x, i), standard=95, source_format='free'))
+False
+>>> passes_bare_i(fcode(Mod(i, x), standard=95, source_format='free'))
+False
 ```
 
 ### Why it is wrong

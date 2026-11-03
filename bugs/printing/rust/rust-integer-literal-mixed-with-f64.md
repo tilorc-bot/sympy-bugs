@@ -28,8 +28,14 @@ error[E0277]: cannot multiply `{integer}` by `f64`...
 
 ### Expected
 ```pycon
->>> [compiles('rust', rust_code(e), x=float) for e in (2/x, 2*x, x + 1, cos(2*x))]
-[True, True, True, True]
+>>> compile_errors('rust', rust_code(2/x), x=float) == ''
+True
+>>> compile_errors('rust', rust_code(2*x), x=float) == ''
+True
+>>> compile_errors('rust', rust_code(x + 1), x=float) == ''
+True
+>>> compile_errors('rust', rust_code(cos(2*x)), x=float) == ''
+True
 ```
 
 ### Why it is wrong

@@ -19,8 +19,10 @@ fmod(x, y)
 
 ### Expected
 ```pycon
->>> run_code('c', ccode(Mod(x, y)), x=-1.0, y=3.0), run_code('c', ccode(Mod(x, y)), x=1.0, y=-3.0)
-(2.0, -2.0)
+>>> run_code('c', ccode(Mod(x, y)), x=-1.0, y=3.0)
+2.0
+>>> run_code('c', ccode(Mod(x, y)), x=1.0, y=-3.0)
+-2.0
 ```
 
 ### Why it is wrong

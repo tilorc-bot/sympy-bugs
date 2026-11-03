@@ -30,11 +30,14 @@ error[E0425]: cannot find function `max` in this scope...
 
 ### Expected
 ```pycon
->>> compiles('rust', codegen(('f', Mod(x, y)), 'Rust')[0][1])
+>>> _ = RustCodePrinter().doprint(Mod(x, y))
+>>> 'unsupported: Mod' in codegen(('f', Mod(x, y)), 'Rust')[0][1]
+False
+>>> compile_errors('rust', codegen(('f', Mod(x, y)), 'Rust')[0][1]) == ''
 True
->>> compiles('rust', codegen(('f', Max(x, y)), 'Rust')[0][1])
+>>> compile_errors('rust', codegen(('f', Max(x, y)), 'Rust')[0][1]) == ''
 True
->>> compiles('rust', RustCodePrinter().doprint(Max(x, y)), x=float, y=float)
+>>> compile_errors('rust', RustCodePrinter().doprint(Max(x, y)), x=float, y=float) == ''
 True
 ```
 

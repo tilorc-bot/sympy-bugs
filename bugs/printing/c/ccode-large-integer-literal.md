@@ -17,6 +17,8 @@ error: integer constant is too large for its type
 
 ### Expected
 ```pycon
+>>> compile_errors('c', ccode(2**70*x), x=float) == ''
+True
 >>> run_code('c', ccode(2**70*x), x=1.0) == float(2**70)
 True
 ```

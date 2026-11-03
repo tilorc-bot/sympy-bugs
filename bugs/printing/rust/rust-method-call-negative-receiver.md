@@ -26,8 +26,8 @@ x - y.powi(2)
 ```pycon
 >>> run_code('rust', rust_code(Pow(Float(-2.5), 2, evaluate=False)))
 6.25
->>> run_code('rust', rust_code((-2)**x), x=2.0)
-4.0
+>>> run_code('rust', rust_code((-2)**x), x=2.0), ((-2)**x).subs(x, 2)
+(4.0, 4)
 >>> run_code('rust', rust_code(UnevaluatedExpr(x - y)**2), x=3.0, y=1.0)
 4.0
 ```

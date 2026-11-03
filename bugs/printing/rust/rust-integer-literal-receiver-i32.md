@@ -20,9 +20,9 @@ error[E0599]: no method named `atan2` found for type `i32` in the current scope.
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(log(x)/log(2)), x=float)
+>>> compile_errors('rust', rust_code(log(x)/log(2)), x=float) == ''
 True
->>> compiles('rust', rust_code(atan2(1, x)), x=float)
+>>> compile_errors('rust', rust_code(atan2(1, x)), x=float) == ''
 True
 ```
 

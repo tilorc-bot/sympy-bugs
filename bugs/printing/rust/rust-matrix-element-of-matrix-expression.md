@@ -17,7 +17,7 @@ error[E0369]: cannot subtract `f64` from `&[f64]`...
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(F), A=[float], B=[float])
+>>> compile_errors('rust', rust_code(F), A=[float], B=[float]) == ''
 True
 >>> eval(rust_code(F), {'A': [5, 0, 0, 0], 'B': [2, 0, 0, 0]})
 3

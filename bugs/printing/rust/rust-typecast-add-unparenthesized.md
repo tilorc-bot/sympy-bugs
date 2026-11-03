@@ -22,9 +22,9 @@ error[E0277]: cannot multiply `f64` by `i32`...
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(Eq(x, i + j)), x=float, i=int, j=int)
+>>> compile_errors('rust', rust_code(Eq(x, i + j)), x=float, i=int, j=int) == ''
 True
->>> compiles('rust', rust_code(r*(i + j)), r=float, i=int, j=int)
+>>> compile_errors('rust', rust_code(r*(i + j)), r=float, i=int, j=int) == ''
 True
 ```
 

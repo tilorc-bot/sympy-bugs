@@ -24,8 +24,10 @@ error: expected primary-expression before 'bool'...
 
 ### Expected
 ```pycon
->>> [compiles('c++', cxxcode(d) + ';\nx') for d in declarations]
-[True, True]
+>>> compile_errors('c++', cxxcode(declarations[0]) + ';\nx') == ''
+True
+>>> compiles('c++', cxxcode(Declaration(Variable(x, type=Type('int64')))) + ';\nx')
+True
 ```
 
 ### Why it is wrong
