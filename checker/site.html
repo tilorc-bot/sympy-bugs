@@ -749,6 +749,16 @@ const statText = st => {
 };
 const statHTML = st => `<span class="dstat"><span class="da">+${st.add}</span> <span class="dd">−${st.del}</span></span>`;
 for (const b of B) b._fs = fixStat(b);
+// A verified fix's value: the priority of every bug it fixes (this one and also_fixes),
+// per code line it changes. Unverified fixes get none: what they fix isn't known.
+for (const b of B) {
+  const fx = b.fixes.find(f => f.verified);
+  if (!fx || !b._fs) continue;
+  const ids = [b.id, ...(fx.also_fixes || []).filter(id => byId[id])];
+  const impact = ids.reduce((t, id) => t + byId[id].score, 0), lines = Math.max(1, b._fs.size);
+  b._val = { n: ids.length, impact, lines, per: impact / lines };
+}
+const valText = v => `fixes ${v.n} bug${v.n > 1 ? "s" : ""} with total priority ${v.impact}, in ${v.lines} code line${v.lines > 1 ? "s" : ""}: ${Math.round(v.per)} per line`;
 const confirmedRoot = id => ((byId[id] || {}).caused_by || []).find(r => byId[r] && byId[r]._confirmed.has(id)) || null;
 const countBy = f => { const c = {}; B.forEach(b => f(b).forEach(v => c[v] = (c[v] || 0) + 1)); return c; };
 const byCount = c => Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b));
@@ -780,6 +790,7 @@ const SORTS = [
   ["title", "Title", "asc", "Z to A", "A to Z"],
   ["path", "File path", "asc", "Z to A", "A to Z"],
   ["fix-size", "Fix size", "asc", "Largest first", "Smallest first"],
+  ["fix-value", "Fix value (impact per line)", "desc", "Best first", "Worst first"],
 ];
 const SORT = Object.fromEntries(SORTS.map(s => [s[0], s]));
 const FKEYS = Object.keys(FACETS);
@@ -880,10 +891,11 @@ function sortRows(rows, st) {
   const sev = b => KIND_ORDER.length - KIND_ORDER.indexOf(b.kind);
   const ms = new Map(key === "match" ? rows.map(b => [b, matchScore(b, terms)]) : []);
   const base = { match: (a, b) => ms.get(a) - ms.get(b), priority: (a, b) => a.score - b.score, kind: (a, b) => sev(a) - sev(b), title: byTitle, path: (a, b) => a.id.localeCompare(b.id),
-    "fix-size": (a, b) => a._fs.size - b._fs.size }[key];
-  if (key === "fix-size") {   // bugs without a fix go last in either direction
-    const sg = dir === "desc" ? -1 : 1;
-    return rows.sort((a, b) => (!a._fs - !b._fs) || (a._fs && b._fs ? sg * base(a, b) : 0) || b.score - a.score || byTitle(a, b));
+    "fix-size": (a, b) => a._fs.size - b._fs.size,
+    "fix-value": (a, b) => a._val.per - b._val.per || a._val.impact - b._val.impact }[key];
+  if (key === "fix-size" || key === "fix-value") {   // bugs without one go last in either direction
+    const sg = dir === "desc" ? -1 : 1, f = key === "fix-size" ? "_fs" : "_val";
+    return rows.sort((a, b) => (!a[f] - !b[f]) || (a[f] && b[f] ? sg * base(a, b) : 0) || b.score - a.score || byTitle(a, b));
   }
   const sgn = dir === "desc" ? -1 : 1;
   return rows.sort((a, b) => sgn * base(a, b) || b.score - a.score || byTitle(a, b));
@@ -1039,7 +1051,7 @@ function rowHTML(b, subs = [], isSub = false) {
   if (b.caused_by.length && !isSub) meta.push(`<span class="tag">${ic("up")}caused by ${b.caused_by.length === 1 ? "another bug" : b.caused_by.length + " bugs"}${confirmedRoot(b.id) ? " (confirmed)" : " (claimed)"}</span>`);
   if (b.tracker.length) meta.push(`<span class="tag">${b.tracker.map(n => "sympy/sympy#" + esc(n)).join(", ")}</span>`);
   const side = [];
-  if (b.fix) side.push(`<span class="fx ${tc("fix", b.fix)}" title="${esc(FIXTIP[b.fix] + (b._fs ? ". " + statText(b._fs) : ""))}">${ic("wrench")}<span class="sr">${esc(FIXWORD[b.fix])}</span>${b._fs ? statHTML(b._fs) : ""}</span>`);
+  if (b.fix) side.push(`<span class="fx ${tc("fix", b.fix)}" title="${esc(FIXTIP[b.fix] + (b._fs ? ". " + statText(b._fs) : "") + (b._val ? ". Value: " + valText(b._val) : ""))}">${ic("wrench")}<span class="sr">${esc(FIXWORD[b.fix])}</span>${b._fs ? statHTML(b._fs) : ""}</span>`);
   side.push(`<span class="sc ${tc("priority", b._prio)}${b._prio === "high" ? " hi" : ""}" title="Priority ${b.score} (${b._prio})">${ic("prio")}<span class="sr">priority </span>${b.score}</span>`);
   const open = openGroups.has(b.id) || subs.some(x => x.id === selected);
   const group = subs.length ? `<button type="button" class="subtoggle" data-sub="${esc(b.id)}" aria-expanded="${open}">${ic("tri", "tri")}${subs.length} sub-bug${subs.length > 1 ? "s" : ""}, confirmed by the fix</button>` : "";
@@ -1235,7 +1247,7 @@ const KEY_SUGGEST = [
   ["printer:", "the printer a bug is filed under: latex, pretty, pycode, c, …"], ["reaches:", "any printer the example reaches"], ["kind:", "crash, wrong-meaning, invalid-output, …"],
   ["fix:", "verified, failing, stale, unchecked, none, any"], ["evidence:", "compiled or printed"],
   ["priority:", "high, medium or low"], ["has:", "fix, tracker, related, workaround, caused-by, root-cause"],
-  ["path:", "file path prefix, e.g. printing/latex"], ["fix-lines:", "code lines the fix changes (not docstrings, comments, blank lines or tests), e.g. <5 or >20"], ["location:", "where in SymPy: a function or file, e.g. _print_Mod"], ["sort:", "match, priority, kind, title, path, fix-size; add -asc or -desc"],
+  ["path:", "file path prefix, e.g. printing/latex"], ["fix-lines:", "code lines the fix changes (not docstrings, comments, blank lines or tests), e.g. <5 or >20"], ["location:", "where in SymPy: a function or file, e.g. _print_Mod"], ["sort:", "match, priority, kind, title, path, fix-size, fix-value (priority of the bugs a verified fix fixes, per code line); add -asc or -desc"],
 ];
 function caretToken() {
   const v = qInput.value, c = qInput.selectionStart;
@@ -1501,7 +1513,6 @@ function shouldBody(e, a, lang) {
   const code = hl(prop, "python").replace(/↑/g, `<span class="up">↑</span>`);
   if (want === "True" && /(==|!=|<=|>=| < | > | not in | in | is not | is )/.test(prop.replace(/(['"])(?:\\.|(?!\1).)*\1/g, "''"))) return { html: `<span class="ln">${code}</span>`, full: prop !== src ? src : "" };
   if (/^(True|False|None)$/.test(want)) return { html: `<span class="ln">${code} <b>is ${want}</b></span>`, full: prop !== src ? src : "" };
-  if (!/\n/.test(want) && want.length < 80) return { html: `<span class="ln">${code} <b>==</b> ${hl(want, "python")}</span>`, full: prop !== src ? src : "" };
   return { html: `<span class="ln">${code}</span>${outHTML(want, outLang(src))}`, full: prop !== src ? src : "" };
 }
 function shouldTip(b, e, full) {
