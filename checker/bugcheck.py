@@ -108,6 +108,22 @@ def diffs(text):
     return [b + "\n" for lang, b in code_blocks(text, {"diff", "patch"}) if "@@" in b]
 
 
+CODE_SPANS = re.compile(r"(```.*?```|~~~.*?~~~|`[^`\n]*`)", re.S)
+DIRECT_TRACKER = re.compile(
+    r"(?<![\w/\[])sympy/sympy#\d+|(?<!redirect\.)github\.com/sympy/sympy/(?:issues|pull)/\d+")
+
+
+def direct_tracker_links(body):
+    """Tracker references that create backlinks (outside code, not via redirect.github.com)."""
+    found = []
+    for i, part in enumerate(CODE_SPANS.split(body or "")):
+        if i % 2 == 0:
+            # link text inside [..](https://redirect.github.com/...) is fine
+            part = re.sub(r"\[[^\]]*\]\(https://redirect\.github\.com/[^)]*\)", "", part)
+            found += DIRECT_TRACKER.findall(part)
+    return found
+
+
 def parse_issue(body, comments=()):
     s = split_sections(body)
     kind = re.sub(r"[`*\s]", "", s.get("kind", "").split("\n")[0]).lower()
@@ -126,6 +142,7 @@ def parse_issue(body, comments=()):
         "workaround": doctest_source(s.get("workaround", "")),
         "fixes": fixes,
         "caused_by": [int(n) for n in re.findall(r"(?<![\w/])#(\d+)", s.get("caused_by", ""))],
+        "tracker_links": direct_tracker_links(body),
     }
 
 
@@ -405,6 +422,7 @@ def cmd_run(args):
             "printer_methods": sorted(r.get("printer_hits", {}), key=lambda k: -r["printer_hits"][k])[:12],
             "printers": printer_families(r.get("printer_hits", {})),
             "caused_by": parsed[n]["caused_by"],
+            "tracker_links": parsed[n]["tracker_links"],
             "previous": issue.get("previous"),
             "fixes": [],
         }
@@ -421,10 +439,18 @@ def cmd_run(args):
 # ---------------------------------------------------------------- GitHub I/O
 
 def gh(*args, input=None):
-    p = subprocess.run(["gh", *args], input=input, capture_output=True, text=True)
-    if p.returncode != 0:
-        raise RuntimeError(f"gh {' '.join(args[:3])}: {p.stderr.strip()[-500:]}")
-    return p.stdout
+    """Run gh; back off and retry when GitHub's (secondary) rate limit kicks in."""
+    wait = 60
+    for attempt in range(8):
+        p = subprocess.run(["gh", *args], input=input, capture_output=True, text=True)
+        if p.returncode == 0:
+            return p.stdout
+        err = p.stderr.lower()
+        if "rate limit" not in err or attempt == 7:
+            raise RuntimeError(f"gh {' '.join(args[:3])}: {p.stderr.strip()[-500:]}")
+        print(f"rate limited; sleeping {wait}s", file=sys.stderr)
+        time.sleep(wait)
+        wait = min(wait * 2, 900)
 
 
 def gh_json(*args, input=None):
@@ -557,6 +583,10 @@ def render(rec, repo):
         f = rec["workaround"]["failure"]
         det += ["", "**Workaround** fails on master:",
                 fence(">>> " + f["source"].rstrip() + "\n" + f.get("got", ""), "pycon")]
+    if rec.get("tracker_links"):
+        det += ["", "⚠️ Links to the SymPy tracker without `redirect.github.com` (they add a "
+                "backlink on the tracker; see SPEC.md): " +
+                ", ".join(f"`{t}`" for t in rec["tracker_links"][:5])]
     if rec["kind_raw"] and not rec["kind"]:
         det += ["", f"Unknown kind `{rec['kind_raw']}`; use one of: " + ", ".join(KINDS)]
     lines += ["<details><summary>Details</summary>", ""] + det + ["", "</details>", ""]
@@ -625,12 +655,15 @@ def cmd_report(args):
                 args.close_fixed and rec["verdict"] == "fixed"):
             continue
         body = render(rec, repo)
-        comment_id = None
+        comment_id, old_body = None, None
         for c in paged(f"repos/{repo}/issues/{n}/comments"):
             if STATUS_MARKER in (c["body"] or "") and c["user"]["login"] in bots:
-                comment_id = c["id"]
+                comment_id, old_body = c["id"], c["body"]
         payload = json.dumps({"body": body})
-        if comment_id:
+        wrote = True
+        if comment_id and old_body.strip() == body.strip():
+            wrote = False  # already up to date
+        elif comment_id:
             gh("api", "-X", "PATCH", f"repos/{repo}/issues/comments/{comment_id}", "--input", "-",
                input=payload)
         else:
@@ -654,7 +687,8 @@ def cmd_report(args):
             gh("api", "-X", "PATCH", f"repos/{repo}/issues/{n}", "-f", "state=closed",
                "-f", "state_reason=completed")
         print(f"#{n}: reported {rec['verdict']}", file=sys.stderr)
-        time.sleep(args.delay)
+        if wrote:
+            time.sleep(args.delay)
 
 
 # ---------------------------------------------------------------- local drafts

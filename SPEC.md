@@ -73,7 +73,14 @@ fix, the bot reports which issues that fix also fixes, so a wrong link shows up.
 
 ### Related
 
-Links to other issues here or in `sympy/sympy` (e.g. `sympy/sympy#23912`).
+Links to other issues here (`#N`) or on the SymPy tracker.
+
+**Link to the SymPy tracker through `redirect.github.com`**, e.g.
+`[sympy/sympy#23912](https://redirect.github.com/sympy/sympy/issues/23912)`. The link works
+the same for readers, but GitHub does not add a "mentioned this issue" entry to the tracker
+issue. A plain `sympy/sympy#N` or `github.com/sympy/sympy/issues/N` link does, and that
+backlink stays even if the text is edited later. The catalogue should not add noise to the
+tracker; link an issue there deliberately, by filing or commenting on the tracker itself.
 
 ### Notes on fixing
 

@@ -50,5 +50,5 @@ repository's issue creation limited to trusted people (it is private).
 
 ## Pilot contents
 
-Seeded from [sympy/sympy#30844](https://github.com/sympy/sympy/issues/30844) (an AI-generated
+Seeded from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844) (an AI-generated
 review of the printers), split into one issue per defect and verified against master.
