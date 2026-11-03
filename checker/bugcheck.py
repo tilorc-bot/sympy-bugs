@@ -673,6 +673,107 @@ def fix_locations(diff, sympy_dir, rev, verified, cache):
     return list(out.values())
 
 
+def line_kinds(src):
+    """{line number: "doc" | "comment" | "blank"} for a Python source; other lines are code.
+    "doc" is any line of a string literal used as a statement (docstrings and their doctests)."""
+    kinds = {}
+    for n, line in enumerate(src.split("\n"), 1):
+        s = line.strip()
+        if not s:
+            kinds[n] = "blank"
+        elif s.startswith("#"):
+            kinds[n] = "comment"
+    try:
+        tree = ast.parse(src)
+    except (SyntaxError, ValueError):
+        return kinds
+    for node in ast.walk(tree):
+        if (isinstance(node, ast.Expr) and isinstance(node.value, ast.Constant)
+                and isinstance(node.value.value, str)):
+            for n in range(node.lineno, node.end_lineno + 1):
+                kinds[n] = "doc"
+    return kinds
+
+
+def file_diffs(diff):
+    """[(old path, new path, [hunk lines with their @@ header first])]"""
+    files, cur = [], None
+    for line in diff.rstrip("\n").split("\n"):
+        if line.startswith("diff --git "):
+            cur = None
+        elif line.startswith("--- "):
+            cur = [line[6:].split("\t")[0] if line.startswith("--- a/") else None, None, []]
+            files.append(cur)
+        elif line.startswith("+++ ") and cur is not None and not cur[2]:
+            cur[1] = line[6:].split("\t")[0] if line.startswith("+++ b/") else None
+        elif cur is not None and (line.startswith("@@") or cur[2]):
+            cur[2].append(line)
+    return files
+
+
+def fix_size(diff, sympy_dir, rev, cache):
+    """What a suggested fix changes, by kind of line: code lines added/removed in SymPy's
+    source, docstring (incl. doctest), comment and blank lines, test lines, and other files.
+    Lines are classified by parsing the file before (removed lines) and after (added lines)."""
+    size = {k: 0 for k in ("add", "del", "doc", "comment", "blank", "tadd", "tdel", "other")}
+    for old_path, new_path, lines in file_diffs(diff):
+        path = new_path or old_path
+        if not path:
+            continue
+        if "/tests/" in path or os.path.basename(path).startswith("test_"):
+            size["tadd"] += sum(l.startswith("+") for l in lines)
+            size["tdel"] += sum(l.startswith("-") for l in lines)
+            continue
+        if not path.endswith(".py"):
+            size["other"] += sum(l[:1] in "+-" and l != "" for l in lines)
+            continue
+        old = (file_at(sympy_dir, rev, old_path, cache) if old_path else "") or ""
+        old_lines = old.split("\n") if old else []
+        # Rebuild the new file hunk by hunk, keeping line numbers on both sides.
+        new_lines, removed, added, pos = [], [], [], 0
+        hunks, cur = [], None
+        for l in lines:
+            m = re.match(r"^@@ -(\d+)(?:,\d+)? \+\d+(?:,\d+)? @@", l)
+            if m:
+                cur = {"start": int(m.group(1)), "body": []}
+                hunks.append(cur)
+            elif cur is not None:
+                cur["body"].append(l)
+        for h in hunks:
+            old_side = [l[1:] for l in h["body"] if l[:1] in (" ", "-") or l == ""]
+            at = max(h["start"] - 1, 0) if old_side else h["start"]
+            if old_side and old_lines[at:at + len(old_side)] != old_side:
+                hits = [k for k in range(len(old_lines) - len(old_side) + 1)
+                        if old_lines[k:k + len(old_side)] == old_side]
+                if hits:
+                    at = min(hits, key=lambda k: abs(k - at))
+            new_lines += old_lines[pos:at]
+            k = at
+            for l in h["body"]:
+                if l.startswith("-"):
+                    removed.append(k + 1)
+                    k += 1
+                elif l.startswith("+"):
+                    new_lines.append(l[1:])
+                    added.append(len(new_lines))
+                elif l.startswith("\\"):
+                    continue
+                else:
+                    new_lines.append(old_lines[k] if k < len(old_lines) else l[1:])
+                    k += 1
+            pos = k
+        new_lines += old_lines[pos:]
+        before, after = line_kinds(old), line_kinds("\n".join(new_lines))
+        for n in removed:
+            k = before.get(n)
+            size["del" if k is None else k] += 1
+        for n in added:
+            k = after.get(n)
+            size["add" if k is None else k] += 1
+    size["size"] = size["add"] + size["del"]
+    return size
+
+
 def method_rarity(records):
     """How many bugs reach each printer method (from status records)."""
     df = {}
@@ -828,6 +929,11 @@ def cmd_status(args):
     for i in sorted(selected):
         out[i]["locations"], out[i]["location_warnings"] = locate(
             bugs[i], raw[i], out[i]["fixes"], args.sympy, head, df, cache)
+        # How big each suggested fix is, counting only code (not docstrings, comments, tests).
+        by_hash = {diff_hash(f["diff"]): f["diff"] for f in bugs[i]["fixes"]}
+        for fx in out[i]["fixes"]:
+            if fx.get("applies") and fx.get("diff") in by_hash:
+                fx["size"] = fix_size(by_hash[fx["diff"]], args.sympy, head, cache)
     result = {"sympy": head, "sympy_date": head_date, "checked": today, "run": run_info(args.sympy),
               "bugs": dict(sorted(out.items()))}
     with open(args.out, "w") as f:
