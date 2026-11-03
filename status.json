@@ -4,8 +4,8 @@
  "checked": "2026-11-03",
  "run": {
   "python": "3.13.17",
-  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/41728262967",
-  "checker_commit": "fda9072d121c8d2da08da9d935506c1cec4b8888",
+  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/41730671940",
+  "checker_commit": "5e0a06282464c89f4bdd5188a42207ed5fdc5206",
   "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)"
  },
@@ -25284,10 +25284,10 @@
    ],
    "actual_failure": null,
    "expected_failure": {
-    "source": "p._print(Rational(2, 3)).binding != prettyForm.ATOM, p._print(Float(-2.5)).binding != prettyForm.ATOM\n",
+    "source": "p._print(Rational(2, 3)).binding == prettyForm.ATOM, p._print(Float(-2.5)).binding == prettyForm.ATOM\n",
     "ok": false,
-    "want": "(True, True)\n",
-    "got": "(False, False)\n"
+    "want": "(False, False)\n",
+    "got": "(True, True)\n"
    },
    "locations": [
     {
@@ -25372,10 +25372,10 @@
     ],
     "expected": [
      {
-      "source": "p._print(Rational(2, 3)).binding != prettyForm.ATOM, p._print(Float(-2.5)).binding != prettyForm.ATOM\n",
+      "source": "p._print(Rational(2, 3)).binding == prettyForm.ATOM, p._print(Float(-2.5)).binding == prettyForm.ATOM\n",
       "ok": false,
-      "want": "(True, True)\n",
-      "got": "(False, False)\n"
+      "want": "(False, False)\n",
+      "got": "(True, True)\n"
      },
      {
       "source": "'(' in pretty(Pow(Rational(2, 3), x, evaluate=False))\n",
