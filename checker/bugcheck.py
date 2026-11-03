@@ -438,6 +438,16 @@ def examples(block, inferred=False):
     return out
 
 
+def require_sympy(sympy_dir):
+    """Stop if SymPy itself cannot be imported: otherwise every bug would be recorded as
+    check-broken (e.g. SymPy master refuses to import from a shallow git clone)."""
+    p = subprocess.run([sys.executable, "-c", "import sympy"], capture_output=True, text=True,
+                       env={**clean_env(), "PYTHONPATH": os.path.abspath(sympy_dir)})
+    if p.returncode:
+        sys.exit(f"cannot import SymPy from {sympy_dir}; not checking any bugs:\n"
+                 + p.stderr.strip()[-1500:])
+
+
 def run_info(sympy_dir):
     """Where and how this status was produced, so it can be checked rather than trusted."""
     env = os.environ
@@ -864,6 +874,7 @@ def run_all(bugs, ids, sympy_dir, jobs):
 
 
 def cmd_status(args):
+    require_sympy(args.sympy)
     root = args.root
     bugs, selected = load_bugs(root, args.only)
     previous = json.load(open(args.previous)) if args.previous and os.path.exists(args.previous) else {}
@@ -947,6 +958,7 @@ def cmd_status(args):
 
 
 def cmd_check(args):
+    require_sympy(args.sympy)
     root = os.path.abspath(args.root)
     bugs = {}
     for p in args.files:
