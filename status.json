@@ -528,8 +528,22 @@
     {
      "source": "suggested fix",
      "diff": "accea4c9d0f0",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.26s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -859,8 +873,22 @@
     {
      "source": "suggested fix",
      "diff": "ddc90538a8ff",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.31s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -997,8 +1025,22 @@
     {
      "source": "suggested fix",
      "diff": "03f85cd9113c",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.63s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -1819,8 +1861,22 @@
     {
      "source": "suggested fix",
      "diff": "b4b42b4db545",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.11s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -2052,8 +2108,22 @@
     {
      "source": "suggested fix",
      "diff": "2ac301c96a4c",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 8.70s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -2404,8 +2474,22 @@
     {
      "source": "suggested fix",
      "diff": "c8dbede22ebb",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "344 passed, 7 xfailed in 34.28s",
+      "failed": [],
+      "tests": [
+       "sympy/functions/elementary/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -3218,8 +3302,23 @@
     {
      "source": "suggested fix",
      "diff": "2c89cf283952",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "177 passed, 2 xfailed in 7.47s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_latex.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -3257,8 +3356,22 @@
     {
      "source": "suggested fix",
      "diff": "ed1adc2ea307",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 10.83s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -3358,8 +3471,23 @@
     {
      "source": "suggested fix",
      "diff": "0f3f6bfd68e9",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "177 passed, 2 xfailed in 7.86s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_latex.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -3436,8 +3564,23 @@
     {
      "source": "suggested fix",
      "diff": "b5527adfe448",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "177 passed, 2 xfailed in 7.96s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_latex.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -3759,8 +3902,26 @@
     {
      "source": "suggested fix",
      "diff": "5e7d1cb0f74b",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "1106 passed, 136 skipped, 10 xfailed in 8.23s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/pretty/tests",
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [
+      "printing/latex/latex-limit-power-point-double-superscript",
+      "printing/pretty/pretty-limit-direction-glued-to-point"
+     ],
+     "breaks": []
     }
    ]
   },
@@ -4133,8 +4294,24 @@
     {
      "source": "suggested fix",
      "diff": "faf2bbeebd5a",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.60s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [
+      "printing/latex/latex-mod-negative-arg"
+     ],
+     "breaks": []
     }
    ]
   },
@@ -4392,8 +4569,22 @@
     {
      "source": "suggested fix",
      "diff": "5e6fe1c3e195",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.34s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -4431,8 +4622,22 @@
     {
      "source": "suggested fix",
      "diff": "677a233d0248",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 9.71s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -5121,8 +5326,23 @@
     {
      "source": "suggested fix",
      "diff": "b18a4e6e9316",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "177 passed, 2 xfailed in 7.14s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_latex.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -5615,8 +5835,22 @@
     {
      "source": "suggested fix",
      "diff": "c6995706ac15",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.52s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -6273,8 +6507,22 @@
     {
      "source": "suggested fix",
      "diff": "87ae9f55c7cf",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.64s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -6411,8 +6659,23 @@
     {
      "source": "suggested fix",
      "diff": "4fcf430c3c72",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "109 passed, 1 xfailed in 4.73s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_mathml.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -6551,8 +6814,23 @@
     {
      "source": "suggested fix",
      "diff": "84493037d980",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "42 passed, 1 xfailed in 3.82s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_octave.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -6700,8 +6978,24 @@
     {
      "source": "suggested fix",
      "diff": "bbbf7df54053",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.39s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [
+      "printing/latex/latex-mod-negative-arg"
+     ],
+     "breaks": []
     }
    ]
   },
@@ -6887,8 +7181,22 @@
     {
      "source": "suggested fix",
      "diff": "e236c6e5b608",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "161 passed in 5.02s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/pretty/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -7376,8 +7684,24 @@
     {
      "source": "suggested fix",
      "diff": "8d82bab2781d",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "161 passed in 5.09s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/pretty/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [
+      "printing/pretty/pretty-transpose-1x1-blockmatrix"
+     ],
+     "breaks": []
     }
    ]
   },
@@ -7589,8 +7913,22 @@
     {
      "source": "suggested fix",
      "diff": "9080f5569306",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "161 passed in 5.21s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/pretty/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -8040,8 +8378,22 @@
     {
      "source": "suggested fix",
      "diff": "bebf5df00a60",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "161 passed in 6.42s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/pretty/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -8149,8 +8501,22 @@
     {
      "source": "suggested fix",
      "diff": "1c2248231855",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "292 passed, 3 skipped, 3 xfailed in 25.00s",
+      "failed": [],
+      "tests": [
+       "sympy/physics/quantum/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -8549,8 +8915,22 @@
     {
      "source": "suggested fix",
      "diff": "0f6f855765a6",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.38s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -8624,8 +9004,22 @@
     {
      "source": "suggested fix",
      "diff": "8096b92330ee",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.56s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -8883,8 +9277,22 @@
     {
      "source": "suggested fix",
      "diff": "54f8e915be1d",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.27s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -9624,8 +10032,22 @@
     {
      "source": "suggested fix",
      "diff": "b2d95f1b34ff",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.31s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -9913,8 +10335,23 @@
     {
      "source": "suggested fix",
      "diff": "afaff0ab8a49",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "33 passed in 3.60s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_rcode.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -9952,8 +10389,22 @@
     {
      "source": "suggested fix",
      "diff": "4522f649c15d",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.05s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -10058,8 +10509,23 @@
     {
      "source": "suggested fix",
      "diff": "59d88eba6501",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "33 passed in 3.61s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests",
+       "sympy/printing/tests/test_rcode.py"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -10777,8 +11243,22 @@
     {
      "source": "suggested fix",
      "diff": "8e9e4bd2c366",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.31s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -11527,8 +12007,22 @@
     {
      "source": "suggested fix",
      "diff": "e48532a71cbb",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "94 passed, 11 skipped, 1 xfailed in 5.60s",
+      "failed": [],
+      "tests": [
+       "sympy/codegen/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -11600,8 +12094,22 @@
     {
      "source": "suggested fix",
      "diff": "0eda27599609",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 7.27s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -12038,8 +12546,22 @@
     {
      "source": "suggested fix",
      "diff": "7acceadd7fc8",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 12.23s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
@@ -12182,8 +12704,22 @@
     {
      "source": "suggested fix",
      "diff": "eff62c1292e5",
-     "scope": "applies",
-     "applies": true
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "945 passed, 136 skipped, 10 xfailed in 12.15s",
+      "failed": [],
+      "tests": [
+       "sympy/printing/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [],
+     "breaks": []
     }
    ]
   },
