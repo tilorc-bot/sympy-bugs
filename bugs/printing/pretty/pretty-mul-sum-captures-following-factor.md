@@ -33,8 +33,7 @@ k = 1   ╱
 
 ### Expected
 ```pycon
->>> p = pretty(Sum(1/k, (k, 1, n))*Limit(sin(k*x)/x, x, 0), use_unicode=True)
->>> p.splitlines()[0].lstrip()[0]  # the Sum is enclosed in parentheses
+>>> pretty(Sum(1/k, (k, 1, n))*Limit(sin(k*x)/x, x, 0), use_unicode=True).splitlines()[0].lstrip()[0]  # the Sum is enclosed in parentheses
 '⎛'
 >>> '⎛' in pretty(Product(k, (k, 1, n))*Sum(1/k, (k, 1, n)), use_unicode=True)
 True

@@ -15,8 +15,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> ['<real/>' in mathml(re(x)), '<imaginary/>' in mathml(im(x)), '<rem/>' in mathml(Mod(x, y))]
-[True, True, True]
+>>> '<real/>' in mathml(re(x)), '<imaginary/>' in mathml(im(x))
+(True, True)
+>>> '<rem/>' in mathml(Mod(x, y))
+True
 ```
 
 ### Why it is wrong

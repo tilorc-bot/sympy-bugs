@@ -18,6 +18,8 @@ xml.parsers.expat.ExpatError: not well-formed (invalid token): line 1, column 21
 
 ### Expected
 ```pycon
+>>> '<mo><</mo>' in mathml(x < y, printer='presentation')
+False
 >>> _ = parseString(mathml(x < y, printer='presentation'))
 ```
 

@@ -16,6 +16,9 @@ RootSystem()
 ```pycon
 >>> str(RootSystem('A2')) != str(RootSystem('B2'))
 True
+>>> a = str(RootSystem('A2'))
+>>> str(RootSystem('B2')) != a
+True
 ```
 
 ### Why it is wrong

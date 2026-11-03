@@ -14,8 +14,7 @@ B (1 - x)⋅A
 
 ### Expected
 ```pycon
->>> p = pretty(MatAdd(B, (1 - x)*A), use_unicode=True)
->>> 'B + ' in p or 'B - ' in p
+>>> any(s in pretty(MatAdd(B, (1 - x)*A), use_unicode=True) for s in ('B + ', 'B - '))
 True
 ```
 

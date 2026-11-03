@@ -22,7 +22,10 @@ x - EX(-y - 1)
 
 ### Expected
 ```pycon
->>> parse_expr(str(p)) == p.as_expr()
+>>> ex = p.as_expr()
+>>> parse_expr(str(p)) == ex
+True
+>>> parse_expr(str(x2 + EX(-y - 1)), {'EX': lambda c: c}) == (x2 + EX(-y - 1)).as_expr()
 True
 ```
 

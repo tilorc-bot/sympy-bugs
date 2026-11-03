@@ -14,7 +14,8 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> mathml(True, printer='presentation') == mathml(S.true, printer='presentation')
+>>> t = mathml(S.true, printer='presentation')
+>>> mathml(True, printer='presentation') == t
 True
 ```
 

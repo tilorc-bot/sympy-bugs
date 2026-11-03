@@ -15,8 +15,7 @@ x─→∞x
 
 ### Expected
 ```pycon
->>> p = pretty(Limit(1/x, x, oo), use_unicode=True)
->>> '∞x' in p or '∞ x' in p
+>>> any(s in pretty(Limit(1/x, x, oo), use_unicode=True) for s in ('∞x', '∞ x'))
 False
 ```
 

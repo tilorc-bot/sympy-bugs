@@ -15,8 +15,7 @@ C  ⊕ F
 
 ### Expected
 ```pycon
->>> p = pretty((ComplexSpace(2) + FockSpace())**3, use_unicode=True)
->>> '(' in p or '⎛' in p
+>>> any(c in pretty((ComplexSpace(2) + FockSpace())**3, use_unicode=True) for c in '(⎛')
 True
 ```
 
