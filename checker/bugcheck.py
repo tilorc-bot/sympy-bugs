@@ -458,6 +458,14 @@ def sympy_head(sympy_dir):
     return git(sympy_dir, "rev-parse", "HEAD", check=False).stdout.strip() or None
 
 
+def commit_date(sympy_dir, sha):
+    """Committer date (YYYY-MM-DD) of a SymPy commit, so pages can show a date, not just a hash."""
+    if not sha:
+        return None
+    out = git(sympy_dir, "log", "-1", "--format=%cs", sha, check=False).stdout.strip()
+    return out or None
+
+
 def load_bugs(root, only=None):
     root = os.path.abspath(root)
     paths = find_bugs(root)
@@ -483,6 +491,7 @@ def cmd_status(args):
     previous = json.load(open(args.previous)) if args.previous and os.path.exists(args.previous) else {}
     prev_bugs = previous.get("bugs", {})
     head = sympy_head(args.sympy)
+    head_date = commit_date(args.sympy, head)
     today = datetime.date.today().isoformat()
 
     need_baseline = args.fixes == "full" and any(bugs[i]["fixes"] for i in selected)
@@ -497,7 +506,7 @@ def cmd_status(args):
         prev = prev_bugs.get(i, {})
         rec = {
             "title": b["title"], "kind": b["kind"], "verdict": v, "explanation": why,
-            "sympy": head, "checked": today, "problems": b["problems"],
+            "sympy": head, "sympy_date": head_date, "checked": today, "problems": b["problems"],
             "printers": printer_families(r.get("printer_hits", {})),
             "printer_methods": sorted(r.get("printer_hits", {}),
                                       key=lambda k: -r["printer_hits"][k])[:12],
@@ -514,8 +523,15 @@ def cmd_status(args):
             "last_reproduced": head if v == "reproduces" else prev.get("last_reproduced"),
             "fixed_between": prev.get("fixed_between"),
         }
+        # Dates for every commit shown, since a hash alone means nothing to a reader.
+        rec["first_reproduced_date"] = (prev.get("first_reproduced_date")
+                                        or commit_date(args.sympy, rec["first_reproduced"]))
+        rec["last_reproduced_date"] = (head_date if v == "reproduces"
+                                       else prev.get("last_reproduced_date"))
+        rec["fixed_between_dates"] = prev.get("fixed_between_dates")
         if v == "fixed" and prev.get("verdict") == "reproduces" and prev.get("last_reproduced"):
             rec["fixed_between"] = [prev["last_reproduced"], head]
+            rec["fixed_between_dates"] = [prev.get("last_reproduced_date"), head_date]
         rec["fixes"] = []
         if b["fixes"] and v == "reproduces" and args.fixes != "none":
             prev_fixes = {f.get("diff"): f for f in prev.get("fixes", [])}
@@ -528,7 +544,7 @@ def cmd_status(args):
                 rec["fixes"].append(res)
         out[i] = rec
         print(f"{v:13} {i}", file=sys.stderr)
-    result = {"sympy": head, "checked": today, "run": run_info(args.sympy),
+    result = {"sympy": head, "sympy_date": head_date, "checked": today, "run": run_info(args.sympy),
               "bugs": dict(sorted(out.items()))}
     with open(args.out, "w") as f:
         json.dump(result, f, indent=1, sort_keys=False)
@@ -709,11 +725,15 @@ def cmd_site(args):
             "fixed_between": s.get("fixed_between"),
             "evidence": s.get("evidence"),
             "examples": s.get("examples"), "compiled": s.get("compiled", []),
-            "checked": s.get("checked"), "sympy": s.get("sympy"),
+            "checked": s.get("checked"), "sympy": s.get("sympy"), "sympy_date": s.get("sympy_date"),
+            "first_reproduced": s.get("first_reproduced"),
+            "first_reproduced_date": s.get("first_reproduced_date"),
+            "fixed_between_dates": s.get("fixed_between_dates"),
             "expected_failure": s.get("expected_failure"),
             "text": b["text"].split("\n", 1)[1],
         })
-    data = {"sympy": st.get("sympy"), "checked": st.get("checked"), "repo": args.repo,
+    data = {"sympy": st.get("sympy"), "sympy_date": st.get("sympy_date"),
+            "checked": st.get("checked"), "repo": args.repo,
             "run": st.get("run"),
             "bugs": rows}
     template = args.template or os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.html")
