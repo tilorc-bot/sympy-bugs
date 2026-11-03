@@ -46,6 +46,7 @@ symbols) and as small as possible. The bot checks that it still matches master e
   TypeError: _print_Foo() got an unexpected keyword argument 'exp'...
   ```
 - Trailing whitespace on output lines is ignored; `...` matches anything (ELLIPSIS).
+- The checker runs Python 3.13 with `PYTHONHASHSEED=0`, so term order is reproducible.
 
 ### Expected
 

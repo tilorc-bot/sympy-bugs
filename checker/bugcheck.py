@@ -214,6 +214,7 @@ def execute(parsed, sympy_dir, timeout=TIMEOUT):
     env = dict(os.environ)
     env["PYTHONPATH"] = os.path.abspath(sympy_dir) + os.pathsep + env.get("PYTHONPATH", "")
     env["PYTHONIOENCODING"] = "utf-8"
+    env["PYTHONHASHSEED"] = "0"  # some printers order terms by hash; keep runs reproducible
     env.pop("GH_TOKEN", None)
     env.pop("GITHUB_TOKEN", None)
     job = {k: parsed[k] for k in ("actual", "expected", "workaround")}
