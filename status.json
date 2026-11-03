@@ -4,8 +4,8 @@
  "checked": "2026-11-03",
  "run": {
   "python": "3.13.17",
-  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/41586536366",
-  "checker_commit": "8561c48dc7c40e8533d39b807b495bc70013246a",
+  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/41588461031",
+  "checker_commit": "8dd2c1b306b908ff8819890ae1f6b3ebc9209aa6",
   "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)"
  },
@@ -20410,7 +20410,38 @@
    "first_reproduced_date": "2026-11-02",
    "last_reproduced_date": "2026-11-02",
    "fixed_between_dates": null,
-   "fixes": []
+   "fixes": [
+    {
+     "source": "suggested fix",
+     "diff": "4458d411327a",
+     "scope": "full",
+     "applies": true,
+     "fixes_this": true,
+     "verdict_with_fix": "fixed",
+     "tests": {
+      "ran": true,
+      "passed": true,
+      "summary": "176 passed, 1 xfailed in 2.80s",
+      "failed": [],
+      "tests": [
+       "sympy/physics/quantum/tests/test_printing.py",
+       "sympy/printing/pretty/tests"
+      ]
+     },
+     "verified": true,
+     "also_fixes": [
+      "printing/pretty/pretty-inline-function-power-repowered",
+      "printing/pretty/pretty-matadd-atom-binding",
+      "printing/pretty/pretty-pow-negative-float-base-unparenthesized",
+      "printing/pretty/pretty-pow-rational-base-unparenthesized",
+      "printing/pretty/pretty-productset-power-union-base",
+      "printing/pretty/pretty-tensorproduct-mul-unparenthesized",
+      "printing/pretty/pretty-transpose-1x1-blockmatrix",
+      "printing/pretty/pretty-vector-dot-power-unparenthesized"
+     ],
+     "breaks": []
+    }
+   ]
   },
   "printing/printer/printer-class-object-print-method-crash": {
    "title": "sstr() and latex() of the class TableForm (not an instance) raise TypeError",
