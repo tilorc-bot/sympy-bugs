@@ -15,8 +15,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> r'\frac{' in latex(Function('frac')(x)), r'\root{' in latex(Function('root')(x))
-(False, False)
+>>> r'\frac{' in latex(Function('frac')(x))
+False
+>>> r'\root{' in latex(Function('root')(x))
+False
 ```
 
 ### Why it is wrong

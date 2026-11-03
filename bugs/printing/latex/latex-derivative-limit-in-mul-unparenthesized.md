@@ -20,6 +20,8 @@ wrong-meaning
 ```pycon
 >>> latex(Derivative(f(x), x)*Derivative(g(x), x)) != latex(Derivative(f(x)*Derivative(g(x), x), x))
 True
+>>> r'\left(\lim' in latex(Mul(Limit(f(x), x, 0), 2, evaluate=False))
+True
 ```
 
 ### Why it is wrong

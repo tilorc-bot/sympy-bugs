@@ -19,6 +19,8 @@ x - y z
 ```pycon
 >>> latex(Mul(x, Mul(-y, z, evaluate=False), evaluate=False)) != latex(x - y*z)
 True
+>>> ' - ' in latex(Mul(2, Mul(-y, z, evaluate=False), evaluate=False))
+False
 ```
 
 ### Why it is wrong

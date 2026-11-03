@@ -23,6 +23,8 @@ x + y\mathbf{\hat{n}_x}
 True
 >>> latex(UnevaluatedExpr(x + y)*N.x).startswith(('(', r'\left('))
 True
+>>> latex(Integral(x, x)*N.x).startswith(('(', r'\left('))
+True
 ```
 
 ### Why it is wrong

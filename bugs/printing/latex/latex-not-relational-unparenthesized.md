@@ -17,6 +17,8 @@ wrong-meaning
 ```pycon
 >>> print(latex(Not(x > y, evaluate=False)))
 \neg \left(x > y\right)
+>>> print(latex(Not(Contains(x, Interval(0, 1)))))
+\neg \left(x \in \left[0, 1\right]\right)
 ```
 
 ### Why it is wrong

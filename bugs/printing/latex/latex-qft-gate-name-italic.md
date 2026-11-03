@@ -17,6 +17,8 @@ QFT_{0,2}
 ```pycon
 >>> latex(QFT(0, 2)).startswith('QFT')
 False
+>>> latex(IQFT(0, 2)).startswith('{QFT')
+False
 ```
 
 ### Why it is wrong

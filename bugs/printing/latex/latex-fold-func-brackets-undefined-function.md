@@ -20,6 +20,8 @@ fx
 ```pycon
 >>> latex(f(x), fold_func_brackets=True) != latex(Symbol('fx'))
 True
+>>> latex(f(2*x), fold_func_brackets=True).startswith('f2')
+False
 ```
 
 ### Why it is wrong

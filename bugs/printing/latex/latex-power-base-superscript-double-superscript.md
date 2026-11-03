@@ -19,10 +19,12 @@ e^{z}^{2}
 
 ### Expected
 ```pycon
->>> ('^{a}^' in latex(Operator('A^a')**2),
-...  r'^{\dagger}^' in latex(RaisingOp('a')**2),
-...  '^{z}^' in latex(UnevaluatedExpr(exp(z))**2))
-(False, False, False)
+>>> '^{a}^' in latex(Operator('A^a')**2)
+False
+>>> r'^{\dagger}^' in latex(RaisingOp('a')**2)
+False
+>>> '^{z}^' in latex(UnevaluatedExpr(exp(z))**2)
+False
 ```
 
 ### Why it is wrong

@@ -16,8 +16,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> 'P_1' in latex(Patch('P_1', M)), r'\text{\alpha}' in latex(Manifold('alpha', 2))
-(False, False)
+>>> 'P_1' in latex(Patch('P_1', M))
+False
+>>> r'\text{\alpha}' in latex(Manifold('alpha', 2))
+False
 ```
 
 ### Why it is wrong

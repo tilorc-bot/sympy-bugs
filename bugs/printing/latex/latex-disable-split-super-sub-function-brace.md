@@ -13,8 +13,7 @@ invalid-output
 
 ### Expected
 ```pycon
->>> s = latex(Function('f_1')(x), disable_split_super_sub=True).replace(r'\{', '').replace(r'\}', '')
->>> s.count('{') == s.count('}')
+>>> (s := latex(Function('f_1')(x), disable_split_super_sub=True).replace(r'\{', '').replace(r'\}', '')).count('{') == s.count('}')
 True
 ```
 

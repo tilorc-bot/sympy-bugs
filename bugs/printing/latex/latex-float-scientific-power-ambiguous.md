@@ -17,6 +17,8 @@ wrong-meaning
 ```pycon
 >>> r'\left(2.5 \cdot 10^{20}\right)' in latex(Pow(Float('2.5e20'), 2, evaluate=False))
 True
+>>> r'\left(1.453 \cdot 10^{4500}\right)' in latex(Float('1.453e4500')**x)
+True
 ```
 
 ### Why it is wrong

@@ -15,8 +15,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> 'K_j' in latex(josephson_constant), 'foo_bar' in latex(Quantity('foo_bar'))
-(False, False)
+>>> 'K_j' in latex(josephson_constant)
+False
+>>> 'foo_bar' in latex(Quantity('foo_bar'))
+False
 ```
 
 ### Why it is wrong

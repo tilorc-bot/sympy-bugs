@@ -17,6 +17,8 @@ HermitianOperator\left(A,B\right)
 ```pycon
 >>> latex(Operator('A', 'B')).startswith('Operator')
 False
+>>> latex(HermitianOperator('A', 'B')).startswith('HermitianOperator')
+False
 ```
 
 ### Why it is wrong

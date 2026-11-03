@@ -17,6 +17,8 @@ A 1
 ```pycon
 >>> latex(OneMatrix(2, 2), mat_symbol_style='plain') != latex(S.One)
 True
+>>> latex(MatMul(A, OneMatrix(2, 2)), mat_symbol_style='plain') != 'A ' + latex(S.One)
+True
 ```
 
 ### Why it is wrong

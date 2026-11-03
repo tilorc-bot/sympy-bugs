@@ -22,11 +22,12 @@ $1$ & $2$ \\
 
 ### Expected
 ```pycon
->>> s1 = TableForm([[1, 2]], headings=[['r_1'], ['c_1', 'c_2']]).as_latex()
->>> s2 = TableForm([[1, 2]], headings=[None, ['c&1', 'c%2']]).as_latex()
->>> header = s2.splitlines()[1]
->>> 'r_1 &' in s1, header.replace(r'\&', '').count('&'), header.replace(r'\%', '').count('%')
-(False, 1, 0)
+>>> 'r_1 &' in TableForm([[1, 2]], headings=[['r_1'], ['c_1', 'c_2']]).as_latex()
+False
+>>> TableForm([[1, 2]], headings=[None, ['c&1', 'c%2']]).as_latex().splitlines()[1].replace(r'\&', '').count('&')
+1
+>>> TableForm([[1, 2]], headings=[None, ['c&1', 'c%2']]).as_latex().splitlines()[1].replace(r'\%', '').count('%')
+0
 ```
 
 ### Why it is wrong

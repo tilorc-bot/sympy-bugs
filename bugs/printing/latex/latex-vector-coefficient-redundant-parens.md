@@ -19,6 +19,8 @@ cosmetic
 ```pycon
 >>> r'\left(x\right)' in latex(x*C.i)
 False
+>>> r'\left(2\right)' in latex(x*C.i + 2*C.j)
+False
 ```
 
 ### Why it is wrong

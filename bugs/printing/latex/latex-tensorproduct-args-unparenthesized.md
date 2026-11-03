@@ -20,6 +20,8 @@ A + B \otimes C
 ```pycon
 >>> latex(TensorProduct(A + B, C)) != latex(A + TensorProduct(B, C))
 True
+>>> latex(DTP(R2_r.dx + R2_r.dy, R2_r.dx)) != latex(R2_r.dx + DTP(R2_r.dy, R2_r.dx))
+True
 ```
 
 ### Why it is wrong

@@ -14,8 +14,7 @@ invalid-output
 
 ### Expected
 ```pycon
->>> s = latex(AntiSymmetricTensor('v_1', (i,), (j,)))
->>> 'v_1^' in s or '_{1}^{i}_' in s
+>>> any(p in latex(AntiSymmetricTensor('v_1', (i,), (j,))) for p in ('v_1^', '_{1}^{i}_'))
 False
 ```
 

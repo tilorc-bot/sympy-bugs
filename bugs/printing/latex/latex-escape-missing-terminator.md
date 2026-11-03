@@ -15,8 +15,10 @@ a\textasciitildeb\textasciicircumc
 
 ### Expected
 ```pycon
->>> r'\textbackslashb' in latex('a\\b'), r'\textasciitildeb' in latex_escape('a~b^c')
-(False, False)
+>>> r'\textbackslashb' in latex('a\\b')
+False
+>>> r'\textasciitildeb' in latex_escape('a~b^c')
+False
 ```
 
 ### Why it is wrong

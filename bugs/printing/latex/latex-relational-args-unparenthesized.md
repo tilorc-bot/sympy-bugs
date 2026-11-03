@@ -21,6 +21,12 @@ p \wedge q = p \vee q
 ```pycon
 >>> latex(Eq(x, Eq(y, z), evaluate=False)) != latex(Eq(Eq(x, y), z, evaluate=False))
 True
+>>> 'y = z' in latex(Eq(Eq(x, y), z, evaluate=False))
+False
+>>> r'y = \text{False}' in latex(Eq(Eq(x, y), False))
+False
+>>> 'q = p' in latex(Eq(And(p, q), Or(p, q)))
+False
 ```
 
 ### Why it is wrong
