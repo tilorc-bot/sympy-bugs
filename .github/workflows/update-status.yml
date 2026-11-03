@@ -98,3 +98,27 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 checker/bugcheck.py sync-issues --status status.json --repo "$GITHUB_REPOSITORY" --max-minutes 320
+
+  # The catalogue page on GitHub Pages, built from bugs/ and status.json.
+  pages:
+    needs: commit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Build the page
+        run: python3 checker/bugcheck.py site --status status.json --repo "$GITHUB_REPOSITORY" --out _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

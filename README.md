@@ -1,5 +1,7 @@
 # SymPy bug catalogue (pilot: printers)
 
+**Browse it: https://tilorc-bot.github.io/sympy-bugs/**
+
 A place to record **known SymPy bugs** without asking anyone to fix them.
 
 The main [SymPy issue tracker](https://redirect.github.com/sympy/sympy/issues) is for

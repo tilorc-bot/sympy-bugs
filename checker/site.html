@@ -72,6 +72,9 @@ main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); ga
 .box.ok { background: var(--green-bg); } .box.bad { background: var(--red-bg); } .box.warn { background: var(--amber-bg); }
 .kv { color: var(--muted); }
 .empty { color: var(--muted); padding: 24px; text-align: center; }
+.btn { display: inline-block; border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px;
+  margin-right: 6px; text-decoration: none; color: var(--accent); background: var(--panel); }
+.btn:hover { border-color: var(--accent); }
 button.theme { margin-left: auto; font: inherit; background: none; border: 1px solid var(--line); color: var(--muted);
   border-radius: 6px; padding: 4px 8px; cursor: pointer; }
 </style>
@@ -82,7 +85,8 @@ button.theme { margin-left: auto; font: inherit; background: none; border: 1px s
     <div>
       <h1>SymPy bug catalogue</h1>
       <div class="sub">Known bugs, each verified automatically against SymPy master. Recorded here so they are not lost; nobody is asked to fix them.
-        Last checked <span id="checked"></span> on master <code id="sha"></code>.</div>
+        Last checked <span id="checked"></span> on master <code id="sha"></code>.
+        <span id="repo"></span></div>
     </div>
     <button class="theme" id="theme" title="Toggle light/dark">Theme</button>
   </div>
@@ -132,6 +136,7 @@ $("#theme").onclick = () => {
 };
 
 $("#checked").textContent = DATA.checked || "never";
+if (DATA.repo) $("#repo").innerHTML = `Source: <a href="https://github.com/${esc(DATA.repo)}">${esc(DATA.repo)}</a>.`;
 $("#sha").textContent = (DATA.sympy || "").slice(0, 10);
 const count = f => DATA.bugs.filter(f).length;
 $("#stats").innerHTML = [
@@ -235,6 +240,17 @@ function show(id) {
   if (b.methods.length) h += `<h3>Printer methods reached by Actual</h3><p>${b.methods.map(m => `<code>${esc(m)}</code>`).join(" ")}</p>`;
   h += `<h3>Priority ${b.score}</h3><ul>${b.score_parts.map(([w, p]) => `<li>${esc(w)}: ${p > 0 ? "+" : ""}${p}</li>`).join("")}</ul>`;
   const gh = ghFile(id);
+  if (DATA.repo) {
+    const fileUrl = `https://github.com/${DATA.repo}/blob/main/bugs/${id}.md`;
+    const q = new URLSearchParams({
+      title: `Discuss: ${b.title}`,
+      body: `Bug: [\`${id}\`](${fileUrl})\n\n` +
+        `<!-- Link to the SymPy tracker through https://redirect.github.com/sympy/sympy/issues/N ` +
+        `so the tracker gets no backlink (see SPEC.md). To change the bug itself, edit its file in a PR. -->\n`,
+    });
+    h += `<p><a class="btn" href="https://github.com/${DATA.repo}/issues/new?${q}">Discuss on GitHub</a>
+      <a class="btn" href="https://github.com/${DATA.repo}/edit/main/bugs/${id}.md">Edit the bug file</a></p>`;
+  }
   h += `<p class="kv"><code>${esc(id)}</code>${gh ? ` · <a href="${gh}">file on GitHub</a>` : ""}</p>`;
   $("#detail").innerHTML = h;
   $("#detail").scrollTop = 0;
