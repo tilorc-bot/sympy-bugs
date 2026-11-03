@@ -2,53 +2,67 @@
 
 A place to record **known SymPy bugs** without asking anyone to fix them.
 
-The main [SymPy issue tracker](https://github.com/sympy/sympy/issues) is for problems people
-hit while actually using SymPy. Bugs found by *looking* for them (reviews, fuzzing, AI audits)
-are usually real, but there are far more of them than maintainers can triage. They go here
-instead: each one is recorded, verified automatically, and kept up to date, and nobody is
-expected to act on it.
+The main [SymPy issue tracker](https://redirect.github.com/sympy/sympy/issues) is for
+problems people hit while actually using SymPy. Bugs found by *looking* for them (reviews,
+fuzzing, AI audits) are usually real, but there are far more of them than maintainers can
+triage. They go here instead: each one is recorded as a file, verified automatically, and
+kept up to date, and nobody is expected to act on it.
 
-## What an issue looks like
+## Layout
 
-One bug per issue, written as runnable doctests ([SPEC.md](SPEC.md)):
+```
+bugs/printing/<printer>/<slug>.md   one bug per file; its path (without .md) is its ID
+status.json                         generated: result of checking every bug against master
+checker/bugcheck.py                 the checker (standard library only)
+checker/site.html                   template for the browsable catalogue page
+SPEC.md                             the bug file format
+```
+
+Each bug file states the bug as runnable doctests ([SPEC.md](SPEC.md)):
 
 - **Actual**: what SymPy does now. It must match master.
 - **Expected**: what it should do. It must fail on master and pass once the bug is fixed.
 - **Why it is wrong**, plus optional **Caused by**, **Related**, **Notes on fixing**,
-  **Workaround** and **Suggested fix** (a `diff`).
+  **Workaround**, **Suggested fix** (a `diff`) and **Encountered** (real-world reports).
 
 ## What is checked automatically
 
-A bot ([`checker/bugcheck.py`](checker/bugcheck.py)) runs every issue against SymPy master,
-on every edit and nightly, and keeps one status comment and the labels up to date:
+- **On every pull request** that adds or changes bug files: each changed bug must reproduce
+  on SymPy master (Actual matches, Expected fails) and follow the format. Suggested fixes are
+  applied and checked: do they fix the bug, do the tests of the changed SymPy package pass,
+  and which **other** catalogued bugs do they also fix (this is how shared root causes are
+  found). The PR gets a comment with the results, including possible duplicates.
+- **After merging, and nightly**: every bug is re-run against the latest SymPy master and
+  `status.json` is updated in one commit. Bugs whose Expected block starts passing are marked
+  fixed, with the range of SymPy commits that fixed them. Suggested fixes that no longer
+  apply are marked stale.
 
-- whether the bug still reproduces (`reproduces`), or the issue no longer describes master
-  (`needs-update`);
-- which printer methods the repro reaches (`printer:*` labels);
-- whether the workaround works;
-- for a suggested fix: whether it applies, fixes the issue, passes the tests of the changed
-  package, and which **other** issues it also fixes (this is how shared root causes are found);
-- nightly: issues whose Expected block passes on master are closed, citing the commit range.
+Nothing here creates issues, comments or backlinks on the SymPy tracker.
 
 ## Using it
 
-- **Hit a bug in real work?** Search here first. If it is listed, file it on the SymPy
-  tracker with a link: real-world encounters are what make a catalogued bug worth fixing.
-  A 👍 on the issue here records that it affected you.
-- **Looking for something to fix?** Filter by `reproduces` + `fix-verified` for bugs with a
-  working fix, or by `kind:crash` / `kind:wrong-meaning` for the most harmful ones.
-- **Found bugs by searching?** File them here, one per issue, using the issue form.
+- **Hit a bug in real work?** Search the catalogue first. If it is listed, file it on the
+  SymPy tracker and link the catalogue entry, then add your report under **Encountered** in
+  the bug file: real-world encounters are what raise a catalogued bug's priority.
+- **Looking for something to fix?** Bugs with a verified suggested fix, or crashes and
+  wrong-meaning bugs in widely used printers, are the best candidates.
+- **Found bugs by searching?** Add them as files in a pull request, one file per bug.
 
-Run the checker locally: `checker/Dockerfile` builds a network-less sandbox with a SymPy
-checkout; `python checker/bugcheck.py check draft.md --sympy path/to/sympy` checks a draft.
+Check a bug file locally:
+
+```
+python checker/bugcheck.py check bugs/printing/latex/my-bug.md --root bugs --sympy path/to/sympy
+```
+
+`checker/Dockerfile` builds a network-less sandbox with a SymPy checkout for doing this safely.
 
 ## Security note
 
-Issue bodies contain code that the workflows execute. The execution job has a read-only
-token and no secrets; results are posted by a separate job that runs no issue code. Keep the
-repository's issue creation limited to trusted people (it is private).
+Bug files contain code that the workflows execute. The jobs that execute it have a read-only
+token; results are posted or committed by separate jobs that run no bug code.
 
 ## Pilot contents
 
-Seeded from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844) (an AI-generated
-review of the printers), split into one issue per defect and verified against master.
+Seeded from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844) (an
+AI-generated review of the printers) and its follow-up comment, split into one file per
+defect and verified against master. Findings that master has already fixed were left out.

@@ -1,0 +1,37 @@
+# srepr() of polynomial rings and their elements uses PolyRing, PolyElement and GlobalPolynomialRing, which `from sympy import *` does not provide
+
+### Kind
+lossy
+
+### Actual
+```pycon
+>>> from sympy import symbols, ZZ, QQ, srepr
+>>> from sympy.polys.rings import ring
+>>> ns = {}
+>>> exec('from sympy import *', ns)
+>>> R, X = ring('x', ZZ)
+>>> srepr(X + 1)
+"PolyElement(PolyRing((Symbol('x'),), ZZ, lex), [((1,), 1), ((0,), 1)])"
+>>> eval(srepr(X + 1), ns)
+Traceback (most recent call last):
+...
+NameError: name 'PolyElement' is not defined
+>>> x = symbols('x')
+>>> srepr(QQ.old_poly_ring(x))
+"GlobalPolynomialRing(QQ, Symbol('x'))"
+```
+
+### Expected
+```pycon
+>>> [eval(srepr(e), ns) == e for e in (R, X + 1, QQ.old_poly_ring(x))]
+[True, True, True]
+```
+
+### Why it is wrong
+`srepr` promises `eval(srepr(expr)) == expr` in the scope of `from sympy import *`, but none of these class names is exported from `sympy`.
+
+### Notes on fixing
+`_print_PolyRing`, `_print_PolyElement`, `_print_FracField`, `_print_FracElement` and `_print_PolynomialRingBase` in `sympy/printing/repr.py` print `__class__.__name__`. With `PolyRing`, `PolyElement` and `GlobalPolynomialRing` added to the namespace the strings above do evaluate back to equal objects, so exporting the names or printing a public constructor (`QQ.old_poly_ring(...)`) is enough. QQ coefficients have a separate problem (they print as `1/2`).
+
+### Source
+Imported from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844).

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SymPy bug catalogue</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+:root {
+  --bg: #fbfbfa; --panel: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e4e4e7;
+  --accent: #3b5bdb; --chip: #f1f3f5; --code: #f6f8fa;
+  --red: #c92a2a; --red-bg: #fff0f0; --green: #2b8a3e; --green-bg: #ebfbee;
+  --amber: #a15c00; --amber-bg: #fff4e0; --blue-bg: #edf2ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131316; --panel: #1b1b1f; --ink: #ececf1; --muted: #9a9aa3; --line: #2c2c33;
+    --accent: #8ea2ff; --chip: #26262c; --code: #202026;
+    --red: #ff8787; --red-bg: #3a1d1f; --green: #69db7c; --green-bg: #17301f;
+    --amber: #ffc078; --amber-bg: #3a2c16; --blue-bg: #1f2540;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131316; --panel: #1b1b1f; --ink: #ececf1; --muted: #9a9aa3; --line: #2c2c33;
+  --accent: #8ea2ff; --chip: #26262c; --code: #202026;
+  --red: #ff8787; --red-bg: #3a1d1f; --green: #69db7c; --green-bg: #17301f;
+  --amber: #ffc078; --amber-bg: #3a2c16; --blue-bg: #1f2540;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+header { padding: 20px 16px 8px; max-width: 1400px; margin: 0 auto; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+.sub { color: var(--muted); }
+.sub code { font-size: 12px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; }
+.stat b { font-size: 16px; margin-right: 4px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 16px; max-width: 1400px; margin: 0 auto;
+  position: sticky; top: 0; background: var(--bg); z-index: 2; border-bottom: 1px solid var(--line); }
+.controls input, .controls select { font: inherit; color: var(--ink); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+.controls input { flex: 1 1 220px; min-width: 0; }
+.count { color: var(--muted); align-self: center; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px;
+  max-width: 1400px; margin: 0 auto; padding: 12px 16px 40px; }
+@media (max-width: 900px) { main { grid-template-columns: minmax(0, 1fr); } #detail { position: static !important; max-height: none !important; } }
+#list { display: flex; flex-direction: column; gap: 6px; }
+.row { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+  cursor: pointer; display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 8px; }
+.row:hover { border-color: var(--accent); }
+.row.sel { border-color: var(--accent); background: var(--blue-bg); }
+.score { font-weight: 600; font-variant-numeric: tabular-nums; text-align: center; color: var(--muted); padding-top: 1px; }
+.title { font-weight: 500; overflow-wrap: anywhere; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 0 8px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.chip.kind-crash, .chip.kind-hang, .chip.kind-wrong-meaning { background: var(--red-bg); color: var(--red); }
+.chip.kind-invalid-output, .chip.kind-internal { background: var(--amber-bg); color: var(--amber); }
+.chip.ok { background: var(--green-bg); color: var(--green); }
+.chip.bad { background: var(--red-bg); color: var(--red); }
+.chip.warn { background: var(--amber-bg); color: var(--amber); }
+#detail { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px;
+  position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow: auto; min-width: 0; }
+#detail h2 { font-size: 18px; margin: 0 0 8px; overflow-wrap: anywhere; }
+#detail h3 { font-size: 14px; margin: 18px 0 6px; }
+#detail pre { background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px;
+  overflow-x: auto; font-size: 12.5px; line-height: 1.4; }
+#detail code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
+#detail p code, #detail li code { background: var(--code); padding: 0 3px; border-radius: 3px; }
+#detail a { color: var(--accent); }
+.box { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 10px 0; }
+.box.ok { background: var(--green-bg); } .box.bad { background: var(--red-bg); } .box.warn { background: var(--amber-bg); }
+.kv { color: var(--muted); }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+button.theme { margin-left: auto; font: inherit; background: none; border: 1px solid var(--line); color: var(--muted);
+  border-radius: 6px; padding: 4px 8px; cursor: pointer; }
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:flex-start;gap:8px">
+    <div>
+      <h1>SymPy bug catalogue</h1>
+      <div class="sub">Known bugs, each verified automatically against SymPy master. Recorded here so they are not lost; nobody is asked to fix them.
+        Last checked <span id="checked"></span> on master <code id="sha"></code>.</div>
+    </div>
+    <button class="theme" id="theme" title="Toggle light/dark">Theme</button>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+<div class="controls">
+  <input id="q" type="search" placeholder="Search titles, code, printer methods…">
+  <select id="printer"><option value="">All printers</option></select>
+  <select id="kind"><option value="">All kinds</option></select>
+  <select id="verdict">
+    <option value="reproduces">Reproduces on master</option>
+    <option value="">Any status</option>
+    <option value="fixed">Fixed on master</option>
+    <option value="needs">Needs updating</option>
+  </select>
+  <select id="fix">
+    <option value="">Any fix state</option>
+    <option value="verified">Verified fix</option>
+    <option value="any">Has a suggested fix</option>
+    <option value="none">No fix yet</option>
+  </select>
+  <select id="sort">
+    <option value="score">Sort: priority</option>
+    <option value="title">Sort: title</option>
+    <option value="id">Sort: path</option>
+  </select>
+  <span class="count" id="count"></span>
+</div>
+<main>
+  <div id="list"></div>
+  <aside id="detail"><div class="empty">Select a bug to see its report, status and suggested fix.</div></aside>
+</main>
+<script>
+const DATA = /*__DATA__*/null;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId = Object.fromEntries(DATA.bugs.map(b => [b.id, b]));
+const needs = v => ["changed", "check-broken", "malformed", "timeout"].includes(v);
+
+try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+$("#theme").onclick = () => {
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches;
+  const cur = document.documentElement.dataset.theme || (dark ? "dark" : "light");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (e) {}
+};
+
+$("#checked").textContent = DATA.checked || "never";
+$("#sha").textContent = (DATA.sympy || "").slice(0, 10);
+const count = f => DATA.bugs.filter(f).length;
+$("#stats").innerHTML = [
+  [count(b => b.verdict === "reproduces"), "reproduce on master"],
+  [count(b => b.fix === "verified"), "with a verified fix"],
+  [count(b => b.verdict === "fixed"), "fixed on master"],
+  [count(b => needs(b.verdict)), "need updating"],
+].map(([n, l]) => `<div class="stat"><b>${n}</b>${l}</div>`).join("");
+
+const printers = [...new Set(DATA.bugs.flatMap(b => b.printers))].sort();
+$("#printer").innerHTML += printers.map(p => `<option>${esc(p)}</option>`).join("");
+const kinds = [...new Set(DATA.bugs.map(b => b.kind).filter(Boolean))].sort();
+$("#kind").innerHTML += kinds.map(k => `<option>${esc(k)}</option>`).join("");
+
+function fixChip(b) {
+  if (b.fix === "verified") return `<span class="chip ok">fix verified</span>`;
+  if (b.fix === "stale") return `<span class="chip warn">fix stale</span>`;
+  if (b.fix === "failing") return `<span class="chip bad">fix fails</span>`;
+  if (b.fix === "unchecked") return `<span class="chip">fix unchecked</span>`;
+  return "";
+}
+function statusChip(v) {
+  if (v === "reproduces") return "";
+  if (v === "fixed") return `<span class="chip ok">fixed on master</span>`;
+  return `<span class="chip warn">${esc(v)}</span>`;
+}
+
+let selected = null;
+function filtered() {
+  const q = $("#q").value.trim().toLowerCase();
+  const p = $("#printer").value, k = $("#kind").value, v = $("#verdict").value, f = $("#fix").value;
+  let rows = DATA.bugs.filter(b =>
+    (!p || b.printers.includes(p)) && (!k || b.kind === k) &&
+    (!v || (v === "needs" ? needs(b.verdict) : b.verdict === v)) &&
+    (!f || (f === "verified" ? b.fix === "verified" : f === "any" ? !!b.fix : !b.fix)) &&
+    (!q || (b.title + " " + b.id + " " + b.methods.join(" ") + " " + b.text).toLowerCase().includes(q)));
+  const s = $("#sort").value;
+  rows.sort((a, b) => s === "score" ? b.score - a.score || a.title.localeCompare(b.title)
+                      : s === "title" ? a.title.localeCompare(b.title) : a.id.localeCompare(b.id));
+  return rows;
+}
+function renderList() {
+  const rows = filtered();
+  $("#count").textContent = `${rows.length} of ${DATA.bugs.length}`;
+  $("#list").innerHTML = rows.length ? rows.map(b => `
+    <div class="row${b.id === selected ? " sel" : ""}" data-id="${esc(b.id)}">
+      <div class="score" title="priority">${b.score}</div>
+      <div><div class="title">${esc(b.title)}</div>
+        <div class="meta">${b.kind ? `<span class="chip kind-${esc(b.kind)}">${esc(b.kind)}</span>` : ""}
+          ${b.printers.map(p => `<span class="chip">${esc(p)}</span>`).join("")}
+          ${statusChip(b.verdict)}${fixChip(b)}
+          ${b.dependents.length ? `<span class="chip">root cause of ${b.dependents.length}</span>` : ""}</div></div>
+    </div>`).join("") : `<div class="empty">No bugs match.</div>`;
+}
+$("#list").onclick = e => { const r = e.target.closest(".row"); if (r) show(r.dataset.id); };
+["q", "printer", "kind", "verdict", "fix", "sort"].forEach(id => $("#" + id).addEventListener("input", renderList));
+
+function md(text) {
+  if (window.marked) return marked.parse(text, { mangle: false, headerIds: false });
+  return `<pre>${esc(text)}</pre>`;
+}
+function resolve(fromId, href) {
+  const parts = fromId.split("/").slice(0, -1);
+  for (const seg of href.replace(/\.md$/, "").split("/")) {
+    if (seg === "..") parts.pop(); else if (seg !== ".") parts.push(seg);
+  }
+  return parts.join("/");
+}
+const link = id => byId[id] ? `<a href="#${esc(id)}">${esc(byId[id].title)}</a>` : `<code>${esc(id)}</code>`;
+const ghFile = id => DATA.repo ? `https://github.com/${DATA.repo}/blob/main/bugs/${id}.md` : null;
+
+function show(id) {
+  const b = byId[id]; if (!b) return;
+  selected = id;
+  if (location.hash.slice(1) !== id) history.replaceState(null, "", "#" + id);
+  document.querySelectorAll(".row").forEach(r => r.classList.toggle("sel", r.dataset.id === id));
+  let h = `<h2>${esc(b.title)}</h2><div class="meta">
+    ${b.kind ? `<span class="chip kind-${esc(b.kind)}">${esc(b.kind)}</span>` : ""}
+    ${b.printers.map(p => `<span class="chip">${esc(p)}</span>`).join("")}${statusChip(b.verdict)}${fixChip(b)}</div>`;
+  const cls = b.verdict === "reproduces" ? "bad" : b.verdict === "fixed" ? "ok" : "warn";
+  h += `<div class="box ${cls}"><b>${b.verdict === "reproduces" ? "Reproduces on master" : esc(b.verdict)}</b>: ${esc(b.explanation || "")}`;
+  if (b.fixed_between) h += `<br>Fixed between <a href="https://redirect.github.com/sympy/sympy/compare/${esc(b.fixed_between[0].slice(0,12))}...${esc(b.fixed_between[1].slice(0,12))}">${esc(b.fixed_between[0].slice(0,10))}…${esc(b.fixed_between[1].slice(0,10))}</a>`;
+  if (b.workaround !== null && b.workaround !== undefined) h += `<br>Workaround ${b.workaround ? "works on master ✅" : "fails on master ❌"}`;
+  h += `</div>`;
+  for (const fx of b.fixes) {
+    const t = fx.tests || {};
+    const ok = fx.verified;
+    h += `<div class="box ${ok ? "ok" : (fx.applies === false || !("verified" in fx)) ? "warn" : "bad"}"><b>Suggested fix</b>: `;
+    if (fx.applies === false) h += `no longer applies to master.`;
+    else if (!("verified" in fx)) h += `applies to master ✅; not verified yet (the next full check runs it against the tests).`;
+    else {
+      h += `applies ✅ · fixes this bug ${fx.fixes_this ? "✅" : "❌"} · tests ${t.ran === false ? "➖ none found" : t.passed ? "✅" : "❌"} ${esc(t.summary || "")}`;
+      if (fx.also_fixes && fx.also_fixes.length) h += `<br>Also fixes: ${fx.also_fixes.map(link).join(", ")}`;
+      if (fx.breaks && fx.breaks.length) h += `<br>Breaks: ${fx.breaks.map(link).join(", ")}`;
+      if (fx.scope !== "full") h += `<br><span class="kv">(other bugs not re-run in this check)</span>`;
+    }
+    h += `<br><span class="kv">Verified means the checks pass, not that the fix was reviewed.</span></div>`;
+  }
+  if (b.dependents.length) h += `<div class="box"><b>Root cause of</b>: ${b.dependents.map(link).join(", ")}</div>`;
+  h += `<div id="body">${md(b.text)}</div>`;
+  if (b.methods.length) h += `<h3>Printer methods reached by Actual</h3><p>${b.methods.map(m => `<code>${esc(m)}</code>`).join(" ")}</p>`;
+  h += `<h3>Priority ${b.score}</h3><ul>${b.score_parts.map(([w, p]) => `<li>${esc(w)}: ${p > 0 ? "+" : ""}${p}</li>`).join("")}</ul>`;
+  const gh = ghFile(id);
+  h += `<p class="kv"><code>${esc(id)}</code>${gh ? ` · <a href="${gh}">file on GitHub</a>` : ""}</p>`;
+  $("#detail").innerHTML = h;
+  $("#detail").scrollTop = 0;
+  $("#detail").querySelectorAll("#body a[href]").forEach(a => {
+    const href = a.getAttribute("href");
+    if (/^[^:#]+\.md$/.test(href)) a.setAttribute("href", "#" + resolve(id, href));
+  });
+}
+window.addEventListener("hashchange", () => show(decodeURIComponent(location.hash.slice(1))));
+renderList();
+if (location.hash.length > 1) show(decodeURIComponent(location.hash.slice(1)));
+</script>
+</body>
+</html>

@@ -1,14 +1,17 @@
-# Issue format
+# Bug file format
 
-One issue = one bug. The issue states the bug as runnable doctest blocks, so that a bot
-(`checker/bugcheck.py`) can verify it against SymPy master without anyone triaging it.
+One file = one bug, at `bugs/<area>/<topic>/<slug>.md` (e.g.
+`bugs/printing/latex/latex-mod-negative-arg.md`). The path without `.md` is the bug's ID, so
+pick a slug that says what is wrong and do not rename files casually.
 
-Write only what a person has to supply. Dates, versions, authorship, status, which printer
-methods are involved, and whether a fix works are worked out by GitHub and the bot.
+The file states the bug as runnable doctest blocks, so that `checker/bugcheck.py` can verify
+it against SymPy master without anyone triaging it. Write only what a person has to supply:
+dates and authorship come from git; status, the printer methods involved, and whether a fix
+works are computed into `status.json`.
 
 ## Title
 
-What goes wrong, specific enough to recognise in a list:
+The first line is `# Title`: what goes wrong, specific enough to recognise in a list:
 `latex() prints Mod(-x, y) and -Mod(x, y) identically`, not `LaTeX bug with Mod`.
 
 ## Sections
@@ -29,7 +32,7 @@ One of:
 | `lossy` | information is lost, e.g. `srepr` does not round-trip, two different objects print identically |
 | `ignored-setting` | a printer setting has no effect where it should |
 | `cosmetic` | correct but ugly or unidiomatic |
-| `internal` | an internal helper returns the wrong thing (typically a root cause of other issues) |
+| `internal` | an internal helper returns the wrong thing (typically a root cause of other bugs) |
 
 ### Actual
 
@@ -68,12 +71,15 @@ One or two sentences: why this is a bug and what it costs a user.
 
 ### Caused by
 
-`#N` of the issue describing the root cause, if known. When the root cause gets a verified
-fix, the bot reports which issues that fix also fixes, so a wrong link shows up.
+A relative link to the bug file describing the root cause, if known, e.g.
+`[rc-precedence-traditional-mul](../precedence/rc-precedence-traditional-mul.md)`. When the
+root cause gets a verified fix, the checker reports which bugs that fix also fixes, so a
+wrong link shows up. A root cause is just another bug, usually written against the internal
+helper that is wrong (kind `internal`).
 
 ### Related
 
-Links to other issues here (`#N`) or on the SymPy tracker.
+Relative links to other bug files, and links to the SymPy tracker.
 
 **Link to the SymPy tracker through `redirect.github.com`**, e.g.
 `[sympy/sympy#23912](https://redirect.github.com/sympy/sympy/issues/23912)`. The link works
@@ -92,28 +98,33 @@ A doctest that gets the right result on master today. The bot checks it passes.
 
 ### Suggested fix
 
-A ` ```diff ` block made with `git diff` against SymPy master. Diffs in comments are checked
-too. The bot applies each diff and checks:
+A ` ```diff ` block made with `git diff` against SymPy master. The checker applies each diff
+and checks:
 
 1. it applies to master (otherwise: stale);
 2. with it applied, Expected passes and Actual no longer matches;
 3. the tests of the changed package pass (`sympy/<package>/tests/`);
-4. which other open issues it also fixes, and whether it breaks any.
+4. which other catalogued bugs it also fixes, and whether it breaks any.
 
 Passing these means "verified to work", not "reviewed".
 
-## What the bot does
+### Encountered
 
-- On every new or edited issue and new comment: runs the blocks and any fixes, then
-  rewrites one status comment and sets labels.
-- Nightly: re-runs every open issue against the latest master. Issues whose Expected block
-  now passes are closed, with the range of SymPy commits that fixed them.
+One line per real-world report of this bug: a link to a SymPy tracker issue, forum post or
+downstream bug where someone hit it while actually using SymPy. This is the strongest input
+to the priority score.
 
-| label | meaning |
+## What the checker records
+
+`status.json` has one entry per bug, updated on every merge and nightly:
+
+| field | meaning |
 |---|---|
-| `reproduces` | Actual matches master, Expected fails |
-| `fixed-on-master` | Expected passes on master (issue is closed) |
-| `needs-update` | the blocks no longer describe master, or cannot run |
-| `fix-verified` / `fix-failed` / `fix-stale` | state of the suggested fix(es) |
-| `kind:*` | from the Kind section |
-| `printer:*` | printers reached by the Actual block |
+| `verdict` | `reproduces` (Actual matches master, Expected fails), `fixed` (Expected passes), `changed` (neither matches: the file needs updating), `check-broken`, `malformed`, `timeout` |
+| `sympy`, `checked` | the SymPy commit and date of the check |
+| `first_reproduced`, `last_reproduced`, `fixed_between` | SymPy commits; `fixed_between` brackets the commit that fixed it |
+| `printers`, `printer_methods` | printers and `_print_*` methods the Actual block reaches |
+| `fixes` | per suggested fix: `applies`, `fixes_this`, `tests`, `verified`, `also_fixes`, `breaks` |
+| `problems` | format problems (missing sections, unknown kind, direct tracker links, broken links) |
+
+A pull request fails its check if a changed bug does not reproduce on master or has problems.

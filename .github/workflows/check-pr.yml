@@ -1,0 +1,73 @@
+name: Check bug files
+on:
+  pull_request:
+    paths: ["bugs/**", "checker/**"]
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install SymPy master
+        run: |
+          git clone --depth 1 https://github.com/sympy/sympy sympy-master
+          pip install mpmath==1.3.0 pytest pytest-xdist hypothesis numpy scipy antlr4-python3-runtime==4.11.1 lark
+      # Runs code from the PR's bug files. The token here is read-only.
+      - name: Check changed bug files
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          git diff --name-only --diff-filter=AMR "$BASE"...HEAD -- 'bugs/*.md' 'bugs/**/*.md' > changed.txt
+          cat changed.txt
+          set +e
+          python checker/bugcheck.py status --only $(cat changed.txt) --previous status.json \
+            --sympy sympy-master --fixes full --jobs 4 --strict --out pr-status.json
+          echo $? > exit-code
+          set -e
+          python checker/bugcheck.py summary --only $(cat changed.txt) --status pr-status.json > summary.md
+          cat summary.md >> "$GITHUB_STEP_SUMMARY"
+          echo "$PR" > pr-number
+      - uses: actions/upload-artifact@v4
+        with:
+          name: summary
+          path: |
+            summary.md
+            pr-number
+            exit-code
+      - name: Fail if a bug does not reproduce cleanly
+        run: exit "$(cat exit-code)"
+
+  comment:
+    needs: check
+    if: always() && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: summary
+      - name: Post or update the PR comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          PR=$(cat pr-number)
+          { echo '<!-- bugcheck-summary -->'; cat summary.md; } > body.md
+          ID=$(gh api "repos/$REPO/issues/$PR/comments" --jq '[.[] | select(.body | startswith("<!-- bugcheck-summary -->")) | .id][0] // empty')
+          if [ -n "$ID" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$ID" -F body=@body.md > /dev/null
+          else
+            gh api "repos/$REPO/issues/$PR/comments" -F body=@body.md > /dev/null
+          fi

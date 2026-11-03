@@ -1,0 +1,39 @@
+# Code printers with strict=True still emit Python-syntax StrPrinter output for Sum, Transpose, Inverse, I, ...
+
+### Kind
+invalid-output
+
+### Actual
+```pycon
+>>> from sympy import symbols, Sum, I, MatrixSymbol, ccode, jscode
+>>> x, n = symbols('x n')
+>>> A = MatrixSymbol('A', 2, 2)
+>>> ccode(Sum(x, (x, 1, n)), strict=True)
+'Sum(x, (x, 1, n))'
+>>> ccode(A.T, strict=True), ccode(A.I, strict=True)
+('A.T', 'A**(-1)')
+>>> jscode(I*x, strict=True)
+'I*x'
+```
+
+### Expected
+```pycon
+>>> from sympy.printing.codeprinter import PrintMethodNotImplementedError
+>>> def raises(f, e):
+...     try:
+...         f(e, strict=True)
+...     except PrintMethodNotImplementedError:
+...         return True
+...     return False
+>>> [raises(ccode, Sum(x, (x, 1, n))), raises(ccode, A.T), raises(ccode, A.I), raises(jscode, I*x)]
+[True, True, True, True]
+```
+
+### Why it is wrong
+`strict=True` (the default for `ccode`, `jscode`, ...) is documented to raise `PrintMethodNotImplementedError` for unsupported objects instead of emitting partial code. Here it silently emits SymPy/Python syntax (`A.T`, `A**(-1)`, `I*x`) that does not compile in the target language, or compiles with a different meaning.
+
+### Notes on fixing
+`CodePrinter` (`sympy/printing/codeprinter.py`) sets `_print_Basic = _print_not_supported` plus a fixed list of `_print_<Class> = _print_not_supported`, but it subclasses `StrPrinter`, whose concrete methods (`_print_Sum`, `_print_Transpose`, `_print_Inverse`, `_print_ImaginaryUnit`, ...) are found first when dispatching on the expression's MRO. The same happens for `Lambda`, `Subs`, `Poly`, `FiniteSet`, `Dict`, `Permutation`, `Quaternion`, `MatrixSlice`, `ElementwiseApplyFunction` and `OneMatrix`, in every `CodePrinter` subclass. A fix could make dispatch in `CodePrinter` skip methods defined on `StrPrinter`, or explicitly map the inherited StrPrinter methods to `_print_not_supported`.
+
+### Source
+Imported from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844).
