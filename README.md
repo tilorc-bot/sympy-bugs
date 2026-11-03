@@ -10,15 +10,14 @@ fuzzing, AI audits) are usually real, but there are far more of them than mainta
 triage. They go here instead: each one is recorded as a file, verified automatically, and
 kept up to date, and nobody is expected to act on it.
 
-## Bugs as files, read as issues
+## Bugs as files, browsed on the catalogue page
 
-The files under `bugs/` are the source of truth. Every bug file also has a GitHub issue,
-opened and kept up to date by the catalogue's workflow (`github-actions[bot]`): the issue shows
-the report with its current status on top (reproduces / fixed, verified fix, which other bugs
-it is the root cause of) and labels for kind, printer, status, fix and priority. When the file
-or its status changes, the issue is regenerated; when SymPy fixes the bug, the issue is closed.
-Comments and reactions on issues are kept, so issues are the place to discuss a bug or say
-"I hit this too" (👍). To change the bug itself, edit its file in a pull request.
+The files under `bugs/` are the source of truth, and the catalogue page
+(https://tilorc-bot.github.io/sympy-bugs/) is how to browse them: search and filters, each bug
+with what SymPy prints now and what it should be, the evidence the checker gathered, and the
+suggested fix with its checks. There is no issue per bug. To discuss a bug, use the "Discuss"
+button on its page, which opens an issue for that bug; to change the bug itself, edit its file
+in a pull request.
 
 ## Layout
 
@@ -51,8 +50,6 @@ Each bug file states the bug as runnable doctests ([SPEC.md](SPEC.md)):
 
 Nothing here creates issues, comments or backlinks on the SymPy tracker.
 
-After each update, the issues are synced: new bug files get an issue, changed ones get
-their issue regenerated, fixed ones get it closed, and removed files get it closed as not planned.
 
 ## Using it
 
