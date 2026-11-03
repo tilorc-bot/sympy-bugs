@@ -1,4 +1,4 @@
-# latex() does not bracket Add arguments of TensorProduct: TensorProduct(A + B, C) prints as A + B \otimes C
+# Add arguments of TensorProduct are not bracketed: TensorProduct(A + B, C) prints as A + B \otimes C
 
 ### Kind
 wrong-meaning

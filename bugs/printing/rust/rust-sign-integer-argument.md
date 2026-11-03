@@ -1,4 +1,4 @@
-# rust_code(sign(i)) for integer i compares an i32 with 0.0
+# sign(i) for integer i compares an i32 with 0.0
 
 ### Kind
 invalid-output

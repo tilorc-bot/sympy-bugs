@@ -1,4 +1,4 @@
-# glsl_code(sinh(x)) raises "Unsupported" although GLSL has sinh, cosh, tanh, asinh, acosh, atanh
+# sinh(x) raises "Unsupported" although GLSL has sinh, cosh, tanh, asinh, acosh, atanh
 
 ### Kind
 crash

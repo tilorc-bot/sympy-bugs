@@ -1,4 +1,4 @@
-# pretty() of Pow(sin(x)**2, 3) puts the 3 above sin²(x) without parentheses
+# Pow(sin(x)**2, 3) puts the 3 above sin²(x) without parentheses
 
 ### Kind
 wrong-meaning

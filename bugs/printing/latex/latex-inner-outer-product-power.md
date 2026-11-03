@@ -1,4 +1,4 @@
-# latex() of a power of InnerProduct or OuterProduct puts the exponent on the last factor only
+# A power of InnerProduct or OuterProduct puts the exponent on the last factor only
 
 ### Kind
 wrong-meaning

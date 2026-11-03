@@ -1,4 +1,4 @@
-# latex(Not(x > y)) prints "\neg x > y" without parentheses
+# Not(x > y) prints as "\neg x > y" without parentheses
 
 ### Kind
 wrong-meaning

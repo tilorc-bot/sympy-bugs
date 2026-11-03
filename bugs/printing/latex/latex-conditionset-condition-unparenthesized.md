@@ -1,4 +1,4 @@
-# latex() does not bracket an Or condition of a ConditionSet: x \in \mathbb{R} \wedge x > 1 \vee x < 0
+# An Or condition of a ConditionSet is not bracketed: x \in \mathbb{R} \wedge x > 1 \vee x < 0
 
 ### Kind
 wrong-meaning

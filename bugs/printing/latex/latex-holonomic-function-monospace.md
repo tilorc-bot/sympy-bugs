@@ -1,4 +1,4 @@
-# latex(HolonomicFunction(...)) falls back to monospace str() text
+# HolonomicFunction falls back to monospace str() text
 
 ### Kind
 cosmetic

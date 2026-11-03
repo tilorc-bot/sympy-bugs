@@ -1,4 +1,4 @@
-# srepr() of Wild drops exclude and properties
+# Wild drops exclude and properties
 
 ### Kind
 lossy

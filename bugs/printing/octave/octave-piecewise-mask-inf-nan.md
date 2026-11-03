@@ -1,4 +1,4 @@
-# octave_code(Piecewise((1/x, x > 0), (oo, True))) gives NaN: the inactive infinite branch is multiplied by a 0 mask
+# Piecewise((1/x, x > 0), (oo, True)) gives NaN: the inactive infinite branch is multiplied by a 0 mask
 
 ### Kind
 wrong-meaning

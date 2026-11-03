@@ -1,4 +1,4 @@
-# pretty() does not parenthesize a Complement inside a ProductSet: (X \ Y) × Z prints as X \ Y × Z
+# A Complement inside a ProductSet is not parenthesized: (X \ Y) × Z prints as X \ Y × Z
 
 ### Kind
 wrong-meaning

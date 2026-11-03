@@ -1,4 +1,4 @@
-# latex(udivisor_sigma(n)**2) gives a double superscript (\sigma^*^{2})
+# udivisor_sigma(n)**2 gives a double superscript (\sigma^*^{2})
 
 ### Kind
 invalid-output

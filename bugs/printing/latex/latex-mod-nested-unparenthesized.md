@@ -1,4 +1,4 @@
-# latex() prints Mod(x, Mod(y, z)) and Mod(Mod(x, y), z) identically
+# Mod(x, Mod(y, z)) and Mod(Mod(x, y), z) print identically
 
 ### Kind
 wrong-meaning

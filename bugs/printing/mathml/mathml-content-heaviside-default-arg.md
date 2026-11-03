@@ -1,4 +1,4 @@
-# Content MathML prints Heaviside(x) with its implicit second argument 1/2
+# Heaviside(x) prints with its implicit second argument 1/2 (content MathML)
 
 ### Kind
 cosmetic

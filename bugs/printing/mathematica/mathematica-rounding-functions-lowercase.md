@@ -1,4 +1,4 @@
-# mathematica_code prints floor, ceiling, sign and frac with lower-case names, which are undefined in Mathematica
+# floor, ceiling, sign and frac print with lower-case names, which are undefined in Mathematica
 
 ### Kind
 invalid-output

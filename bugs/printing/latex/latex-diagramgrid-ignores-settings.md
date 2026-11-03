@@ -1,4 +1,4 @@
-# latex() of a DiagramGrid ignores all printer settings for the grid entries
+# Printer settings are ignored for the entries of a DiagramGrid
 
 ### Kind
 ignored-setting

@@ -1,4 +1,4 @@
-# pretty() prints HadamardProduct(KroneckerProduct(A, B), D) and KroneckerProduct(A, HadamardProduct(B, D)) identically
+# (A ⨂ B)∘D and A ⨂ (B∘D) print identically: A ⨂ B∘D
 
 ### Kind
 wrong-meaning

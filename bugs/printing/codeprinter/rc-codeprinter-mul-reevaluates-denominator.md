@@ -1,4 +1,4 @@
-# Code printers print Mul(x, 1/(1/y)) as x/1/y (CodePrinter._print_Mul re-evaluates the denominator)
+# Mul(x, 1/(1/y)) prints as x/1/y (CodePrinter._print_Mul re-evaluates the denominator)
 
 ### Kind
 wrong-meaning

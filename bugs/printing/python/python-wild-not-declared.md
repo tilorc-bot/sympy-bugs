@@ -1,4 +1,4 @@
-# python(x + Wild('w')) uses w_ without declaring it
+# x + Wild('w') uses w_ without declaring it
 
 ### Kind
 invalid-output

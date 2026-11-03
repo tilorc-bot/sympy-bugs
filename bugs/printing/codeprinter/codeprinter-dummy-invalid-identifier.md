@@ -1,4 +1,4 @@
-# Code printers print an unnamed Dummy as _Dummy_N, invalid in Fortran and reserved in C
+# An unnamed Dummy prints as _Dummy_N, invalid in Fortran and reserved in C
 
 ### Kind
 invalid-output

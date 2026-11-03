@@ -1,4 +1,4 @@
-# ccode() prints the quotient of two integer symbols as C integer division
+# The quotient of two integer symbols becomes C integer division
 
 ### Kind
 wrong-meaning

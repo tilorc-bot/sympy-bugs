@@ -1,4 +1,4 @@
-# srepr() prints domains with str(): RealField(prec=100) becomes RR, QQ<sqrt(2)> and ZZ[x] are not Python
+# Domains are printed with str(): RealField(prec=100) becomes RR, QQ<sqrt(2)> and ZZ[x] are not Python
 
 ### Kind
 lossy

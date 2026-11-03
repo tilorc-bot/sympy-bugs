@@ -1,4 +1,4 @@
-# Presentation MathML prints Limit(f(x), x, 0, '-') and Limit(f(x), x, 0, '+') identically
+# Limit(f(x), x, 0, '-') and Limit(f(x), x, 0, '+') print identically (presentation MathML)
 
 ### Kind
 lossy

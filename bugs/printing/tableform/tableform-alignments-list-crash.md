@@ -1,4 +1,4 @@
-# TableForm(..., alignments=[...]) with a list of per-column alignments raises AttributeError
+# A list of per-column alignments raises AttributeError
 
 ### Kind
 crash

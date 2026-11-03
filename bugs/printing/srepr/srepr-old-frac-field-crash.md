@@ -1,4 +1,4 @@
-# srepr(QQ.old_frac_field(x)) raises AttributeError
+# QQ.old_frac_field(x) raises AttributeError
 
 ### Kind
 crash

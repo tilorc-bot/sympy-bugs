@@ -1,4 +1,4 @@
-# latex(divisor_sigma(n, k + 1)) prints the subscript without braces: \sigma_k + 1\left(n\right)
+# divisor_sigma(n, k + 1) prints the subscript without braces: \sigma_k + 1\left(n\right)
 
 ### Kind
 wrong-meaning

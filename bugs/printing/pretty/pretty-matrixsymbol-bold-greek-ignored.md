@@ -1,4 +1,4 @@
-# pretty(mat_symbol_style='bold') has no effect on MatrixSymbols with Greek names
+# mat_symbol_style='bold' has no effect on MatrixSymbols with Greek names
 
 ### Kind
 ignored-setting

@@ -1,4 +1,4 @@
-# glsl_code() prints symbols named after GLSL reserved words unchanged: input + 1
+# Symbols named after GLSL reserved words are not renamed: input + 1
 
 ### Kind
 invalid-output

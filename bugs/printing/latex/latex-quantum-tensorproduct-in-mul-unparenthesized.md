@@ -1,4 +1,4 @@
-# latex() does not bracket a quantum TensorProduct inside a product: A*TensorProduct(A, B) prints as A {A}\otimes {B}
+# A quantum TensorProduct in a product is not bracketed: A*TensorProduct(A, B) prints as A {A}\otimes {B}
 
 ### Kind
 wrong-meaning

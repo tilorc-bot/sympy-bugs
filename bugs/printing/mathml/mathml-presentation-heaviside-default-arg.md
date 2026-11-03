@@ -1,4 +1,4 @@
-# Presentation MathML prints Heaviside(x) as Θ(x, 1/2)
+# Heaviside(x) prints as Θ(x, 1/2) (presentation MathML)
 
 ### Kind
 cosmetic

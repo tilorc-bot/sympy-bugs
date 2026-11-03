@@ -1,4 +1,4 @@
-# mathml(1.5) and mathml({x: 1}) raise AttributeError: 'str' object has no attribute 'toxml'
+# Plain Python input such as 1.5 or {x: 1} raises AttributeError: 'str' object has no attribute 'toxml'
 
 ### Kind
 crash

@@ -1,4 +1,4 @@
-# pretty() prints exp_polar(x) exactly like exp(x)
+# exp_polar(x) prints exactly like exp(x)
 
 ### Kind
 lossy

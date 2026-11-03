@@ -1,4 +1,4 @@
-# rcode prints comments as "// text", but R comments start with #
+# Comments print as "// text", but R comments start with #
 
 ### Kind
 invalid-output

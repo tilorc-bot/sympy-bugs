@@ -1,4 +1,4 @@
-# pycode(Eq(Not(x), Not(y))) prints `(not x == not y)`, a SyntaxError
+# Eq(Not(x), Not(y)) prints `(not x == not y)`, a SyntaxError
 
 ### Kind
 invalid-output

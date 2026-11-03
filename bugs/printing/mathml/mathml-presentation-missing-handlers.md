@@ -1,4 +1,4 @@
-# Presentation MathML prints Piecewise, Product, Subs, Order and UnevaluatedExpr as lowercase pseudo-functions
+# Piecewise, Product, Subs, Order and UnevaluatedExpr print as lowercase pseudo-functions (presentation MathML)
 
 ### Kind
 wrong-meaning

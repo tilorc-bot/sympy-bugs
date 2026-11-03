@@ -1,4 +1,4 @@
-# python(Function('sin')(x)) does not declare the undefined function, so the code calls the built-in sin
+# Function('sin')(x) is not declared, so the generated code calls SymPy's sin
 
 ### Kind
 wrong-meaning

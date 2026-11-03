@@ -1,4 +1,4 @@
-# fcode(Equivalent(a, b, c)) prints a .eqv. b .eqv. c, which Fortran evaluates left to right
+# Equivalent(a, b, c) prints a .eqv. b .eqv. c, which Fortran evaluates left to right
 
 ### Kind
 wrong-meaning

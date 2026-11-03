@@ -1,4 +1,4 @@
-# rcode(For(i, Range(10, 0, -1), ...)) loops to -1, and an empty Range gives seq(from=0, to=-1, by=1)
+# For(i, Range(10, 0, -1), ...) loops to -1, and an empty Range gives seq(from=0, to=-1, by=1)
 
 ### Kind
 wrong-meaning

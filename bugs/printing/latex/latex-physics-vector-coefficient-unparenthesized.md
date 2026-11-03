@@ -1,4 +1,4 @@
-# latex() of a physics.vector Vector brackets only Add coefficients: Mod(x, 2)*N.x prints as x \bmod 2\mathbf{\hat{n}_x}
+# A physics.vector Vector brackets only Add coefficients: Mod(x, 2)*N.x reads as x mod (2 n̂x)
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# srepr() of AlgebraicNumber drops the alias
+# AlgebraicNumber drops its alias
 
 ### Kind
 lossy

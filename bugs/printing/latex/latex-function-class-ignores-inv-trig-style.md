@@ -1,4 +1,4 @@
-# latex(asin, inv_trig_style='full') ignores the setting for the function class
+# inv_trig_style='full' is ignored for a bare function class such as asin
 
 ### Kind
 ignored-setting

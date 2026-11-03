@@ -1,4 +1,4 @@
-# python(Symbol('x_{1}') + 2*Symbol('x_1')) declares x_1 twice and merges the two symbols
+# Symbol('x_{1}') + 2*Symbol('x_1') declares x_1 twice and merges the two symbols
 
 ### Kind
 wrong-meaning

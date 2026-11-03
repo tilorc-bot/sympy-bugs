@@ -1,4 +1,4 @@
-# ccode(For(...)) prints the Range bounds with str(), e.g. `i < n**2`
+# For loop bounds are printed with str(), e.g. `i < n**2`
 
 ### Kind
 invalid-output

@@ -1,4 +1,4 @@
-# latex() of an unevaluated negative power of 1/n ignores fold_short_frac and always prints the exponent as p/q
+# An unevaluated negative power of 1/n ignores fold_short_frac and always prints the exponent as p/q
 
 ### Kind
 ignored-setting

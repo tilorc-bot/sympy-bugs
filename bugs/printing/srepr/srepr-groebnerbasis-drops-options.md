@@ -1,4 +1,4 @@
-# srepr() of GroebnerBasis drops the order and domain
+# GroebnerBasis drops the order and domain
 
 ### Kind
 lossy

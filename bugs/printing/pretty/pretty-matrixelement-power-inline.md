@@ -1,4 +1,4 @@
-# pretty() of A[i, j]**2 puts the exponent between the matrix and the indices: (A)²[i, j]
+# A[i, j]**2 puts the exponent between the matrix and the indices: (A)²[i, j]
 
 ### Kind
 wrong-meaning

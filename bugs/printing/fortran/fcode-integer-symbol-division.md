@@ -1,4 +1,4 @@
-# fcode() prints the quotient of two integer symbols as Fortran integer division
+# The quotient of two integer symbols becomes Fortran integer division
 
 ### Kind
 wrong-meaning

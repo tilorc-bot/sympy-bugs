@@ -1,4 +1,4 @@
-# latex(QFT(0, 2)) prints the gate name as italic math letters
+# The QFT gate name prints as italic math letters
 
 ### Kind
 cosmetic

@@ -1,4 +1,4 @@
-# pretty(mat_symbol_style='bold') does not make the matrix in A[0, 1] bold
+# mat_symbol_style='bold' does not make the matrix in A[0, 1] bold
 
 ### Kind
 ignored-setting

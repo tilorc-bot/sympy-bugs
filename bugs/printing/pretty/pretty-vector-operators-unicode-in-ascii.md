@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) prints ∇ and ∆ for sympy.vector Gradient and Laplacian
+# use_unicode=False still prints ∇ and ∆ for sympy.vector Gradient and Laplacian
 
 ### Kind
 ignored-setting

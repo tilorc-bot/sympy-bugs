@@ -1,4 +1,4 @@
-# latex_escape emits \textbackslash, \textasciitilde, \textasciicircum without a terminator, so the next letter joins the command
+# latex_escape emits \textbackslash etc. without a terminator, so the next letter joins the command
 
 ### Kind
 invalid-output

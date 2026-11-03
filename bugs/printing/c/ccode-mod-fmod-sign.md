@@ -1,4 +1,4 @@
-# ccode(Mod(x, y)) prints fmod(x, y), which has the wrong sign for negative operands
+# Mod(x, y) prints fmod(x, y), which has the wrong sign for negative operands
 
 ### Kind
 wrong-meaning

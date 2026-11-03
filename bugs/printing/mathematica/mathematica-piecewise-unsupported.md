@@ -1,4 +1,4 @@
-# mathematica_code(Piecewise(...)) raises "Unsupported ... ExprCondPair"
+# Piecewise(...) raises "Unsupported ... ExprCondPair"
 
 ### Kind
 crash

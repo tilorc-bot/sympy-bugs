@@ -1,4 +1,4 @@
-# latex() prints MatMul(A, -x, B) as A - x B
+# MatMul(A, -x, B) prints as A - x B
 
 ### Kind
 wrong-meaning

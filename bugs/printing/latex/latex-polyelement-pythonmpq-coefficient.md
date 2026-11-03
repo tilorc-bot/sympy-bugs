@@ -1,4 +1,4 @@
-# latex() of ring/field elements over QQ with Python ground types prints coefficients as \mathtt{\text{-1/2}} and doubles the sign
+# Ring/field elements over QQ with Python ground types print \mathtt{\text{-1/2}} and double the sign
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# pretty() prints Pauli operators SigmaX() etc. as their label (False, or the bare name)
+# Pauli operators SigmaX() etc. print as their label (False, or the bare name)
 
 ### Kind
 lossy

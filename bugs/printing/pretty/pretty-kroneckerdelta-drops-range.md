@@ -1,4 +1,4 @@
-# pretty() of KroneckerDelta(i, j, (a, b)) drops the summation range
+# KroneckerDelta(i, j, (a, b)) drops the summation range
 
 ### Kind
 lossy

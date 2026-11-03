@@ -1,4 +1,4 @@
-# rcode(..., dereference=[z]) prints C pointer syntax (*z)
+# dereference=[z] prints C pointer syntax (*z)
 
 ### Kind
 invalid-output

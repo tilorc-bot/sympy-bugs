@@ -1,4 +1,4 @@
-# rust_code(Max(2, x)) prints an if/else whose arms are 2 (integer) and x (f64)
+# Max(2, x) prints an if/else whose arms are 2 (integer) and x (f64)
 
 ### Kind
 invalid-output

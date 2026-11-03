@@ -1,4 +1,4 @@
-# str() of a categories Object whose name contains a double quote is not valid Python
+# A categories Object whose name contains a double quote is not valid Python
 
 ### Kind
 invalid-output

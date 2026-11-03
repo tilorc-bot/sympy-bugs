@@ -1,4 +1,4 @@
-# latex() prints Mul(x, Mul(-y, z), evaluate=False) as x - y z
+# Mul(x, Mul(-y, z), evaluate=False) prints as x - y z
 
 ### Kind
 wrong-meaning

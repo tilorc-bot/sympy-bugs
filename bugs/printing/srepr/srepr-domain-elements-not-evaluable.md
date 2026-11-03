@@ -1,4 +1,4 @@
-# srepr() prints domain elements QQ(1, 2), GF(5)(3) and ZZ_I(1, 2) as 1/2, 3 mod 5 and 1 + 2*I
+# Domain elements QQ(1, 2), GF(5)(3) and ZZ_I(1, 2) print as 1/2, 3 mod 5 and 1 + 2*I
 
 ### Kind
 lossy

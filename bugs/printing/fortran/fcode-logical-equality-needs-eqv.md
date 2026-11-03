@@ -1,4 +1,4 @@
-# fcode(Eq(x > 1, y > 1)) prints x > 1 == y > 1 instead of using .eqv.
+# Eq(x > 1, y > 1) prints x > 1 == y > 1 instead of using .eqv.
 
 ### Kind
 invalid-output

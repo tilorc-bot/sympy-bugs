@@ -1,4 +1,4 @@
-# pycode() raises TypeError for an ITE whose condition contains another ITE inside And
+# An ITE whose condition contains another ITE inside And raises TypeError
 
 ### Kind
 crash

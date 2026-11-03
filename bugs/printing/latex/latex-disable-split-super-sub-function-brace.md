@@ -1,4 +1,4 @@
-# latex(f_1(x), disable_split_super_sub=True) gives unbalanced braces (\operatorname{f\}_1)
+# f_1(x) with disable_split_super_sub=True gives unbalanced braces (\operatorname{f\}_1)
 
 ### Kind
 invalid-output

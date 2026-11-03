@@ -1,4 +1,4 @@
-# str() of a codegen Variable with a parametrized attribute such as dimension(10) raises TypeError
+# A codegen Variable with a parametrized attribute such as dimension(10) raises TypeError
 
 ### Kind
 crash

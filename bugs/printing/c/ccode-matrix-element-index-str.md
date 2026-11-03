@@ -1,4 +1,4 @@
-# ccode() prints the flattened index of a MatrixElement with str(), e.g. A[i**2*m + j]
+# The flattened index of a MatrixElement is printed with str(), e.g. A[i**2*m + j]
 
 ### Kind
 invalid-output

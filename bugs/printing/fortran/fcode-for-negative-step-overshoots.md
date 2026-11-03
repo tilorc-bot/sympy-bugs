@@ -1,4 +1,4 @@
-# fcode(For(i, Range(10, 0, -1), ...)) prints do i = 10, -1, -1, running two extra iterations
+# For(i, Range(10, 0, -1), ...) prints do i = 10, -1, -1, running two extra iterations
 
 ### Kind
 wrong-meaning

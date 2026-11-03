@@ -1,4 +1,4 @@
-# pretty() does not parenthesize a MatAdd inside HadamardPower or DotProduct
+# A MatAdd inside HadamardPower or DotProduct is not parenthesized
 
 ### Kind
 wrong-meaning

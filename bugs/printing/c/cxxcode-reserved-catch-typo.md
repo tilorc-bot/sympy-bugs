@@ -1,4 +1,4 @@
-# cxxcode() does not rename a symbol named `catch` (typo 'catch,' in the C++ reserved words)
+# C++: a symbol named `catch` is not renamed (typo 'catch,' in the reserved words)
 
 ### Kind
 invalid-output

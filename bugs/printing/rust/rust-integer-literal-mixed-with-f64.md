@@ -1,4 +1,4 @@
-# rust_code prints integer literals next to f64 values: 2/x, 2*x, x + 1
+# Integer literals are printed next to f64 values: 2/x, 2*x, x + 1
 
 ### Kind
 invalid-output

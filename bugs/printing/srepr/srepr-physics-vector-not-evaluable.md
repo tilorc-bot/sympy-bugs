@@ -1,4 +1,4 @@
-# srepr() of a physics.vector ReferenceFrame prints its bare name, which evaluates to sympy.N
+# A physics.vector ReferenceFrame prints as its bare name, which evaluates to sympy.N
 
 ### Kind
 lossy

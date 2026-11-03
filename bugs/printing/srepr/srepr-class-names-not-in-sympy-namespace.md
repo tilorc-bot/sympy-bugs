@@ -1,4 +1,4 @@
-# srepr() of Piecewise, AccumBounds and ComplexRegion uses class names that `from sympy import *` does not provide
+# Piecewise, AccumBounds and ComplexRegion use class names that `from sympy import *` does not provide
 
 ### Kind
 lossy

@@ -1,4 +1,4 @@
-# str() of an expression containing Function('Rational')(x) or Function('Integer')(x) raises AttributeError
+# An expression containing Function('Rational')(x) or Function('Integer')(x) raises AttributeError
 
 ### Kind
 crash

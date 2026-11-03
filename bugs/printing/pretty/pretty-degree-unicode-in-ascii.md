@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) prints the non-ASCII degree sign for units.degree
+# use_unicode=False still prints the non-ASCII degree sign for units.degree
 
 ### Kind
 ignored-setting

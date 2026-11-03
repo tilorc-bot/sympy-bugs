@@ -1,4 +1,4 @@
-# latex() turns trailing digits/underscores of built-in function names into subscripts (atan2 -> atan_{2})
+# Trailing digits/underscores of built-in function names become subscripts (atan_{2})
 
 ### Kind
 cosmetic

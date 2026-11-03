@@ -1,4 +1,4 @@
-# latex() attaches the Limit direction marker to the last term of the limit point: x \to a + b^+
+# The Limit direction marker attaches to the last term of the limit point: x \to a + b^+
 
 ### Kind
 wrong-meaning

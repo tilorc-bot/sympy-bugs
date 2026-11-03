@@ -1,4 +1,4 @@
-# str() of a physics.vector Vector with an UnevaluatedExpr(x + y) coefficient prints x + y*N.x
+# A physics.vector Vector with an UnevaluatedExpr(x + y) coefficient prints x + y*N.x
 
 ### Kind
 wrong-meaning

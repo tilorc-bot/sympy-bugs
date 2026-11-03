@@ -1,4 +1,4 @@
-# pretty() does not parenthesize a quantum TensorProduct that is a factor of a Mul
+# A quantum TensorProduct that is a factor of a Mul is not parenthesized: A⨂ C⋅B
 
 ### Kind
 wrong-meaning

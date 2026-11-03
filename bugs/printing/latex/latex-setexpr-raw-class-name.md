@@ -1,4 +1,4 @@
-# latex(SetExpr(...)) prints the class name as italic math letters
+# SetExpr(...) prints the class name as italic math letters
 
 ### Kind
 cosmetic

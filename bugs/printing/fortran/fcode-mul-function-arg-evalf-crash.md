@@ -1,4 +1,4 @@
-# fcode() raises AttributeError for 2*Piecewise(...) and turns 2*Mod(i, 3) into real arithmetic
+# 2*Piecewise(...) raises AttributeError, and 2*Mod(i, 3) turns into real arithmetic
 
 ### Kind
 crash

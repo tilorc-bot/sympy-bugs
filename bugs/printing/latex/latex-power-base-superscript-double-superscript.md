@@ -1,4 +1,4 @@
-# latex() of a power gives a double superscript when the base prints with a superscript (Operator('A^a')**2 → A^{a}^{2})
+# A power gives a double superscript when the base prints with one (Operator('A^a')**2 → A^{a}^{2})
 
 ### Kind
 invalid-output

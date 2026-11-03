@@ -1,4 +1,4 @@
-# srepr() prints CoordSys3D base scalars and units Quantities with str()
+# CoordSys3D base scalars and units Quantities are printed with str()
 
 ### Kind
 lossy

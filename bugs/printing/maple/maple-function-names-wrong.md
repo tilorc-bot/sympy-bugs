@@ -1,4 +1,4 @@
-# maple_code prints sign, gamma, atan2, loggamma and polygamma under their SymPy names, which mean something else (or nothing) in Maple
+# sign, gamma, atan2, loggamma, polygamma keep SymPy names that mean something else (or nothing) in Maple
 
 ### Kind
 wrong-meaning

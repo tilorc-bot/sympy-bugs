@@ -1,4 +1,4 @@
-# pretty() puts the factors that follow a Sum, Product or Limit in a Mul inside its body
+# Factors that follow a Sum, Product or Limit in a Mul end up inside its body
 
 ### Kind
 wrong-meaning

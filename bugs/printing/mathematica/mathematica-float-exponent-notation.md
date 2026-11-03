@@ -1,4 +1,4 @@
-# mathematica_code(Float('1e-20')*x) prints 1.0e-20*x, which Wolfram Language reads as 1.0*e - 20
+# Float('1e-20')*x prints 1.0e-20*x, which Wolfram Language reads as 1.0*e - 20
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# jscode() does not rename symbols named after JavaScript keywords (var, new, ...)
+# Symbols named after JavaScript keywords (var, new, ...) are not renamed
 
 ### Kind
 invalid-output

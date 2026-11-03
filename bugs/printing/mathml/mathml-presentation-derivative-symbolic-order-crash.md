@@ -1,4 +1,4 @@
-# Presentation MathML of a derivative of symbolic order raises TypeError
+# A derivative of symbolic order raises TypeError (presentation MathML)
 
 ### Kind
 crash

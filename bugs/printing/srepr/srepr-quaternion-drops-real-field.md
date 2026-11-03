@@ -1,4 +1,4 @@
-# srepr() of Quaternion drops real_field
+# Quaternion drops real_field
 
 ### Kind
 lossy

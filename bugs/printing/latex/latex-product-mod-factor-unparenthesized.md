@@ -1,4 +1,4 @@
-# latex() prints Product(Mod(n, 3), (n, 1, 10)) like (Product(n)) mod 3
+# Product(Mod(n, 3), (n, 1, 10)) prints like (Product(n)) mod 3
 
 ### Kind
 wrong-meaning

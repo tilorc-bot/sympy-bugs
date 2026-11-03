@@ -1,4 +1,4 @@
-# latex() prints a power of a Float in scientific notation as {2.5 \cdot 10^{20}}^{2}
+# A power of a Float in scientific notation prints as {2.5 \cdot 10^{20}}^{2}
 
 ### Kind
 wrong-meaning

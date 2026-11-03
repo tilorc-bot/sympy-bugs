@@ -1,4 +1,4 @@
-# octave_code() prints HadamardPower with .**, which Octave 9 removed
+# HadamardPower prints with .**, which Octave 9 removed
 
 ### Kind
 invalid-output

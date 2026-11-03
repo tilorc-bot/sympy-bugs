@@ -1,4 +1,4 @@
-# Content MathML of a derivative of symbolic order raises TypeError
+# A derivative of symbolic order raises TypeError (content MathML)
 
 ### Kind
 crash

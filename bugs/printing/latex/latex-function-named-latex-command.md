@@ -1,4 +1,4 @@
-# latex() prints undefined functions named frac or root as the TeX commands \frac and \root
+# Undefined functions named frac or root print as the TeX commands \frac and \root
 
 ### Kind
 invalid-output

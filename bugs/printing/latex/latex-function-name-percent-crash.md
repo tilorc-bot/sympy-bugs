@@ -1,4 +1,4 @@
-# latex() of an undefined function whose name contains % raises ValueError
+# An undefined function whose name contains % raises ValueError
 
 ### Kind
 crash

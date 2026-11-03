@@ -1,4 +1,4 @@
-# latex(DomainMatrix(...)) falls back to monospace str() text instead of a matrix
+# DomainMatrix falls back to monospace str() text instead of a matrix
 
 ### Kind
 cosmetic

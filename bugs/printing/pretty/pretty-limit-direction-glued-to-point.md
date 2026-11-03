@@ -1,4 +1,4 @@
-# pretty() attaches the Limit direction marker to the last term of the point: Limit(x, x, y + z) shows x─→y + z⁺
+# The Limit direction marker attaches to the last term of the point: x─→y + z⁺
 
 ### Kind
 wrong-meaning

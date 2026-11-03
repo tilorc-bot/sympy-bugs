@@ -1,4 +1,4 @@
-# latex(ArrayAdd(A, -B)) prints A + -1 \boxtimes B
+# ArrayAdd(A, -B) prints A + -1 \boxtimes B
 
 ### Kind
 cosmetic

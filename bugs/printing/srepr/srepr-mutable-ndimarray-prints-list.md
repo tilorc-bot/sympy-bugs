@@ -1,4 +1,4 @@
-# srepr() of MutableDenseNDimArray prints a plain list
+# MutableDenseNDimArray prints as a plain list
 
 ### Kind
 lossy

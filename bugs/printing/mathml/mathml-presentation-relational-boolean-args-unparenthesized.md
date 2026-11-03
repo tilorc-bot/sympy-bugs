@@ -1,4 +1,4 @@
-# Presentation MathML prints Eq(And(p, q), r) as p ∧ q = r
+# Eq(And(p, q), r) prints as p ∧ q = r (presentation MathML)
 
 ### Kind
 wrong-meaning

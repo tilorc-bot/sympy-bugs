@@ -1,4 +1,4 @@
-# pretty() renders part of function names like reduced_totient and riemann_xi as a subscript
+# Part of function names like reduced_totient and riemann_xi is rendered as a subscript
 
 ### Kind
 cosmetic

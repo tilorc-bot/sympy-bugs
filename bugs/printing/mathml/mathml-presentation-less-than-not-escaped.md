@@ -1,4 +1,4 @@
-# Presentation MathML of x < y is not well-formed XML (unescaped <)
+# x < y is not well-formed XML: the < is not escaped (presentation MathML)
 
 ### Kind
 invalid-output

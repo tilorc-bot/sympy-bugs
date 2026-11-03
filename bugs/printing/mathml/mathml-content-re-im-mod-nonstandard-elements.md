@@ -1,4 +1,4 @@
-# Content MathML prints re, im and Mod as <re/>, <im/> and <mod/>, which are not MathML elements
+# re, im and Mod print as <re/>, <im/> and <mod/>, which are not MathML elements
 
 ### Kind
 invalid-output

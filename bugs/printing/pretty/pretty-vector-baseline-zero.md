@@ -1,4 +1,4 @@
-# pretty() of a sympy.vector Vector with a fractional coefficient has its baseline on the top row
+# A sympy.vector Vector with a fractional coefficient has its baseline on the top row
 
 ### Kind
 wrong-meaning

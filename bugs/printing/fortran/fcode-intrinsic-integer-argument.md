@@ -1,4 +1,4 @@
-# fcode() passes integer symbols to Fortran intrinsics that need real arguments: sin(i), atan2(i, x)
+# Integer symbols are passed to intrinsics that need real arguments: sin(i), atan2(i, x)
 
 ### Kind
 invalid-output

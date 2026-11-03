@@ -1,4 +1,4 @@
-# pretty() of the transpose of a 1x1 BlockMatrix of a sum prints like A + Bᵀ
+# The transpose of a 1x1 BlockMatrix of a sum prints like A + Bᵀ
 
 ### Kind
 wrong-meaning

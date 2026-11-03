@@ -12,7 +12,15 @@ works are computed into `status.json`.
 ## Title
 
 The first line is `# Title`: what goes wrong, specific enough to recognise in a list:
-`latex() prints Mod(-x, y) and -Mod(x, y) identically`, not `LaTeX bug with Mod`.
+`Mod(-x, y) and -Mod(x, y) print identically: - x \bmod y`, not `LaTeX bug with Mod`.
+
+Do not repeat the printer: the catalogue page shows it in its own column next to the title
+(the folder `bugs/printing/<printer>/` says which one it is). So a bug in
+`bugs/printing/latex/` is titled `Mod(-x, y) and -Mod(x, y) print identically: - x \bmod y`,
+not `latex() prints Mod(-x, y) and -Mod(x, y) identically`. Name a function only when it is
+part of what goes wrong or is not the folder's printer (e.g. `lambdify(..., 'scipy')` in
+`pycode/`, or `python()` vs `str()`). Keep code where it is the clearest way to say it, and
+aim for under ~80 characters.
 
 ## Sections
 

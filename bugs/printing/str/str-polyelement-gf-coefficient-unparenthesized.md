@@ -1,4 +1,4 @@
-# str() of a polynomial over GF(p) prints coefficients as "3 mod 5*x**2"
+# A polynomial over GF(p) prints coefficients as "3 mod 5*x**2"
 
 ### Kind
 wrong-meaning

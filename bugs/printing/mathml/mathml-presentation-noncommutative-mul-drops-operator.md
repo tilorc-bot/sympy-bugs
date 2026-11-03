@@ -1,4 +1,4 @@
-# Presentation MathML drops the multiplication sign in A*B*A for noncommutative symbols
+# The multiplication sign is dropped in A*B*A for noncommutative symbols (presentation MathML)
 
 ### Kind
 wrong-meaning

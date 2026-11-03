@@ -1,4 +1,4 @@
-# python(f(x) + Symbol('f')) declares f both as a Symbol and as a Function
+# f(x) + Symbol('f') declares f both as a Symbol and as a Function
 
 ### Kind
 invalid-output

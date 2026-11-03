@@ -1,4 +1,4 @@
-# latex(..., mat_symbol_style='plain') prints OneMatrix as a bare 1, so A*OneMatrix reads as A*1
+# mat_symbol_style='plain' prints OneMatrix as a bare 1, so A*OneMatrix reads as A*1
 
 ### Kind
 wrong-meaning

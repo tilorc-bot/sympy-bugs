@@ -1,4 +1,4 @@
-# julia_code(Matrix([[x**2]])) prints [x**2]: the entry of a 1x1 matrix is printed with str()
+# The entry of a 1x1 matrix is printed with str(): Matrix([[x**2]]) gives [x**2]
 
 ### Kind
 invalid-output

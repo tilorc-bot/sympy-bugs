@@ -1,4 +1,4 @@
-# latex(CartanType('A2')) prints \text{TypeA}, dropping the rank
+# CartanType('A2') prints \text{TypeA}, dropping the rank
 
 ### Kind
 lossy

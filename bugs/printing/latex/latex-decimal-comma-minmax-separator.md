@@ -1,4 +1,4 @@
-# latex(Max(x, y, 1.5), decimal_separator='comma') separates the arguments with a comma
+# With decimal_separator='comma', Max arguments are still separated by a comma
 
 ### Kind
 ignored-setting

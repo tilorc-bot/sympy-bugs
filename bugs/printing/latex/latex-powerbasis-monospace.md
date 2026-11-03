@@ -1,4 +1,4 @@
-# latex(PowerBasis(T)) falls back to monospace str() text
+# PowerBasis falls back to monospace str() text
 
 ### Kind
 cosmetic

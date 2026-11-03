@@ -1,4 +1,4 @@
-# latex(Mul(x, 3, evaluate=False)) prints x 3 with no multiplication sign
+# Mul(x, 3, evaluate=False) prints x 3 with no multiplication sign
 
 ### Kind
 cosmetic

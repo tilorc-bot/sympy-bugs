@@ -1,4 +1,4 @@
-# rust_code() prints Eq(x, Eq(y, z)) and Eq(Eq(x, y), z) identically: x == y == z
+# Eq(x, Eq(y, z)) and Eq(Eq(x, y), z) print identically: x == y == z
 
 ### Kind
 invalid-output

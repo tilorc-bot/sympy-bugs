@@ -1,4 +1,4 @@
-# cxxcode(Min(x, 2)) prints std::min(2, x), which does not compile for a double x
+# Min(x, 2) prints std::min(2, x), which does not compile for a double x
 
 ### Kind
 invalid-output

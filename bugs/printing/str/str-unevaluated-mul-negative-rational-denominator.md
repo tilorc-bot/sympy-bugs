@@ -1,4 +1,4 @@
-# str() of -x/(2/3) as an unevaluated Mul prints -x/2/3
+# -x/(2/3) as an unevaluated Mul prints -x/2/3
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# jscode(S.true) prints Python's `True` instead of JavaScript's `true`
+# S.true prints Python's `True` instead of JavaScript's `true`
 
 ### Kind
 invalid-output

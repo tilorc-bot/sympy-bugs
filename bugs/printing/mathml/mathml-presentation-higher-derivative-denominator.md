@@ -1,4 +1,4 @@
-# Presentation MathML prints d²f/dx² with the exponent on the d in the denominator (d²/d² x)
+# d²f/dx² puts the exponent on the d in the denominator: d²/d² x (presentation MathML)
 
 ### Kind
 wrong-meaning

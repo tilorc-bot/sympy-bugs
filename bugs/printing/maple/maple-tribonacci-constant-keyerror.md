@@ -1,4 +1,4 @@
-# maple_code(TribonacciConstant + x) raises KeyError
+# TribonacciConstant + x raises KeyError
 
 ### Kind
 crash

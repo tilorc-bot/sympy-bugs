@@ -1,4 +1,4 @@
-# rust_code(sqrt(i)) and rust_code(i**x) for integer i raise TypeError: cannot create mpf from i
+# sqrt(i) and i**x for integer i raise TypeError: cannot create mpf from i
 
 ### Kind
 crash

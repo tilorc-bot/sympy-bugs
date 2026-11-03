@@ -1,4 +1,4 @@
-# latex() prints Subs(f(x), x, 1)**2 as an evaluation bar with a superscript, like an evaluation between limits
+# Subs(f(x), x, 1)**2 prints like an evaluation between limits 1 and 2
 
 ### Kind
 wrong-meaning

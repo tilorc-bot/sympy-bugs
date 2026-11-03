@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) prints a Unicode dagger for creation operators (BosonOp, FermionOp, RaisingOp)
+# use_unicode=False still prints a Unicode dagger for BosonOp, FermionOp and RaisingOp
 
 ### Kind
 ignored-setting

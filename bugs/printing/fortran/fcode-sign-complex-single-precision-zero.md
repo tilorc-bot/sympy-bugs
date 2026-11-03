@@ -1,4 +1,4 @@
-# fcode(sign(z)) for complex z mixes a single-precision cmplx(0d0, 0d0) with double-precision z
+# sign(z) for complex z mixes a single-precision cmplx(0d0, 0d0) with double-precision z
 
 ### Kind
 invalid-output

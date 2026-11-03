@@ -1,4 +1,4 @@
-# pretty() of a physics.vector Dyadic inside a list or tuple raises AttributeError
+# A physics.vector Dyadic inside a list or tuple raises AttributeError
 
 ### Kind
 crash

@@ -1,4 +1,4 @@
-# fcode(i**(-2)) prints integer exponentiation i**(-2), which Fortran evaluates to 0
+# i**(-2) prints as integer exponentiation, which Fortran evaluates to 0
 
 ### Kind
 wrong-meaning

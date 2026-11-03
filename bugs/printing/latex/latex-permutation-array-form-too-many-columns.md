@@ -1,4 +1,4 @@
-# latex(Permutation, perm_cyclic=False) uses pmatrix for more than 10 columns
+# Permutation with perm_cyclic=False uses pmatrix for more than 10 columns
 
 ### Kind
 invalid-output

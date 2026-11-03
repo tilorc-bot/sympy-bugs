@@ -1,4 +1,4 @@
-# Presentation MathML of Range(x, y) with symbolic bounds raises ValueError
+# Range(x, y) with symbolic bounds raises ValueError (presentation MathML)
 
 ### Kind
 crash

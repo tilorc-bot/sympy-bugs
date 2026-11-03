@@ -1,4 +1,4 @@
-# latex(f(x), fold_func_brackets=True) prints "fx" for an undefined function
+# fold_func_brackets=True prints an undefined function f(x) as "fx"
 
 ### Kind
 wrong-meaning

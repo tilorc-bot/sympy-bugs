@@ -1,4 +1,4 @@
-# str() of an unevaluated noncommutative Mul moves a B**-1 factor behind later factors
+# An unevaluated noncommutative Mul moves a B**-1 factor behind later factors
 
 ### Kind
 wrong-meaning

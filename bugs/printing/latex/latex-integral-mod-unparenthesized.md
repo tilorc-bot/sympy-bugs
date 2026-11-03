@@ -1,4 +1,4 @@
-# latex() prints Integral(Mod(x, 3), x) as "\int x \bmod 3\, dx" without brackets
+# Integral(Mod(x, 3), x) prints as "\int x \bmod 3\, dx" without brackets
 
 ### Kind
 wrong-meaning

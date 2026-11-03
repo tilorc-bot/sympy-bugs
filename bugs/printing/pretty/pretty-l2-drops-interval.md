@@ -1,4 +1,4 @@
-# pretty() of the Hilbert space L2(Interval(a, b)) drops the interval
+# The Hilbert space L2(Interval(a, b)) drops the interval
 
 ### Kind
 lossy

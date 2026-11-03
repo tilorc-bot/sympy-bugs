@@ -1,4 +1,4 @@
-# cxxcode() prints declarations of bool and int64 variables as a Python tuple: (bool, None) x
+# C++ declarations of bool and int64 variables print a Python tuple: (bool, None) x
 
 ### Kind
 invalid-output

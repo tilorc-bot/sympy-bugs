@@ -1,4 +1,4 @@
-# fcode() indexes a parenthesized matrix expression: (A - B)(1, 1)
+# An element of A - B prints as (A - B)(1, 1), which does not compile
 
 ### Kind
 invalid-output

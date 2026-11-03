@@ -1,4 +1,4 @@
-# latex() of a unit Quantity puts its abbreviation unescaped in \text{} (\text{K_j})
+# A unit Quantity's abbreviation goes unescaped into \text{} (\text{K_j})
 
 ### Kind
 invalid-output

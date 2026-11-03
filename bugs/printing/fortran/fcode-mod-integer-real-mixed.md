@@ -1,4 +1,4 @@
-# fcode(Mod(x, i)) passes a real and an integer to modulo, which needs matching types
+# Mod(x, i) passes a real and an integer to modulo, which needs matching types
 
 ### Kind
 invalid-output

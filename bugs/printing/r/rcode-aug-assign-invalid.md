@@ -1,4 +1,4 @@
-# rcode(aug_assign(x, '+', y + z)) prints x += y + z;, which is not R
+# aug_assign(x, '+', y + z) prints x += y + z;, which is not R
 
 ### Kind
 invalid-output

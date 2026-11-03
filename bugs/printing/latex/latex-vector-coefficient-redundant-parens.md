@@ -1,4 +1,4 @@
-# latex(x*C.i) wraps every sympy.vector coefficient in parentheses, even a single symbol
+# Every sympy.vector coefficient is wrapped in parentheses, even a single symbol: \left(x\right)
 
 ### Kind
 cosmetic
