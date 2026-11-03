@@ -17,12 +17,6 @@ Traceback (most recent call last):
 sympy.printing.codeprinter.PrintMethodNotImplementedError: Unsupported by <class 'sympy.printing.fortran.FCodePrinter'>: ceiling...
 ```
 
-### Expected
-```pycon
->>> _ = fcode(floor(x), standard=95, source_format='free')
->>> _ = fcode(ceiling(x), standard=95, source_format='free')
-```
-
 ### Why it is wrong
 `floor` and `ceiling` are intrinsic functions since Fortran 90, so these common functions should be printable for `standard >= 90`.
 

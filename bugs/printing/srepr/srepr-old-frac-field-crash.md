@@ -13,11 +13,6 @@ Traceback (most recent call last):
 AttributeError: 'FractionField' object has no attribute 'field'
 ```
 
-### Expected
-```pycon
->>> _ = srepr(QQ.old_frac_field(x))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid object.
 

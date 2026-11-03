@@ -16,11 +16,6 @@ Traceback (most recent call last):
 NameError: name 'ImmutableDenseMatrix' is not defined
 ```
 
-### Expected
-```pycon
->>> _ = lambdify(x, Matrix([x, 2]), 'math')(1)
-```
-
 ### Why it is wrong
 Lambdifying a Matrix with `modules='math'` used to work ([sympy/sympy#4033](https://redirect.github.com/sympy/sympy/issues/4033)) and now fails when the function is called.
 

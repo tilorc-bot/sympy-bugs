@@ -12,11 +12,6 @@ Traceback (most recent call last):
 AttributeError: 'list' object has no attribute 'strip'
 ```
 
-### Expected
-```pycon
->>> _ = TableForm([[1, 2]], alignments=['l', 'r'])
-```
-
 ### Why it is wrong
 The docstring says alignments "When given as a single value, the value is used for all columns", i.e. a list of values (one per column) is also accepted, and the constructor has code to handle such a list, but it is unreachable.
 

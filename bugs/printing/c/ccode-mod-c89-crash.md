@@ -19,12 +19,6 @@ Traceback (most recent call last):
 AttributeError: 'CXX98CodePrinter' object has no attribute '_print_math_func'...
 ```
 
-### Expected
-```pycon
->>> _ = ccode(Mod(x, y), standard='c89')
->>> _ = cxxcode(Mod(x, y), standard='c++98')
-```
-
 ### Why it is wrong
 `fmod` exists in C89 and C++98, and printing must not fail for a valid expression.
 

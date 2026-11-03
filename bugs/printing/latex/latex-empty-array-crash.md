@@ -16,12 +16,6 @@ Traceback (most recent call last):
 IndexError: list index out of range
 ```
 
-### Expected
-```pycon
->>> _ = latex(Array([]))
->>> _ = latex(Array([], (2, 0)))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid object; empty arrays are valid and `str` prints them.
 

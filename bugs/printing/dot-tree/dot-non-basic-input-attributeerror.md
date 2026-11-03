@@ -18,12 +18,6 @@ Traceback (most recent call last):
 AttributeError: 'list' object has no attribute 'args'
 ```
 
-### Expected
-```pycon
->>> _ = dotprint(Matrix([[1]]))
->>> _ = dotprint([x, 1])
-```
-
 ### Why it is wrong
 The default `atom` predicate of `dotprint` treats every non-`Basic` object as a leaf, but a non-`Basic` top-level argument (a mutable `Matrix`, a list, a plain `int` such as `dotprint(5)`) crashes instead of producing a graph. `dotprint(ImmutableMatrix([[1]]))` works.
 

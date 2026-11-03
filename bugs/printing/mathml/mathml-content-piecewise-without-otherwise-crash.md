@@ -13,11 +13,6 @@ Traceback (most recent call last):
 ValueError: All Piecewise expressions must contain an (expr, True) statement to be used as a default condition...
 ```
 
-### Expected
-```pycon
->>> _ = mathml(Piecewise((x, x > 0)))
-```
-
 ### Why it is wrong
 `Piecewise((x, x > 0))` is a valid expression (undefined for x ≤ 0), and content MathML's `<piecewise>` allows omitting `<otherwise>`; LaTeX prints it as a one-case `cases` environment.
 

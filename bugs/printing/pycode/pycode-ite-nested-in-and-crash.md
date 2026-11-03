@@ -14,11 +14,6 @@ Traceback (most recent call last):
 TypeError: expecting bool or Boolean, not `Piecewise((y < 0, x < 0), (z < 0, True))`.
 ```
 
-### Expected
-```pycon
->>> _ = pycode(e)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; `ccode(e)` prints it.
 

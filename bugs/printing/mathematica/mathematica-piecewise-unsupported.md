@@ -14,11 +14,6 @@ Traceback (most recent call last):
 sympy.printing.codeprinter.PrintMethodNotImplementedError: Unsupported by <class 'sympy.printing.mathematica.MCodePrinter'>: <class 'sympy.functions.elementary.piecewise.ExprCondPair'>...
 ```
 
-### Expected
-```pycon
->>> _ = mathematica_code(Piecewise((x, x > 0), (y, True)))
-```
-
 ### Why it is wrong
 Mathematica has a direct equivalent, `Piecewise[{{x, x > 0}}, y]`, and `Piecewise` results are common (e.g. from `integrate`), but printing them fails.
 

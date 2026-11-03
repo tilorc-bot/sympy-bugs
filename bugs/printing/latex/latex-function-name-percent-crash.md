@@ -13,11 +13,6 @@ Traceback (most recent call last):
 ValueError: unsupported format character 'b'...
 ```
 
-### Expected
-```pycon
->>> _ = latex(Function('a%b')(x))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; `str` prints it.
 

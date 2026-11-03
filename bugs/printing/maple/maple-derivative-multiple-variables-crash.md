@@ -17,11 +17,6 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 2)
 ```
 
-### Expected
-```pycon
->>> _ = maple_code(Derivative(f(x, y), x, y))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; mixed partial derivatives are common, and Maple's `diff` accepts several variables (`diff(f(x, y), x, y)`).
 

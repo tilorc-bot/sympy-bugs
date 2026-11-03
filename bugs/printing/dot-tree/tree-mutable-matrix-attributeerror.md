@@ -13,11 +13,6 @@ Traceback (most recent call last):
 AttributeError: 'MutableDenseMatrix' object has no attribute 'args'
 ```
 
-### Expected
-```pycon
->>> _ = tree(Matrix([[1]]))
-```
-
 ### Why it is wrong
 `tree` (and `print_tree`) fail for the most common matrix type, while `tree(ImmutableMatrix([[1]]))` works.
 

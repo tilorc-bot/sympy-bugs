@@ -14,11 +14,6 @@ Traceback (most recent call last):
 TypeError: cannot determine truth value of Relational: n > 1
 ```
 
-### Expected
-```pycon
->>> _ = mathml(Derivative(f(x), (x, n)))
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression; the LaTeX and str printers handle a symbolic order.
 

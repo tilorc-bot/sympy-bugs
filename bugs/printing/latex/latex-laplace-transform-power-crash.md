@@ -14,11 +14,6 @@ Traceback (most recent call last):
 TypeError: LatexPrinter._print_LaplaceTransform() got an unexpected keyword argument 'exp'...
 ```
 
-### Expected
-```pycon
->>> _ = latex(LaplaceTransform(f(t), t, s)**2)
-```
-
 ### Why it is wrong
 Printing must not fail for a valid expression.
 

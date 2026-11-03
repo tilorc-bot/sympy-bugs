@@ -14,11 +14,6 @@ Traceback (most recent call last):
 sympy.printing.codeprinter.PrintMethodNotImplementedError: Unsupported by <class 'sympy.printing.glsl.GLSLPrinter'>: sinh...
 ```
 
-### Expected
-```pycon
->>> _ = glsl_code(sinh(x))
-```
-
 ### Why it is wrong
 `sinh`, `cosh`, `tanh`, `asinh`, `acosh` and `atanh` are GLSL built-ins since GLSL 1.30, so these functions should be printable. The reviewer checked this against the GLSL specification only.
 
