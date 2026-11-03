@@ -671,7 +671,8 @@ def cmd_site(args):
         })
     data = {"sympy": st.get("sympy"), "checked": st.get("checked"), "repo": args.repo,
             "bugs": rows}
-    page = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.html")).read()
+    template = args.template or os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.html")
+    page = open(template, encoding="utf-8").read()
     blob = json.dumps(data).replace("</", "<\\/")
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, "index.html"), "w", encoding="utf-8") as f:
@@ -943,6 +944,7 @@ def main():
     p.add_argument("--root", default="bugs")
     p.add_argument("--status", required=True)
     p.add_argument("--repo", default="")
+    p.add_argument("--template", help="page template (default: checker/site.html)")
     p.add_argument("--out", required=True)
     p = sub.add_parser("sync-issues", help="create/update one GitHub issue per bug file")
     p.add_argument("--root", default="bugs")
