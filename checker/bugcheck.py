@@ -666,6 +666,7 @@ def cmd_site(args):
             "caused_by": b["caused_by"], "dependents": dependents.get(i, []),
             "related": b["related"], "tracker": b["tracker"],
             "fixed_between": s.get("fixed_between"),
+            "evidence": s.get("evidence"),
             "expected_failure": s.get("expected_failure"),
             "text": b["text"].split("\n", 1)[1],
         })
