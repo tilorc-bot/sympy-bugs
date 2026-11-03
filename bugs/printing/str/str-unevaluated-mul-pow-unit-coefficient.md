@@ -1,4 +1,4 @@
-# str() of an unevaluated Mul prints y**(-x) in the denominator as y**(1*x)
+# An unevaluated Mul prints y**(-x) in the denominator as y**(1*x)
 
 ### Kind
 cosmetic

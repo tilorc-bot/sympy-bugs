@@ -1,4 +1,4 @@
-# Presentation MathML prints Mul(-2, 3, evaluate=False) as "- 6 mn 1"
+# Mul(-2, 3, evaluate=False) prints as "- 6 mn 1" (presentation MathML)
 
 ### Kind
 wrong-meaning

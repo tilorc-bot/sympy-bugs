@@ -1,4 +1,4 @@
-# pretty() does not parenthesize an inline Rational base of a power: (2/3)**x prints as 2/3ˣ
+# An inline Rational base of a power is not parenthesized: (2/3)**x prints as 2/3ˣ
 
 ### Kind
 wrong-meaning

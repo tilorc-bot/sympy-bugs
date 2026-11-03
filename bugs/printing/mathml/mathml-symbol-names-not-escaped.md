@@ -1,4 +1,4 @@
-# MathML does not escape < and & in symbol names, giving ill-formed XML
+# < and & in symbol names are not escaped, giving ill-formed XML
 
 ### Kind
 invalid-output

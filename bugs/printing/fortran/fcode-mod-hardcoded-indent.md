@@ -1,4 +1,4 @@
-# fcode() prints Mod with six hard-coded leading spaces: "z =       modulo(i, 3)"
+# Mod is printed with six hard-coded leading spaces: "j =       modulo(i, 3)"
 
 ### Kind
 cosmetic

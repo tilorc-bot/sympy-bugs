@@ -1,4 +1,4 @@
-# rust_code(log(x)/log(2)) prints 2_i32.ln(): integer-literal receivers are typed i32
+# log(x)/log(2) prints 2_i32.ln(): integer-literal receivers are typed i32
 
 ### Kind
 invalid-output

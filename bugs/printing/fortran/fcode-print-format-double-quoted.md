@@ -1,4 +1,4 @@
-# fcode(Print([x], '(F10.3)')) prints fmt=""(F10.3)"" with doubled quotes
+# Print([x], '(F10.3)') prints fmt=""(F10.3)"" with doubled quotes
 
 ### Kind
 invalid-output

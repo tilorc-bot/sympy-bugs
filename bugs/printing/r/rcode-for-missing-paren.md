@@ -1,4 +1,4 @@
-# rcode(For(...)) omits the closing parenthesis of for(
+# For loops omit the closing parenthesis of for(
 
 ### Kind
 invalid-output

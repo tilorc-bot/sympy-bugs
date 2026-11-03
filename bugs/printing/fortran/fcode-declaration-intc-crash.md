@@ -1,4 +1,4 @@
-# fcode(Declaration(Variable(x, type=intc))) raises ValueError: too many values to unpack
+# Declaring a variable of type intc raises ValueError: too many values to unpack
 
 ### Kind
 crash

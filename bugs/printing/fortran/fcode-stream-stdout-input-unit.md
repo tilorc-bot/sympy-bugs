@@ -1,4 +1,4 @@
-# FCodePrinter._print_Stream returns a String object for stdout; its stdout branch would print input_unit
+# Printing stdout raises AttributeError; the branch meant for it would print input_unit
 
 ### Kind
 internal

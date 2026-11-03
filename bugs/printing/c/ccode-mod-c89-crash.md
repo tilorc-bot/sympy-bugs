@@ -1,4 +1,4 @@
-# ccode(Mod(x, y), standard='c89') and cxxcode(..., standard='c++98') raise AttributeError
+# Mod(x, y) raises AttributeError with standard='c89' (and 'c++98')
 
 ### Kind
 crash

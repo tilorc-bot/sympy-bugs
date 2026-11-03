@@ -1,4 +1,4 @@
-# pretty() drops the + in MatAdd(B, (1 - x)*A)
+# The + is dropped in MatAdd(B, (1 - x)*A)
 
 ### Kind
 wrong-meaning

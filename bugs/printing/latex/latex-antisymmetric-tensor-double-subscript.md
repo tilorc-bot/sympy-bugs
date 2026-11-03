@@ -1,4 +1,4 @@
-# latex(AntiSymmetricTensor('v_1', ...)) gives a double subscript
+# AntiSymmetricTensor('v_1', ...) gives a double subscript
 
 ### Kind
 invalid-output

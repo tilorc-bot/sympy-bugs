@@ -1,4 +1,4 @@
-# latex() does not parenthesize relational or logical operands of a Relational: Eq(x, Eq(y, z)) prints as x = y = z
+# Eq(x, Eq(y, z)) prints as x = y = z: operands of a Relational are not parenthesized
 
 ### Kind
 wrong-meaning

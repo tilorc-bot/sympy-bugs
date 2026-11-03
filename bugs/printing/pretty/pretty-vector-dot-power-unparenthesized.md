@@ -1,4 +1,4 @@
-# pretty() puts the exponent of Dot(N.i, N.j)**2 on the second factor only
+# The exponent of Dot(N.i, N.j)**2 goes on the second factor only
 
 ### Kind
 wrong-meaning

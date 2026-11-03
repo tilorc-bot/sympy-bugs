@@ -1,4 +1,4 @@
-# latex() prints Operator(x + y)**2 as x + y^{2}
+# Operator(x + y)**2 prints as x + y^{2}
 
 ### Kind
 wrong-meaning

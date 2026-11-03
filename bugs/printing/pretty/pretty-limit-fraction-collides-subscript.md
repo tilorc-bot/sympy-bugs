@@ -1,4 +1,4 @@
-# pretty() of Limit(1/x, x, oo) puts the denominator right after the ∞ in the subscript: x─→∞x
+# Limit(1/x, x, oo) puts the denominator right after the ∞ in the subscript: x─→∞x
 
 ### Kind
 wrong-meaning

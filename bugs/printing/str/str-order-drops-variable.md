@@ -1,4 +1,4 @@
-# str() prints O(1, x) as O(1), which is a different object
+# O(1, x) prints as O(1), which is a different object
 
 ### Kind
 lossy

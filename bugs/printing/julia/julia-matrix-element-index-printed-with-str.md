@@ -1,4 +1,4 @@
-# julia_code(A[i**2, 0]) prints A[i**2 + 1,1]: matrix element indices are printed with str()
+# Matrix element indices are printed with str(): A[i**2, 0] gives A[i**2 + 1,1]
 
 ### Kind
 invalid-output

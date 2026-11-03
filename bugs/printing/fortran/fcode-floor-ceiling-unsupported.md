@@ -1,4 +1,4 @@
-# fcode(floor(x), standard=95) raises "Unsupported" although Fortran 90+ has floor and ceiling
+# floor and ceiling raise "Unsupported" for standard=95 although Fortran 90+ has them
 
 ### Kind
 crash

@@ -1,4 +1,4 @@
-# latex() of an element of an ArrayAdd puts the index on the last term: {{A + B}_{i}}
+# An element of an ArrayAdd puts the index on the last term: {{A + B}_{i}}
 
 ### Kind
 wrong-meaning

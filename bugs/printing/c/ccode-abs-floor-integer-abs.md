@@ -1,4 +1,4 @@
-# ccode(Abs(floor(x))) uses the integer abs() on the double returned by floor()
+# Abs(floor(x)) uses the integer abs() on the double returned by floor()
 
 ### Kind
 wrong-meaning

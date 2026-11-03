@@ -1,4 +1,4 @@
-# latex() does not bracket a Derivative or Limit factor in a product: Derivative(f(x), x)*Derivative(g(x), x) prints like d/dx(f g')
+# A Derivative or Limit factor in a product is not bracketed: f'·g' and (f·g')' print identically
 
 ### Kind
 wrong-meaning

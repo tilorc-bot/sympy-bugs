@@ -1,4 +1,4 @@
-# julia_code(Max(x, sqrt(Abs(y) - 1))) evaluates sqrt(-y - 1) in a guard: Max/Min are rewritten to Piecewise
+# Max(x, sqrt(Abs(y) - 1)) evaluates sqrt(-y - 1) in a guard: Max/Min become Piecewise
 
 ### Kind
 wrong-meaning

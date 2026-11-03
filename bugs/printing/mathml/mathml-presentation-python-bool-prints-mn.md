@@ -1,4 +1,4 @@
-# Presentation MathML prints Python True as <mi>mn</mi>
+# Python True prints as <mi>mn</mi> (presentation MathML)
 
 ### Kind
 wrong-meaning

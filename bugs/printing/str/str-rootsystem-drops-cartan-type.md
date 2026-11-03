@@ -1,4 +1,4 @@
-# str() prints every RootSystem as RootSystem(), dropping its Cartan type
+# Every RootSystem prints as RootSystem(), dropping its Cartan type
 
 ### Kind
 lossy

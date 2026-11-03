@@ -1,4 +1,4 @@
-# latex(x/y*A(i)) prints the tensor coefficient as x\frac{1}{y}
+# x/y*A(i) prints the tensor coefficient as x\frac{1}{y}
 
 ### Kind
 cosmetic

@@ -1,4 +1,4 @@
-# latex() of a slice of MatrixSymbol('A^b') does not parenthesize the superscripted name
+# A slice of MatrixSymbol('A^b') does not parenthesize the superscripted name
 
 ### Kind
 cosmetic

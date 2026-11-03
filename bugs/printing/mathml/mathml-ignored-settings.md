@@ -1,4 +1,4 @@
-# mathml() accepts symbol_names, inv_trig_style, fold_func_brackets and long_frac_ratio but ignores them
+# symbol_names, inv_trig_style, fold_func_brackets and long_frac_ratio are accepted but ignored
 
 ### Kind
 ignored-setting

@@ -1,4 +1,4 @@
-# latex(adjoint(A)) gives a double superscript when A prints with a superscript
+# adjoint(A) gives a double superscript when A prints with a superscript
 
 ### Kind
 invalid-output

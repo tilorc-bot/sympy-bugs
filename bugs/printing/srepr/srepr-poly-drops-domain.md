@@ -1,4 +1,4 @@
-# srepr() of Poly drops the domain and modulus
+# Poly drops the domain and modulus
 
 ### Kind
 lossy

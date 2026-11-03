@@ -1,4 +1,4 @@
-# pretty() does not parenthesize the modulus of Mod: Mod(x, y + z) prints as x mod y + z
+# The modulus of Mod is not parenthesized: Mod(x, y + z) prints as x mod y + z
 
 ### Kind
 wrong-meaning

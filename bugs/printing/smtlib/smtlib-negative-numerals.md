@@ -1,4 +1,4 @@
-# smtlib_code() prints negative numbers as -1, which is not an SMT-LIB numeral
+# Negative numbers print as -1, which is not an SMT-LIB numeral
 
 ### Kind
 invalid-output

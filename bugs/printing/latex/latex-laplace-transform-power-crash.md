@@ -1,4 +1,4 @@
-# latex() of a power of LaplaceTransform raises TypeError
+# A power of LaplaceTransform raises TypeError
 
 ### Kind
 crash

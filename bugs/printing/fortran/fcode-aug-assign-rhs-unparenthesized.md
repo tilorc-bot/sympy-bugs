@@ -1,4 +1,4 @@
-# fcode(aug_assign(x, '*', y + z)) prints x = x * y + z
+# Augmented assignment drops parentheses: x *= y + z prints as x = x * y + z
 
 ### Kind
 wrong-meaning

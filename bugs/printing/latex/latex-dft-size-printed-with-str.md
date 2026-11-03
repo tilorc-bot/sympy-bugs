@@ -1,4 +1,4 @@
-# latex(DFT(alpha)) prints the size with str(), giving \text{DFT}_{alpha}
+# DFT(alpha) prints the size with str(), giving \text{DFT}_{alpha}
 
 ### Kind
 cosmetic

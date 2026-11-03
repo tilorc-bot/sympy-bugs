@@ -1,4 +1,4 @@
-# julia_code(HadamardPower(A, 2)) prints A.**2, which is a Julia syntax error
+# HadamardPower(A, 2) prints A.**2, which is a Julia syntax error
 
 ### Kind
 invalid-output

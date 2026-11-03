@@ -1,4 +1,4 @@
-# latex() of a sympy.vector base scalar puts the coordinate system name unescaped in \textbf{} (CoordSys3D('C_1').x)
+# A CoordSys3D name goes unescaped into \textbf{} for its base scalars (CoordSys3D('C_1').x)
 
 ### Kind
 invalid-output

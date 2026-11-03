@@ -1,4 +1,4 @@
-# str() of a physics.vector Dyadic with an UnevaluatedExpr(x + y) coefficient prints x + y*(N.x|N.y)
+# A physics.vector Dyadic with an UnevaluatedExpr(x + y) coefficient prints x + y*(N.x|N.y)
 
 ### Kind
 wrong-meaning

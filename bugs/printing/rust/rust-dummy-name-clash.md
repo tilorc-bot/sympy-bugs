@@ -1,4 +1,4 @@
-# rust_code(Dummy('x') + Symbol('x')) prints x + x
+# Dummy('x') + Symbol('x') prints x + x
 
 ### Kind
 wrong-meaning

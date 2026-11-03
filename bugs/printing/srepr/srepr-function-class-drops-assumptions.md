@@ -1,4 +1,4 @@
-# srepr() of an undefined function class drops its assumptions and nargs
+# An undefined function class drops its assumptions and nargs
 
 ### Kind
 lossy

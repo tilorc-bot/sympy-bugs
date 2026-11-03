@@ -1,4 +1,4 @@
-# latex() of a discrete TransferFunctionMatrix prints the sampling time with str()
+# A discrete TransferFunctionMatrix prints the sampling time with str()
 
 ### Kind
 cosmetic

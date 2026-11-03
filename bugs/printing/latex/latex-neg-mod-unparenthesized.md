@@ -1,4 +1,4 @@
-# latex() prints -Mod(x, y) as "- x \bmod y" without parentheses
+# -Mod(x, y) prints as "- x \bmod y" without parentheses
 
 ### Kind
 wrong-meaning

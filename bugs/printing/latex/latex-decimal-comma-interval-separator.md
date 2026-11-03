@@ -1,4 +1,4 @@
-# latex(Interval(1.5, 2.5), decimal_separator='comma') still separates the endpoints with a comma
+# With decimal_separator='comma', Interval endpoints are still separated by a comma
 
 ### Kind
 ignored-setting

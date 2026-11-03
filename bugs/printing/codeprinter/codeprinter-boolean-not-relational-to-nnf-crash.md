@@ -1,4 +1,4 @@
-# Code printers raise ValueError for Xor/Equivalent containing an unevaluated Not(x + 1 < 0)
+# Xor/Equivalent containing an unevaluated Not(x + 1 < 0) raise ValueError
 
 ### Kind
 crash

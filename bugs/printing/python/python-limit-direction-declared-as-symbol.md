@@ -1,4 +1,4 @@
-# python(Limit(f(x), x, 0)) emits the invalid line + = Symbol('+')
+# Limit(f(x), x, 0) emits the invalid line + = Symbol('+')
 
 ### Kind
 invalid-output

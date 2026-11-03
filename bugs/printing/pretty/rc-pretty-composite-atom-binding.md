@@ -1,4 +1,4 @@
-# Pretty printer gives inline fractions and negative numbers ATOM binding, so powers of them lose parentheses
+# Inline fractions and negative numbers get ATOM binding, so powers of them lose parentheses
 
 ### Kind
 internal

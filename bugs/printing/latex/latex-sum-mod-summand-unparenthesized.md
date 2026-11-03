@@ -1,4 +1,4 @@
-# latex() prints Sum(Mod(n, 3), (n, 0, 10)) like (Sum(n)) mod 3
+# Sum(Mod(n, 3), (n, 0, 10)) prints like (Sum(n)) mod 3
 
 ### Kind
 wrong-meaning

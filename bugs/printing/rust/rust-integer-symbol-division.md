@@ -1,4 +1,4 @@
-# rust_code() prints the quotient of two integer symbols as i32 division
+# The quotient of two integer symbols becomes i32 division
 
 ### Kind
 invalid-output

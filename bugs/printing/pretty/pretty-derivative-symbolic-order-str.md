@@ -1,4 +1,4 @@
-# pretty() prints a symbolic derivative order with str(): Derivative(f(x), (x, n**2)) shows d**n**2
+# A symbolic derivative order is printed with str(): Derivative(f(x), (x, n**2)) shows d**n**2
 
 ### Kind
 cosmetic

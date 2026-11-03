@@ -1,4 +1,4 @@
-# pretty() prints MatrixSymbol elements A[1, 23] and A[12, 3] identically as A₁₂₃
+# MatrixSymbol elements A[1, 23] and A[12, 3] print identically as A₁₂₃
 
 ### Kind
 lossy

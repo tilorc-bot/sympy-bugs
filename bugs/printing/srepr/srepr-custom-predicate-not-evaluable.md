@@ -1,4 +1,4 @@
-# srepr() of a user-defined Predicate prints Q.<name>, which does not evaluate
+# A user-defined Predicate prints as Q.<name>, which does not evaluate
 
 ### Kind
 lossy

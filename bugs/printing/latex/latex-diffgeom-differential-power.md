@@ -1,4 +1,4 @@
-# latex(Differential(R2_r.x)**2) prints \operatorname{d}x^{2}, which reads as d(x^2)
+# Differential(R2_r.x)**2 prints \operatorname{d}x^{2}, which reads as d(x^2)
 
 ### Kind
 wrong-meaning

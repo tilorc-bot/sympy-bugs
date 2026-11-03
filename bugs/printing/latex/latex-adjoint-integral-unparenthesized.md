@@ -1,4 +1,4 @@
-# latex(adjoint(Integral(A, x))) puts the dagger on dx: \int A\, dx^{\dagger}
+# adjoint(Integral(A, x)) puts the dagger on dx: \int A\, dx^{\dagger}
 
 ### Kind
 wrong-meaning

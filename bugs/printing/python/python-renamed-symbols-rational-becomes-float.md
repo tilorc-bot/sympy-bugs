@@ -1,4 +1,4 @@
-# python() prints Rational(1, 3) as 1/3 (a float) when a symbol had to be renamed
+# Rational(1, 3) prints as 1/3 (a float) when a symbol had to be renamed
 
 ### Kind
 wrong-meaning

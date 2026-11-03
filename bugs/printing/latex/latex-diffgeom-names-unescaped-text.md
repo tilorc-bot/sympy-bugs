@@ -1,4 +1,4 @@
-# latex() of diffgeom Manifold/Patch/CoordSystem puts names unescaped in \text{} (\text{P_1}, \text{\alpha})
+# diffgeom Manifold/Patch/CoordSystem names go unescaped into \text{} (\text{P_1})
 
 ### Kind
 invalid-output

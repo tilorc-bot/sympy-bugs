@@ -1,4 +1,4 @@
-# rust_code(0**x) raises RecursionError
+# 0**x raises RecursionError
 
 ### Kind
 crash

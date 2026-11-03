@@ -1,4 +1,4 @@
-# latex() prints Limit(Mod(f(x), 3), x, 0) and Mod(Limit(f(x), x, 0), 3) identically
+# Limit(Mod(f(x), 3), x, 0) and Mod(Limit(f(x), x, 0), 3) print identically
 
 ### Kind
 wrong-meaning

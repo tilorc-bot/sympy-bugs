@@ -1,4 +1,4 @@
-# srepr() of BlockMatrix evaluates back to a flattened explicit matrix
+# BlockMatrix evaluates back to a flattened explicit matrix
 
 ### Kind
 lossy

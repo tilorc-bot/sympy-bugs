@@ -1,4 +1,4 @@
-# latex() inserts %, &, # and $ from Symbol names raw (Symbol('a%b') + 1 → a%b + 1)
+# %, &, # and $ in Symbol names are inserted raw (Symbol('a%b') + 1 → a%b + 1)
 
 ### Kind
 invalid-output

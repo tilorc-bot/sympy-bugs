@@ -1,4 +1,4 @@
-# mathematica_code(UnevaluatedExpr(x)*UnevaluatedExpr(y)) prints 1*x**y (NonCommutativeMultiply)
+# UnevaluatedExpr(x)*UnevaluatedExpr(y) prints 1*x**y (NonCommutativeMultiply)
 
 ### Kind
 wrong-meaning

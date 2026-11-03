@@ -1,4 +1,4 @@
-# str() of a PolyElement negates a constant term whose printed form does not start with "-"
+# A PolyElement negates a constant term whose printed form does not start with "-"
 
 ### Kind
 wrong-meaning

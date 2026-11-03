@@ -1,4 +1,4 @@
-# latex() ignores adjoint_style for adjoint() and Dagger()
+# adjoint_style is ignored for adjoint() and Dagger()
 
 ### Kind
 ignored-setting

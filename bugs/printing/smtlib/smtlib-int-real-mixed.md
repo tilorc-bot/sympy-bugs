@@ -1,4 +1,4 @@
-# smtlib_code() compares an Int with a Real without to_real: (> b a)
+# An Int is compared with a Real without to_real: (> b a)
 
 ### Kind
 invalid-output

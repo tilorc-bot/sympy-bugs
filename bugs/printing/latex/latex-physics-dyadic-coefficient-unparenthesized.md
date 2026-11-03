@@ -1,4 +1,4 @@
-# latex() of a physics.vector Dyadic brackets only Add coefficients: Mod(x, 2)*(N.x|N.y) prints as x \bmod 2\mathbf{\hat{n}_x}\otimes ...
+# physics.vector Dyadic brackets only Add coefficients: Mod(x, 2)*(N.x|N.y) reads as x mod (2 n̂x⊗n̂y)
 
 ### Kind
 wrong-meaning

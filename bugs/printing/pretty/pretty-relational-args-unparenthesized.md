@@ -1,4 +1,4 @@
-# pretty() does not parenthesize relational or logical arguments of a relational: Eq(Eq(x, y), Eq(y, z)) prints as x = y = y = z
+# Relational/logical arguments of a relational are not parenthesized: x = y = y = z
 
 ### Kind
 wrong-meaning

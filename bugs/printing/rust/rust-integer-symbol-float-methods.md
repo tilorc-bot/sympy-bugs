@@ -1,4 +1,4 @@
-# rust_code calls f64-only methods on integer symbols: i.powi(2), i.sin()
+# f64-only methods are called on integer symbols: i.powi(2), i.sin()
 
 ### Kind
 invalid-output

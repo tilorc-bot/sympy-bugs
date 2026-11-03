@@ -1,4 +1,4 @@
-# maple_code(Derivative(f(x, y), x, y)) raises ValueError: too many values to unpack
+# Derivative(f(x, y), x, y) raises ValueError: too many values to unpack
 
 ### Kind
 crash

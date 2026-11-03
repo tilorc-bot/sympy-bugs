@@ -1,4 +1,4 @@
-# pretty() merges a -1 factor into the next factor of an unevaluated Mul (x*(-1)*2 shows as x⋅-2)
+# A -1 factor of an unevaluated Mul merges into the next factor (x*(-1)*2 shows as x⋅-2)
 
 ### Kind
 lossy

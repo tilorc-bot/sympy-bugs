@@ -1,4 +1,4 @@
-# pretty() does not parenthesize a direct sum raised to a tensor power: (C² ⊕ F)^⨂3 prints as C² ⊕ F^⨂3
+# A direct sum raised to a tensor power is not parenthesized: (C² ⊕ F)^⨂3 prints as C² ⊕ F^⨂3
 
 ### Kind
 wrong-meaning

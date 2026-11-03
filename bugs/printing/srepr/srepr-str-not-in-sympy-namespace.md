@@ -1,4 +1,4 @@
-# srepr() of MatrixSymbol uses Str, which `from sympy import *` does not provide
+# MatrixSymbol uses Str, which `from sympy import *` does not provide
 
 ### Kind
 lossy

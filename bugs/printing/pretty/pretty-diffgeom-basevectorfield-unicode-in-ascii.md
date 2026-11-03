@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) prints ∂ for diffgeom base vector fields
+# use_unicode=False still prints ∂ for diffgeom base vector fields
 
 ### Kind
 ignored-setting

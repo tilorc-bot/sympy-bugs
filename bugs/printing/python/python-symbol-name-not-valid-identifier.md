@@ -1,4 +1,4 @@
-# python(Symbol("a'b")) emits a'b = Symbol('a'b'), which is not valid Python
+# Symbol("a'b") emits a'b = Symbol('a'b'), which is not valid Python
 
 ### Kind
 invalid-output

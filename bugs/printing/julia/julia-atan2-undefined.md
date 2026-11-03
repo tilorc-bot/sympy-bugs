@@ -1,4 +1,4 @@
-# julia_code(atan2(y, x)) prints atan2(y, x), which Julia does not define
+# atan2(y, x) prints atan2(y, x), which Julia does not define
 
 ### Kind
 invalid-output

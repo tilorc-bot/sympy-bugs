@@ -1,4 +1,4 @@
-# latex(..., mul_symbol=r'\star') glues the symbol to the next factor (2\starx)
+# mul_symbol=r'\star' glues the symbol to the next factor (2\starx)
 
 ### Kind
 invalid-output

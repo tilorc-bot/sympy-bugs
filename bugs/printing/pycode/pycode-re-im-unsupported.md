@@ -1,4 +1,4 @@
-# pycode() and lambdify(..., 'math') do not support re() and im()
+# re() and im() are unsupported, so lambdify(..., 'math') fails on them
 
 ### Kind
 crash

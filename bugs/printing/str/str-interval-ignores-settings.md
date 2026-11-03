@@ -1,4 +1,4 @@
-# sstr() ignores sympy_integers and full_prec for the endpoints of an Interval
+# sympy_integers and full_prec are ignored for the endpoints of an Interval
 
 ### Kind
 ignored-setting

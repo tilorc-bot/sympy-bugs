@@ -1,4 +1,4 @@
-# pycode() does not rename symbols named `async` or `await`
+# Symbols named `async` or `await` are not renamed
 
 ### Kind
 invalid-output

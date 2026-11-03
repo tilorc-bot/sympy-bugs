@@ -1,4 +1,4 @@
-# ccode(Mod(i**2, j)) applies % to the double returned by pow(), a compile error
+# Mod(i**2, j) applies % to the double returned by pow(), a compile error
 
 ### Kind
 invalid-output

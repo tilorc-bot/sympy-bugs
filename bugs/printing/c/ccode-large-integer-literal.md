@@ -1,4 +1,4 @@
-# ccode(2**70*x) prints an integer literal that does not fit in any C integer type
+# 2**70*x prints an integer literal that does not fit in any C integer type
 
 ### Kind
 wrong-meaning

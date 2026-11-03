@@ -1,4 +1,4 @@
-# fcode(Piecewise((x, x > 1), (0, True))) prints merge(x, 0, x > 1), mixing real and integer sources
+# Piecewise((x, x > 1), (0, True)) prints merge(x, 0, x > 1), mixing real and integer
 
 ### Kind
 invalid-output

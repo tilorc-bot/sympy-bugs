@@ -1,4 +1,4 @@
-# python() drops symbol assumptions, including commutative=False
+# Symbol assumptions are dropped, including commutative=False
 
 ### Kind
 lossy

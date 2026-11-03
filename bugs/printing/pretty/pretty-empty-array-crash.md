@@ -1,4 +1,4 @@
-# pretty() of an empty Array raises IndexError
+# An empty Array raises IndexError
 
 ### Kind
 crash

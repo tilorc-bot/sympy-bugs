@@ -1,4 +1,4 @@
-# pretty() prints ProductSet(U, U) for a Union U as X ∪ Y² without parentheses
+# ProductSet(U, U) for a Union U prints as X ∪ Y² without parentheses
 
 ### Kind
 wrong-meaning

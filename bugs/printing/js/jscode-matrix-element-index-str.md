@@ -1,4 +1,4 @@
-# jscode() prints the flattened index of a MatrixElement with str(), e.g. A[m*floor(x)]
+# The flattened index of a MatrixElement is printed with str(), e.g. A[m*floor(x)]
 
 ### Kind
 invalid-output

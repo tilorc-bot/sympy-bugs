@@ -1,4 +1,4 @@
-# pretty() prints Not(t < x) as ¬t < x without parentheses
+# Not(t < x) prints as ¬t < x without parentheses
 
 ### Kind
 wrong-meaning

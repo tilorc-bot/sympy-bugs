@@ -1,4 +1,4 @@
-# rcode(A[0, 0]) prints A[0] and matrix assignment prints B[0] = x: R indices are 1-based
+# A[0, 0] prints A[0] and matrix assignment prints B[0] = x: R indices are 1-based
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# pretty() prints Symbol('x_') as x, indistinguishable from Symbol('x')
+# Symbol('x_') prints as x, indistinguishable from Symbol('x')
 
 ### Kind
 lossy

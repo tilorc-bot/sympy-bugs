@@ -1,4 +1,4 @@
-# pretty() never parenthesizes the arguments of SymmetricDifference: (X ∪ Y) ∆ Z prints as X ∪ Y ∆ Z
+# SymmetricDifference never parenthesizes its arguments: (X ∪ Y) ∆ Z prints as X ∪ Y ∆ Z
 
 ### Kind
 wrong-meaning

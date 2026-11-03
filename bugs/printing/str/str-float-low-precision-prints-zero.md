@@ -1,4 +1,4 @@
-# str() of a Float with precision below 5 bits prints 0.e+0 (zero) instead of its value
+# A Float with precision below 5 bits prints 0.e+0 (zero) instead of its value
 
 ### Kind
 wrong-meaning

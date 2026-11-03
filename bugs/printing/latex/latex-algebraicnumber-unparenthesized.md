@@ -1,4 +1,4 @@
-# latex() does not bracket an AlgebraicNumber that prints as a sum: x*AlgebraicNumber(sqrt(2), [1, 2]) prints as x \sqrt{2} + 2
+# An AlgebraicNumber that prints as a sum is not bracketed in products and powers
 
 ### Kind
 wrong-meaning

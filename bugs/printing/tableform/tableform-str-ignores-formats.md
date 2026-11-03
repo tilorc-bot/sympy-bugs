@@ -1,4 +1,4 @@
-# str(TableForm(..., formats=...)) ignores the formats argument
+# str() ignores the formats argument
 
 ### Kind
 ignored-setting

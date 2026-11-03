@@ -1,4 +1,4 @@
-# latex() does not bracket Add arguments of WedgeProduct: WedgeProduct(dx + dy, dx) prints as dx + dy \wedge dx
+# Add arguments of WedgeProduct are not bracketed: WedgeProduct(dx + dy, dx) prints as dx + dy \wedge dx
 
 ### Kind
 wrong-meaning

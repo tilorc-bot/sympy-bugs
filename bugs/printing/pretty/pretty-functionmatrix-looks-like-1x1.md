@@ -1,4 +1,4 @@
-# pretty() prints FunctionMatrix as a 1x1 matrix of its lambda body
+# FunctionMatrix prints as a 1x1 matrix of its lambda body
 
 ### Kind
 lossy

@@ -1,4 +1,4 @@
-# fcode(sign(r)) for real r takes the complex branch: merge(cmplx(0d0, 0d0), r/abs(r), ...)
+# sign(r) for real r takes the complex branch: merge(cmplx(0d0, 0d0), r/abs(r), ...)
 
 ### Kind
 invalid-output

@@ -1,4 +1,4 @@
-# julia_code(factorial(x)) prints factorial(x) for non-integer x, a MethodError in Julia
+# factorial(x) prints factorial(x) for non-integer x, a MethodError in Julia
 
 ### Kind
 invalid-output

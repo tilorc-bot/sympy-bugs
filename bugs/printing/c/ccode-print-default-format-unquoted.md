@@ -1,4 +1,4 @@
-# ccode(Print([x])) prints the default format string unquoted: printf(%s\n, x)
+# Print([x]) leaves the default format string unquoted: printf(%s\n, x)
 
 ### Kind
 invalid-output

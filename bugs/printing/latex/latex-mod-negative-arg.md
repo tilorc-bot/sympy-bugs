@@ -1,4 +1,4 @@
-# latex() prints Mod(-x, y) and -Mod(x, y) identically
+# Mod(-x, y) and -Mod(x, y) print identically: - x \bmod y
 
 ### Kind
 wrong-meaning

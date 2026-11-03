@@ -1,4 +1,4 @@
-# latex() prints algebraic fields and Gaussian domains as monospace str() text (QQ<sqrt(2)>, ZZ_I)
+# Algebraic fields and Gaussian domains print as monospace str() text (QQ<sqrt(2)>, ZZ_I)
 
 ### Kind
 cosmetic

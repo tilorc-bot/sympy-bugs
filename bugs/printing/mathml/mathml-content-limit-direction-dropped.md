@@ -1,4 +1,4 @@
-# Content MathML prints Limit(f(x), x, 0, '-') and Limit(f(x), x, 0, '+') identically
+# Limit(f(x), x, 0, '-') and Limit(f(x), x, 0, '+') print identically (content MathML)
 
 ### Kind
 lossy

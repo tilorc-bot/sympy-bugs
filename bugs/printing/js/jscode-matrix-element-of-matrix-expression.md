@@ -1,4 +1,4 @@
-# jscode() indexes a parenthesized matrix expression: (A - B)[0]
+# An element of A - B prints as (A - B)[0], which evaluates to undefined
 
 ### Kind
 wrong-meaning

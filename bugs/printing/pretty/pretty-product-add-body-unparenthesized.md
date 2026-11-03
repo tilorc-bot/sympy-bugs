@@ -1,4 +1,4 @@
-# pretty() does not parenthesize an Add body of a Product followed by more terms: Product(k + 1, (k, 1, n)) + 1 shows ∏ k + 1 + 1
+# An Add body of a Product is not parenthesized: Product(k + 1, (k, 1, n)) + 1 shows ∏ k + 1 + 1
 
 ### Kind
 wrong-meaning

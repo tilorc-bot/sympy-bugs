@@ -1,4 +1,4 @@
-# fcode(Max(0, x)) prints max(0, x), mixing integer and real arguments
+# Max(0, x) prints max(0, x), mixing integer and real arguments
 
 ### Kind
 invalid-output

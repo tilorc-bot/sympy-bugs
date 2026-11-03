@@ -1,4 +1,4 @@
-# str(Xor(x, y)) prints x ^ y, which sympify() reads back as x**y
+# Xor(x, y) prints x ^ y, which sympify() reads back as x**y
 
 ### Kind
 lossy

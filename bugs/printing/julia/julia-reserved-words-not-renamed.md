@@ -1,4 +1,4 @@
-# julia_code does not rename symbols that are Julia keywords: Symbol('end') prints as end
+# Symbols that are Julia keywords are not renamed: Symbol('end') prints as end
 
 ### Kind
 invalid-output

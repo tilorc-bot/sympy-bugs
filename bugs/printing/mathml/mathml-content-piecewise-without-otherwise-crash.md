@@ -1,4 +1,4 @@
-# Content MathML of a Piecewise without a True condition raises ValueError
+# A Piecewise without a True condition raises ValueError (content MathML)
 
 ### Kind
 crash

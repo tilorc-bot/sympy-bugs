@@ -1,4 +1,4 @@
-# julia_code(E*x) prints e * x; e, eulergamma, catalan and golden are undefined in Julia
+# E*x prints e * x; e, eulergamma, catalan and golden are undefined in Julia
 
 ### Kind
 invalid-output

@@ -1,4 +1,4 @@
-# latex() prints MatMul(2, 3, A) as "2 3 A", which renders as 23 A
+# MatMul(2, 3, A) prints as "2 3 A", which renders as 23 A
 
 ### Kind
 wrong-meaning

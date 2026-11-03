@@ -1,4 +1,4 @@
-# rust_code(Pow(Float(-2.5), 2)) prints -2.5_f64.powi(2), which Rust evaluates as -(2.5^2)
+# Pow(Float(-2.5), 2) prints -2.5_f64.powi(2), which Rust evaluates as -(2.5^2)
 
 ### Kind
 wrong-meaning

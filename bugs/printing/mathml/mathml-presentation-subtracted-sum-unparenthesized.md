@@ -1,4 +1,4 @@
-# Presentation MathML prints a - (b - c) as a - b - c
+# a - (b - c) prints as a - b - c (presentation MathML)
 
 ### Kind
 wrong-meaning

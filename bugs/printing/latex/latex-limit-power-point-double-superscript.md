@@ -1,4 +1,4 @@
-# latex() of a Limit whose point is a power gives a double superscript (a^{2}^+)
+# A Limit whose point is a power gives a double superscript (a^{2}^+)
 
 ### Kind
 invalid-output

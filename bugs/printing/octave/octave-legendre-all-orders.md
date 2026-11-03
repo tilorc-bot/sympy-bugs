@@ -1,4 +1,4 @@
-# octave_code(legendre(n, x)) prints legendre(n, x), which in Octave returns all associated functions P_n^m
+# legendre(n, x) prints legendre(n, x), which in Octave returns all associated functions P_n^m
 
 ### Kind
 wrong-meaning

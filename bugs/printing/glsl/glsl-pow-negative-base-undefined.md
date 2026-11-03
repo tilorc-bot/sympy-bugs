@@ -1,4 +1,4 @@
-# glsl_code(x**2) prints pow(x, 2.0), which GLSL leaves undefined for x < 0
+# x**2 prints pow(x, 2.0), which GLSL leaves undefined for x < 0
 
 ### Kind
 wrong-meaning

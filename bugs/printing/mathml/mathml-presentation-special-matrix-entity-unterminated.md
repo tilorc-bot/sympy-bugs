@@ -1,4 +1,4 @@
-# Presentation MathML of ZeroMatrix and OneMatrix has a character reference without ";"
+# ZeroMatrix and OneMatrix print a character reference without ";" (presentation MathML)
 
 ### Kind
 invalid-output

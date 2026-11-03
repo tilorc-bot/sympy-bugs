@@ -1,4 +1,4 @@
-# Content MathML turns function names into lowercased element names: F(x) and f(x) print the same, Ci(x) becomes <ci/>
+# Function names become lowercased elements: F(x) and f(x) print the same (content MathML)
 
 ### Kind
 lossy

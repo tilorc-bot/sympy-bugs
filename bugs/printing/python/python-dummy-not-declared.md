@@ -1,4 +1,4 @@
-# python(Dummy('x') + 1) uses _x without declaring it
+# Dummy('x') + 1 uses _x without declaring it
 
 ### Kind
 invalid-output

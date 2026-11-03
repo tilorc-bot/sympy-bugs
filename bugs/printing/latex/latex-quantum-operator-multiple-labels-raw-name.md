@@ -1,4 +1,4 @@
-# latex(Operator('A', 'B')) prints the class name as italic math letters
+# Operator('A', 'B') prints the class name as italic math letters
 
 ### Kind
 cosmetic

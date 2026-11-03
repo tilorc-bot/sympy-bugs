@@ -1,4 +1,4 @@
-# TableForm(wipe_zeros=True) does not wipe Float zeros
+# wipe_zeros=True does not wipe Float zeros
 
 ### Kind
 ignored-setting

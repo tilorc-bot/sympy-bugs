@@ -1,4 +1,4 @@
-# Content MathML prints x**2 + y + y (unevaluated) with three y terms
+# Unevaluated x**2 + y + y prints with three y terms (content MathML)
 
 ### Kind
 wrong-meaning

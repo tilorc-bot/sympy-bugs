@@ -1,4 +1,4 @@
-# pretty() of a Range with a symbolic stop raises ValueError
+# A Range with a symbolic stop raises ValueError
 
 ### Kind
 crash

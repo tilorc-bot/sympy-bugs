@@ -1,4 +1,4 @@
-# python(Symbol('Symbol') + y) assigns to Symbol and then calls it
+# Symbol('Symbol') + y assigns to Symbol and then calls it
 
 ### Kind
 invalid-output

@@ -1,4 +1,4 @@
-# rcode(True) prints True, which is not an R constant (should be TRUE)
+# True prints True, which is not an R constant (should be TRUE)
 
 ### Kind
 invalid-output

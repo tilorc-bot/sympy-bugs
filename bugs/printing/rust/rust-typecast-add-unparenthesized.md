@@ -1,4 +1,4 @@
-# rust_code(Eq(x, i + j)) prints x == i + j as f64, casting only j
+# Eq(x, i + j) prints x == i + j as f64, casting only j
 
 ### Kind
 invalid-output

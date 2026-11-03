@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) prints a Greek rho for Density
+# use_unicode=False still prints a Greek rho for Density
 
 ### Kind
 ignored-setting

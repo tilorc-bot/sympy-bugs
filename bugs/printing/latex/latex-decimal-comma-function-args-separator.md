@@ -1,4 +1,4 @@
-# latex(f(1.5, 2.5), decimal_separator='comma') separates function arguments with a comma
+# With decimal_separator='comma', function arguments are still separated by a comma
 
 ### Kind
 ignored-setting

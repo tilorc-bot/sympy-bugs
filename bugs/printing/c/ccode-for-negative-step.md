@@ -1,4 +1,4 @@
-# ccode(For(i, Range(10, 0, -1), ...)) prints the condition `i < 0`, so the loop never runs
+# For(i, Range(10, 0, -1), ...) gets the condition `i < 0`, so the loop never runs
 
 ### Kind
 wrong-meaning

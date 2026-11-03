@@ -1,4 +1,4 @@
-# julia_code(Identity(3)) prints eye(3), which was removed in Julia 1.0
+# Identity(3) prints eye(3), which was removed in Julia 1.0
 
 ### Kind
 invalid-output

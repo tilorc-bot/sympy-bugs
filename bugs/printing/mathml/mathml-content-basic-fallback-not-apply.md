@@ -1,4 +1,4 @@
-# Content MathML prints Transpose, Inverse, MatPow, Determinant, Product and Equivalent as non-MathML container elements
+# Transpose, Inverse, MatPow, Determinant, Product, Equivalent print as non-MathML containers (content MathML)
 
 ### Kind
 invalid-output

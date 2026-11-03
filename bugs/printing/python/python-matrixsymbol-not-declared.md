@@ -1,4 +1,4 @@
-# python(2*MatrixSymbol('A', 2, 2)) uses A without declaring it
+# 2*MatrixSymbol('A', 2, 2) uses A without declaring it
 
 ### Kind
 invalid-output

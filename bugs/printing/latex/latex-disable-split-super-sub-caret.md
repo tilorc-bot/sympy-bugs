@@ -1,4 +1,4 @@
-# latex(..., disable_split_super_sub=True) escapes ^ as \^, a text accent that is invalid in math mode
+# disable_split_super_sub=True escapes ^ as \^, a text accent invalid in math mode
 
 ### Kind
 invalid-output

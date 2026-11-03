@@ -1,4 +1,4 @@
-# rcode(erf(x)) prints erf(x), but base R has no erf function
+# erf(x) prints erf(x), but base R has no erf function
 
 ### Kind
 invalid-output

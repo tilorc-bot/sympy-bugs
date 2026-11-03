@@ -1,4 +1,4 @@
-# str() prints Identity(n), ZeroMatrix(m, n) and OneMatrix(m, n) as I, 0 and 1
+# Identity(n), ZeroMatrix(m, n) and OneMatrix(m, n) print as I, 0 and 1
 
 ### Kind
 lossy

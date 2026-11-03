@@ -1,4 +1,4 @@
-# latex() prints Derivative(Mod(f(x), 3), x) and Mod(Derivative(f(x), x), 3) identically
+# Derivative(Mod(f(x), 3), x) and Mod(Derivative(f(x), x), 3) print identically
 
 ### Kind
 wrong-meaning

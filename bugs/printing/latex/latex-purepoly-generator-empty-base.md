@@ -1,4 +1,4 @@
-# latex(PurePoly(x**2 + 1, x)) prints the generator _0 as a subscript with an empty base
+# PurePoly(x**2 + 1, x) prints the generator _0 as a subscript with an empty base
 
 ### Kind
 cosmetic

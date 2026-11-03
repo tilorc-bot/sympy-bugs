@@ -1,4 +1,4 @@
-# pretty() omits the ⨂ sign after a Ket in a TensorProduct with a non-Ket: TensorProduct(Ket(x), Operator('A')) prints as ❘x⟩A
+# The ⨂ sign after a Ket is omitted: TensorProduct(Ket(x), Operator('A')) prints as ❘x⟩A
 
 ### Kind
 wrong-meaning

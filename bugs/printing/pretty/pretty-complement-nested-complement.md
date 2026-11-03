@@ -1,4 +1,4 @@
-# pretty() prints X \ (Y \ Z) and (X \ Y) \ Z identically
+# X \ (Y \ Z) and (X \ Y) \ Z print identically
 
 ### Kind
 wrong-meaning

@@ -1,4 +1,4 @@
-# pretty() of a DMP (Poly.rep) raises AttributeError
+# A DMP (Poly.rep) raises AttributeError
 
 ### Kind
 crash

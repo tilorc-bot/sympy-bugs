@@ -1,4 +1,4 @@
-# Content MathML puts all variables of a mixed partial derivative into one <bvar>
+# All variables of a mixed partial derivative go into one <bvar> (content MathML)
 
 ### Kind
 invalid-output

@@ -1,4 +1,4 @@
-# latex() prints exp_polar(x) and exp(x) identically
+# exp_polar(x) and exp(x) print identically
 
 ### Kind
 lossy

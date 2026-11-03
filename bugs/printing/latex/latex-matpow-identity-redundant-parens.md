@@ -1,4 +1,4 @@
-# latex(MatPow(Identity(2), 2)) wraps \mathbb{I} in redundant parentheses
+# MatPow(Identity(2), 2) wraps \mathbb{I} in redundant parentheses
 
 ### Kind
 cosmetic

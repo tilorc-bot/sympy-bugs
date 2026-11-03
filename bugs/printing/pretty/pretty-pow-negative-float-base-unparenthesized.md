@@ -1,4 +1,4 @@
-# pretty() prints (-2.5)**n and -(2.5**n) identically
+# (-2.5)**n and -(2.5**n) print identically
 
 ### Kind
 wrong-meaning

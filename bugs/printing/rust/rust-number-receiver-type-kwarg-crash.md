@@ -1,4 +1,4 @@
-# rust_code(Rational(1, 2)**x) and rust_code(sin(S.Half)) raise TypeError: unexpected keyword argument '_type'
+# Rational(1, 2)**x and sin(S.Half) raise TypeError: unexpected keyword argument '_type'
 
 ### Kind
 crash

@@ -1,4 +1,4 @@
-# srepr() of polynomial rings and their elements uses PolyRing, PolyElement and GlobalPolynomialRing, which `from sympy import *` does not provide
+# Polynomial rings use PolyRing, PolyElement and GlobalPolynomialRing, not in `from sympy import *`
 
 ### Kind
 lossy

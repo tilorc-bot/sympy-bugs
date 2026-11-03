@@ -1,4 +1,4 @@
-# latex() of a ring element over GF(p), RR, EX or an algebraic field prints the coefficients as monospace str() text
+# Ring elements over GF(p), RR, EX or an algebraic field print coefficients as monospace str() text
 
 ### Kind
 cosmetic

@@ -1,4 +1,4 @@
-# glsl_code() prints an element of A - B as A - B[0][0]
+# An element of A - B prints as A - B[0][0]
 
 ### Kind
 wrong-meaning

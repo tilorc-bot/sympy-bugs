@@ -1,4 +1,4 @@
-# pretty() of a control Parallel puts the + on the middle row instead of the fraction bar of the first transfer function
+# A control Parallel puts the + on the middle row instead of the first transfer function's fraction bar
 
 ### Kind
 wrong-meaning

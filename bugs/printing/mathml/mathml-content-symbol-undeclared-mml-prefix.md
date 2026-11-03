@@ -1,4 +1,4 @@
-# Content MathML of a subscripted symbol uses the mml: prefix without declaring it
+# A subscripted symbol uses the mml: prefix without declaring it (content MathML)
 
 ### Kind
 invalid-output

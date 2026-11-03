@@ -1,4 +1,4 @@
-# pretty(use_unicode=False) garbles SingularityFunction whose shift is more than one line high
+# use_unicode=False garbles a SingularityFunction whose shift is more than one line high
 
 ### Kind
 wrong-meaning
