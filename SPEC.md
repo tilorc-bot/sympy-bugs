@@ -74,6 +74,14 @@ right output is unambiguous:
 - crash: `>>> _ = latex(expr)` (no output: passes iff no exception), or leave Expected out
 - the setting takes effect: `'{,}' in latex(e, decimal_separator='comma')`
 
+**One check per wrong output.** Every Actual output that shows the bug gets its own Expected
+example, written so that it contains the Actual expression (`print(latex(e))` in Actual →
+`print(latex(e))` or `'\\neg' in latex(e)` in Expected). The catalogue page pairs them and
+shows each pair as "now" and "should" lines under the statement. Don't fold several checks
+into one statement (`[f(a), f(b)]`); write one per line. Actual outputs with no matching check
+are shown as plain context, so use them only for output that is correct: a contrast
+(`exp(x)` next to `exp_polar(x)`), or an intermediate result a later check uses.
+
 **Crash and hang bugs may leave Expected out.** The checker then infers it from Actual:
 
 - `crash`: every Actual example whose output is a traceback must run without raising. An
