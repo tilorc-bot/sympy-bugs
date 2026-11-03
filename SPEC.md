@@ -17,7 +17,8 @@ The first line is `# Title`: what goes wrong, specific enough to recognise in a 
 ## Sections
 
 Sections are `### ` headings. **Kind**, **Actual**, **Expected** and **Why it is wrong**
-are required; the rest are optional.
+are required (Expected is optional for `crash` and `hang` bugs, see below); the rest are
+optional.
 
 ### Kind
 
@@ -62,8 +63,21 @@ right output is unambiguous:
 - two different expressions must print differently: `latex(a) != latex(b)` → `True`
 - printed code computes the right value: `eval(pycode(e), {...})` vs `e.subs(...)`
 - round trips: `eval(srepr(e)) == e`, `parse_expr(str(e)) == e`
-- crash: `>>> _ = latex(expr)` (no output: passes iff no exception)
+- crash: `>>> _ = latex(expr)` (no output: passes iff no exception), or leave Expected out
 - the setting takes effect: `'{,}' in latex(e, decimal_separator='comma')`
+
+**Crash and hang bugs may leave Expected out.** The checker then infers it from Actual:
+
+- `crash`: every Actual example whose output is a traceback must run without raising. An
+  expression `latex(e)` is run as `_ = latex(e)` (`print(latex(e))` as `_ = latex(e)`), a
+  statement as written; neither may print anything. The other Actual examples (imports,
+  setup) are not repeated: Expected runs in the same session.
+- `hang`: every Actual example must finish within the timeout. Examples whose output is a
+  traceback must still raise it; the others are run as above, without checking their output.
+
+The inferred block is reported in `status.json` like a written one, each example flagged
+`"inferred": true`. Write Expected yourself when it should check more than "does not raise",
+e.g. the output, a different call, or that one of several raising calls keeps raising.
 
 **C, C++ and Rust code can be compiled and run.** For bugs in those printers, prove the claim
 with the compiler instead of only inspecting the string (`checker/lib/codecheck.py`, built on
@@ -149,7 +163,7 @@ to the priority score.
 | `printers`, `printer_methods` | printers and `_print_*` methods the Actual block reaches |
 | `locations` | where in SymPy's code the bug lives, most certain first (below) |
 | `location_warnings` | functions named in Notes on fixing that never run in Actual, or do not exist |
-| `examples` | every Actual and Expected example with what master printed |
+| `examples` | every Actual and Expected example with what master printed; inferred Expected examples have `"inferred": true` |
 | `fixes` | per suggested fix: `applies`, `fixes_this`, `tests`, `verified`, `also_fixes`, `breaks` |
 | `problems` | format problems (missing sections, unknown kind, direct tracker links, broken links) |
 

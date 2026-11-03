@@ -16,7 +16,9 @@ for fixes, --sympy must be a git checkout.
 
 import argparse
 import concurrent.futures
+import ast
 import datetime
+import doctest
 import hashlib
 import html
 import json
@@ -43,6 +45,8 @@ SECTION_ALIASES = {
     "source": "source", "encountered": "encountered",
 }
 REQUIRED = ["kind", "actual", "expected", "why"]
+# Kinds whose Expected may be left out: the checker infers it from Actual (infer_expected).
+EXPECTED_OPTIONAL = ("crash", "hang")
 KINDS = ["crash", "hang", "wrong-meaning", "invalid-output", "lossy", "ignored-setting",
          "cosmetic", "internal"]
 ENV_ERRORS = ("NameError", "ImportError", "ModuleNotFoundError", "SyntaxError")
@@ -142,8 +146,14 @@ def read_bug(path, root):
     if not first.startswith("# "):
         problems.append("first line must be `# Title`")
     for sec in REQUIRED:
-        if not s.get(sec):
+        if not s.get(sec) and not (sec == "expected" and kind in EXPECTED_OPTIONAL):
             problems.append(f"missing section `### {sec.replace('why', 'Why it is wrong').title()}`")
+    expected, inferred = doctest_source(s.get("expected", "")), False
+    if not s.get("expected") and kind in EXPECTED_OPTIONAL:
+        expected, inferred = infer_expected(doctest_source(s.get("actual", "")), kind), True
+        if not expected and doctest_source(s.get("actual", "")):
+            problems.append("no `### Expected`, and none can be inferred: Actual shows no exception"
+                            if kind == "crash" else "no `### Expected`, and Actual has no examples")
     if kind and kind not in KINDS:
         problems.append(f"unknown kind `{kind}` (use one of: {', '.join(KINDS)})")
     links = direct_tracker_links(body)
@@ -160,17 +170,57 @@ def read_bug(path, root):
         "id": bid, "path": path, "title": first.lstrip("# ").strip(), "text": text,
         "kind": kind if kind in KINDS else None,
         "actual": doctest_source(s.get("actual", "")),
-        "expected": doctest_source(s.get("expected", "")),
+        "expected": expected, "expected_inferred": inferred,
         "workaround": doctest_source(s.get("workaround", "")),
         "fixes": [{"source": "suggested fix", "diff": d} for d in diffs(s.get("fix", ""))],
         "caused_by": caused_by, "related": related,
         "tracker": sorted({int(n) for n in re.findall(
             r"redirect\.github\.com/sympy/sympy/(?:issues|pull)/(\d+)", s.get("related", ""))}),
         "encountered": [l for l in s.get("encountered", "").split("\n") if l.strip()],
-        "evidence": "compiled" if COMPILED.search(doctest_source(s.get("expected", ""))) else "printed",
+        "evidence": "compiled" if COMPILED.search(expected) else "printed",
         "problems": problems,
         **note_refs(s.get("notes", "")),
     }
+
+
+def as_silent_statement(source):
+    """A doctest source line that runs `source` and prints nothing: `_ = expr` for an
+    expression (`print(x)` becomes `_ = x`), the statement itself otherwise."""
+    src = source.rstrip("\n")
+    try:
+        tree = ast.parse(src, mode="eval")
+    except SyntaxError:
+        return src
+    body = tree.body
+    if (isinstance(body, ast.Call) and isinstance(body.func, ast.Name) and body.func.id == "print"
+            and len(body.args) == 1 and not body.keywords
+            and not isinstance(body.args[0], ast.Starred)):
+        src = ast.get_source_segment(src, body.args[0]) or src
+    return "_ = " + src
+
+
+def infer_expected(actual, kind):
+    """The Expected block of a crash or hang bug that does not write one.
+
+    crash: every Actual example whose output is a traceback must run without raising.
+    hang: every Actual example must finish (within the timeout); examples that show a
+    traceback must still raise it, the others are run without checking their output.
+    """
+    try:
+        examples = doctest.DocTestParser().get_examples(actual)
+    except ValueError:
+        return ""
+    out = []
+    for ex in examples:
+        raises = ex.exc_msg is not None
+        if kind == "crash" and not raises:
+            continue
+        if kind == "hang" and raises:
+            lines, want = ex.source.rstrip("\n").split("\n"), ex.want
+        else:
+            lines, want = as_silent_statement(ex.source).split("\n"), ""
+        out.append(">>> " + "\n... ".join(lines) + "\n" + want)
+    return "".join(out)
 
 
 NOTE_SPAN = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
@@ -377,12 +427,14 @@ def execute(bug, sympy_dir, timeout=TIMEOUT):
     return json.loads(p.stdout.rsplit(marker, 1)[1])
 
 
-def examples(block):
-    """Every doctest example with what master printed (trimmed), for showing the evidence."""
+def examples(block, inferred=False):
+    """Every doctest example with what master printed (trimmed), for showing the evidence.
+    inferred: the block is the Expected the checker inferred for a crash/hang bug."""
     out = []
     for ex in (block or {}).get("examples", []):
         out.append({"source": ex["source"], "ok": ex["ok"], "want": (ex.get("want") or "")[-1500:],
-                    "got": (ex.get("got") or "")[-1500:], **({"exc": ex["exc"]} if ex.get("exc") else {})})
+                    "got": (ex.get("got") or "")[-1500:], **({"exc": ex["exc"]} if ex.get("exc") else {}),
+                    **({"inferred": True} if inferred else {})})
     return out
 
 
@@ -738,7 +790,8 @@ def cmd_status(args):
             "actual_failure": first_failure(r.get("actual")),
             "expected_failure": first_failure(r.get("expected")),
             "locations": [], "location_warnings": [],  # filled in below
-            "examples": {k: examples(r.get(k)) for k in ("actual", "expected")},
+            "examples": {"actual": examples(r.get("actual")),
+                         "expected": examples(r.get("expected"), b["expected_inferred"])},
             "compiled": [{**c, "source": c["source"][-4000:], "output": c["output"][-2000:]}
                          for c in r.get("compiled", [])],
             "workaround": None if not b["workaround"] else bool(
