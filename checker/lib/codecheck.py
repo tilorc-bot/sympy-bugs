@@ -46,6 +46,8 @@ TYPE_NAMES = {
           "int[]": "const int *"},
     "rust": {"real": "f64", "int": "i32", "bool": "bool", "real[]": "&[f64]", "int[]": "&[i32]"},
 }
+# Every compilation in this process, so the checker can show exactly what was compiled.
+LOG = []
 LIBRARY_FLAGS = {"-fsyntax-only": ["-shared", "-fPIC"], "--crate-type=lib": ["--crate-type=cdylib"],
                  "--emit=metadata": []}
 
@@ -106,6 +108,8 @@ def compile_errors(lang, code, assign_to=None, **types):
     with tempfile.TemporaryDirectory() as d:
         try:
             run_compiler(command, suffix, source, d)
+            LOG.append({"lang": lang, "command": " ".join(command + ["code" + suffix]),
+                        "source": source, "ok": True, "output": ""})
         except PrintedCodeError as e:
             text = str(e)
             errors = text.split(" says\n\n", 1)[1].split("\nabout\n", 1)[0]
@@ -114,6 +118,8 @@ def compile_errors(lang, code, assign_to=None, **types):
                 line = re.sub(r"^code\.\w+:\d+:\d+: ", "", line)  # drop file:line:col
                 if not line.startswith("error: aborting due to"):
                     lines.append(line)
+            LOG.append({"lang": lang, "command": " ".join(command + ["code" + suffix]),
+                        "source": source, "ok": False, "output": "\n".join(lines)})
             return "\n".join(lines)
     return ""
 
@@ -135,7 +141,15 @@ def run_code(lang, code, assign_to=None, **values):
     d = tempfile.mkdtemp()
     library = os.path.join(d, "code.so")
     extra = ("-o", library) + (("-lm",) if family == "c" else ())
-    run_compiler(command, suffix, source, d, extra)  # raises PrintedCodeError if invalid
+    entry = {"lang": lang, "command": " ".join(command + ["code" + suffix, "-o", "code.so"] +
+                                               list(extra[2:])),
+             "source": source, "ok": True, "output": ""}
+    LOG.append(entry)
+    try:
+        run_compiler(command, suffix, source, d, extra)  # raises PrintedCodeError if invalid
+    except PrintedCodeError as e:
+        entry["ok"], entry["output"] = False, str(e)[:2000]
+        raise
     fn = ctypes.CDLL(library).f
     fn.restype = ctypes.c_double
     args, argtypes = [], []
@@ -149,4 +163,6 @@ def run_code(lang, code, assign_to=None, **values):
             arr = (ctype * len(v))(*v)
             argtypes.append(ctypes.POINTER(ctype)); args.append(arr)
     fn.argtypes = argtypes
-    return fn(*args)
+    value = fn(*args)
+    entry["output"] = f"called f({', '.join(f'{k}={v!r}' for k, v in values.items())}) -> {value!r}"
+    return value

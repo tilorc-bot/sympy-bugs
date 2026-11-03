@@ -218,7 +218,8 @@ class Runner(doctest.DocTestRunner):
     def report_start(self, out, test, example):
         pass
     def report_success(self, out, test, example, got):
-        self.records.append({"source": example.source, "ok": True})
+        self.records.append({"source": example.source, "ok": True,
+                             "want": example.want, "got": got})
     def report_failure(self, out, test, example, got):
         self.records.append({"source": example.source, "ok": False,
                              "want": example.want, "got": got})
@@ -245,8 +246,15 @@ def run(src, globs, name):
 job = json.loads(sys.stdin.read())
 t0 = time.time()
 res = {}
+def compile_log(phase, start):
+    cc = sys.modules.get("codecheck")
+    return [dict(e, phase=phase) for e in (cc.LOG[start:] if cc else [])]
+
 res["actual"], after = run(job["actual"], {"__name__": "__bugcheck__"}, "actual")
+n = len(sys.modules["codecheck"].LOG) if "codecheck" in sys.modules else 0
+res["compiled"] = compile_log("actual", 0)
 res["expected"], _ = run(job["expected"], dict(after), "expected")
+res["compiled"] += compile_log("expected", n)
 actual_hits = dict(hits)
 res["workaround"], _ = run(job.get("workaround", ""), dict(after), "workaround")
 res["printer_hits"] = actual_hits
@@ -280,6 +288,36 @@ def execute(bug, sympy_dir, timeout=TIMEOUT):
     if marker not in p.stdout:
         return {"crashed": (p.stderr or p.stdout)[-1500:]}
     return json.loads(p.stdout.rsplit(marker, 1)[1])
+
+
+def examples(block):
+    """Every doctest example with what master printed (trimmed), for showing the evidence."""
+    out = []
+    for ex in (block or {}).get("examples", []):
+        out.append({"source": ex["source"], "ok": ex["ok"], "want": (ex.get("want") or "")[-1500:],
+                    "got": (ex.get("got") or "")[-1500:], **({"exc": ex["exc"]} if ex.get("exc") else {})})
+    return out
+
+
+def run_info(sympy_dir):
+    """Where and how this status was produced, so it can be checked rather than trusted."""
+    env = os.environ
+    info = {"python": sys.version.split()[0]}
+    if env.get("GITHUB_RUN_ID"):
+        info["run_url"] = (f"{env.get('GITHUB_SERVER_URL', 'https://github.com')}/"
+                           f"{env.get('GITHUB_REPOSITORY')}/actions/runs/{env['GITHUB_RUN_ID']}")
+        info["checker_commit"] = env.get("GITHUB_SHA")
+    else:
+        p = subprocess.run(["git", "-C", os.path.dirname(os.path.abspath(__file__)), "rev-parse",
+                            "HEAD"], capture_output=True, text=True)
+        info["checker_commit"] = p.stdout.strip() or None
+        info["run_url"] = None
+    for tool, cmd in (("gcc", ["gcc", "--version"]), ("rustc", ["rustc", "--version"])):
+        try:
+            info[tool] = subprocess.run(cmd, capture_output=True, text=True).stdout.split("\n")[0]
+        except OSError:
+            info[tool] = None
+    return info
 
 
 def first_failure(block):
@@ -465,6 +503,9 @@ def cmd_status(args):
                                       key=lambda k: -r["printer_hits"][k])[:12],
             "actual_failure": first_failure(r.get("actual")),
             "expected_failure": first_failure(r.get("expected")),
+            "examples": {k: examples(r.get(k)) for k in ("actual", "expected")},
+            "compiled": [{**c, "source": c["source"][-4000:], "output": c["output"][-2000:]}
+                         for c in r.get("compiled", [])],
             "workaround": None if not b["workaround"] else bool(
                 r.get("workaround") and r["workaround"]["passed"]),
             "caused_by": b["caused_by"], "related": b["related"], "tracker": b["tracker"],
@@ -487,7 +528,7 @@ def cmd_status(args):
                 rec["fixes"].append(res)
         out[i] = rec
         print(f"{v:13} {i}", file=sys.stderr)
-    result = {"sympy": head, "checked": today,
+    result = {"sympy": head, "checked": today, "run": run_info(args.sympy),
               "bugs": dict(sorted(out.items()))}
     with open(args.out, "w") as f:
         json.dump(result, f, indent=1, sort_keys=False)
@@ -667,10 +708,13 @@ def cmd_site(args):
             "related": b["related"], "tracker": b["tracker"],
             "fixed_between": s.get("fixed_between"),
             "evidence": s.get("evidence"),
+            "examples": s.get("examples"), "compiled": s.get("compiled", []),
+            "checked": s.get("checked"), "sympy": s.get("sympy"),
             "expected_failure": s.get("expected_failure"),
             "text": b["text"].split("\n", 1)[1],
         })
     data = {"sympy": st.get("sympy"), "checked": st.get("checked"), "repo": args.repo,
+            "run": st.get("run"),
             "bugs": rows}
     template = args.template or os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.html")
     page = open(template, encoding="utf-8").read()
