@@ -109,7 +109,11 @@ tracker; link an issue there deliberately, by filing or commenting on the tracke
 
 ### Notes on fixing
 
-Where the cause is (`file.py:function`), what a fix needs, why it is not simple.
+Where the cause is (`file.py:function`), what a fix needs, why it is not simple. Name
+functions so the checker can find them: `sympy/printing/latex.py:LatexPrinter._print_Mod`,
+`LatexPrinter._print_Mod`, or `_print_Mod` next to the file it is in. The checker records the
+ones the Actual block runs as the bug's location, and warns about named functions that never
+run (`location_warnings`).
 
 ### Workaround
 
@@ -143,7 +147,35 @@ to the priority score.
 | `sympy`, `checked` | the SymPy commit and date of the check |
 | `first_reproduced`, `last_reproduced`, `fixed_between` | SymPy commits; `fixed_between` brackets the commit that fixed it |
 | `printers`, `printer_methods` | printers and `_print_*` methods the Actual block reaches |
+| `locations` | where in SymPy's code the bug lives, most certain first (below) |
+| `location_warnings` | functions named in Notes on fixing that never run in Actual, or do not exist |
+| `examples` | every Actual and Expected example with what master printed |
 | `fixes` | per suggested fix: `applies`, `fixes_this`, `tests`, `verified`, `also_fixes`, `breaks` |
 | `problems` | format problems (missing sections, unknown kind, direct tracker links, broken links) |
 
-A pull request fails its check if a changed bug does not reproduce on master or has problems.
+A pull request fails its check if a changed bug does not reproduce on master or has problems
+(location warnings do not fail it).
+
+### Locations
+
+`locations` lists 1 to 3 places in SymPy's source, line numbers at the checked commit
+(`sympy`), paths relative to the SymPy root:
+
+```json
+{"path": "sympy/printing/latex.py", "start": 1883, "end": 1888,
+ "function": "LatexPrinter._print_Mod", "how": "fix", "confirmed": true}
+```
+
+`function` is the qualified name of the enclosing function, or of a variable assigned in a
+module or class body (`known_fcns_src1`, `C89CodePrinter.type_mappings`) when the lines are
+one; `null` elsewhere at module level. `how` says where the location comes from, most
+certain first:
+
+| how | lines | confirmed |
+|---|---|---|
+| `fix` | the original lines a suggested fix that applies changes, per enclosing function | the fix is verified |
+| `raises` | `crash` only: the innermost line inside `sympy/` of the exception an Actual example raises | always |
+| `notes` | a function (or module/class variable) named in Notes on fixing, whole definition | the function ran during Actual (never for a variable) |
+| `reached` | only when there is no `fix`, `raises` or confirmed `notes` location: up to two printer methods Actual reached that the fewest bugs reach, preferring the files the notes name and skipping generic ones (`_print_Symbol`, `_print_Add`, `emptyPrinter`, ...) unless nothing else ran | never |
+
+Duplicates (same function) keep the first, more certain entry; unconfirmed `notes` come last.
