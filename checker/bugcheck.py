@@ -8,6 +8,7 @@ Every bug is a Markdown file under bugs/ that states the bug as runnable doctest
   status              run bugs and write status.json (CI and local)
   summary             Markdown summary of selected bugs, for PR comments
   site                render the browsable catalogue page from bugs/ + status.json
+  sync-issues         keep one readable GitHub issue per bug file (needs gh + token)
 
 Only the standard library is used. `check`/`status` need SymPy importable from --sympy and,
 for fixes, --sympy must be a git checkout.
@@ -673,6 +674,237 @@ def cmd_site(args):
     print(f"wrote {os.path.join(args.out, 'index.html')} ({len(rows)} bugs)", file=sys.stderr)
 
 
+# ---------------------------------------------------------------- issue sync
+
+ISSUE_MARKER = re.compile(r"<!-- bug-id: (\S+) -->")
+SYNC_LABEL_PREFIXES = ("kind:", "printer:", "priority:")
+SYNC_LABELS = {"reproduces", "fixed-on-master", "needs-update", "fix-verified", "fix-unchecked",
+               "fix-failing", "fix-stale", "root-cause", "removed"}
+LABEL_COLORS = {"reproduces": "d73a4a", "fixed-on-master": "0e8a16", "needs-update": "fbca04",
+                "fix-verified": "1d76db", "fix-unchecked": "c5def5", "fix-failing": "e99695",
+                "fix-stale": "ededed", "root-cause": "b60205", "removed": "ededed",
+                "priority:high": "b60205", "priority:medium": "d93f0b", "priority:low": "fef2c0"}
+
+
+def gh(*args, input=None):
+    """Run gh; back off and retry when GitHub's (secondary) rate limit kicks in."""
+    import time
+    wait = 60
+    for attempt in range(8):
+        p = subprocess.run(["gh", *args], input=input, capture_output=True, text=True)
+        if p.returncode == 0:
+            return json.loads(p.stdout) if p.stdout.strip() else None
+        if "rate limit" not in p.stderr.lower() or attempt == 7:
+            raise RuntimeError(f"gh {' '.join(args[:3])}: {p.stderr.strip()[-500:]}")
+        print(f"rate limited; sleeping {wait}s", file=sys.stderr)
+        time.sleep(wait)
+        wait = min(wait * 2, 900)
+
+
+def paged(endpoint):
+    items, page = [], 1
+    sep = "&" if "?" in endpoint else "?"
+    while True:
+        batch = gh("api", f"{endpoint}{sep}per_page=100&page={page}")
+        items += batch
+        if len(batch) < 100:
+            return items
+        page += 1
+
+
+def strip_timing(s):
+    return re.sub(r" in [\d.]+s\b", "", s or "")
+
+
+def issue_body(i, b, s, dependents, numbers, repo):
+    """Readable issue body generated from a bug file and its status. Nothing in it changes
+    from day to day unless the bug or its status does, so nightly syncs write little."""
+    def ref(other):
+        if other in numbers:
+            return f"#{numbers[other]}"
+        return f"[`{other}`](https://github.com/{repo}/blob/main/bugs/{other}.md)"
+
+    v = s.get("verdict", "unchecked")
+    alert = {"reproduces": "WARNING", "fixed": "TIP"}.get(v, "NOTE")
+    head = {
+        "reproduces": "**Reproduces on SymPy master.** Re-checked nightly",
+        "fixed": "**Fixed on SymPy master.** The Expected block now passes",
+        "changed": "**Behaviour changed on SymPy master.** The file needs updating",
+    }.get(v, f"**{v}**: {s.get('explanation', '')}")
+    if s.get("first_reproduced") and v == "reproduces":
+        head += f"; first confirmed at sympy/sympy@`{s['first_reproduced'][:10]}`"
+    if s.get("fixed_between"):
+        a, z = s["fixed_between"]
+        head += (f"; fixed between `{a[:10]}` and `{z[:10]}` ([commits]"
+                 f"(https://redirect.github.com/sympy/sympy/compare/{a[:12]}...{z[:12]}))")
+    lines = [f"> [!{alert}]", f"> {head}."]
+    for fx in s.get("fixes", []):
+        if fx.get("verified"):
+            t = fx.get("tests") or {}
+            msg = f"🔧 **Suggested fix verified**: applies to master, fixes this bug"
+            if t.get("ran"):
+                msg += f", tests pass ({strip_timing(t.get('summary'))})"
+            if fx.get("also_fixes"):
+                msg += ", also fixes " + ", ".join(ref(o) for o in fx["also_fixes"])
+            lines += [">", "> " + msg + "."]
+        elif fx.get("applies") is False:
+            lines += [">", "> 🔧 The suggested fix no longer applies to master."]
+        elif "verified" in fx:
+            lines += [">", "> 🔧 The suggested fix does not pass its checks."]
+        else:
+            lines += [">", "> 🔧 Suggested fix applies to master; not verified yet."]
+    if dependents.get(i):
+        lines += [">", "> **Root cause of** " + ", ".join(ref(o) for o in dependents[i]) + "."]
+    if s.get("caused_by"):
+        lines += [">", "> **Caused by** " + ", ".join(ref(o) for o in s["caused_by"]) + "."]
+
+    text = b["text"].split("\n", 1)[1].strip("\n")
+    base = os.path.dirname(i)
+
+    def relink(m):
+        label, target = m.group(1), m.group(2)
+        if target.startswith(("http:", "https:", "#")) or not target.endswith(".md"):
+            return m.group(0)
+        other = os.path.normpath(os.path.join(base, target[:-3])).replace(os.sep, "/")
+        if other in numbers:
+            return f"{label} (#{numbers[other]})"
+        return f"[{label}](https://github.com/{repo}/blob/main/bugs/{other}.md)"
+    parts = CODE_SPANS.split(text)
+    for k in range(0, len(parts), 2):
+        parts[k] = re.sub(r"\[([^\]]*)\]\(([^)\s]+)\)", relink, parts[k])
+    text = "".join(parts)
+
+    methods = s.get("printer_methods", [])
+    foot = [
+        "", "---",
+        f"<sub>Generated from [`bugs/{i}.md`](https://github.com/{repo}/blob/main/bugs/{i}.md), "
+        "the source of truth. To change this bug, edit that file in a pull request; this issue "
+        "is regenerated automatically and comments are kept."
+        + (" Printer methods reached: " + ", ".join(f"`{m}`" for m in methods[:8]) + "."
+           if methods else "") + "</sub>",
+        f"<!-- bug-id: {i} -->",
+    ]
+    return "\n".join(lines) + "\n\n" + text + "\n" + "\n".join(foot) + "\n"
+
+
+def issue_labels(i, b, s, dependents):
+    labels = set()
+    v = s.get("verdict")
+    labels.add({"reproduces": "reproduces", "fixed": "fixed-on-master"}.get(v, "needs-update"))
+    if b["kind"]:
+        labels.add("kind:" + b["kind"])
+    for p in s.get("printers", []):
+        labels.add("printer:" + p)
+    st = fix_state(s.get("fixes", []), bool(b["fixes"]))
+    if st:
+        labels.add("fix-" + st)
+    if dependents.get(i):
+        labels.add("root-cause")
+    score, _ = priority(i, {**s, "kind": b["kind"]}, dependents)
+    if v == "reproduces":
+        labels.add("priority:" + ("high" if score >= 45 else "medium" if score >= 30 else "low"))
+    return labels
+
+
+def cmd_sync_issues(args):
+    import time
+    repo = args.repo
+    deadline = time.time() + args.max_minutes * 60
+    bugs, _ = load_bugs(args.root)
+    status = json.load(open(args.status))["bugs"]
+    dependents = {}
+    for i, s in status.items():
+        for c in s.get("caused_by", []):
+            dependents.setdefault(c, []).append(i)
+
+    existing = {}
+    for it in paged(f"repos/{repo}/issues?state=all&creator={args.bot}"):
+        if "pull_request" in it:
+            continue
+        m = ISSUE_MARKER.search(it.get("body") or "")
+        if m:
+            existing[m.group(1)] = it
+    numbers = {i: it["number"] for i, it in existing.items()}
+    labels_known = {l["name"] for l in paged(f"repos/{repo}/labels")}
+    writes = 0
+
+    def write(*a, input=None):
+        nonlocal writes
+        if time.time() > deadline or writes >= args.max_writes:
+            raise TimeoutError
+        out = gh(*a, input=input)
+        writes += 1
+        time.sleep(args.delay)
+        return out
+
+    def ensure_labels(names):
+        for name in sorted(set(names) - labels_known):
+            write("api", f"repos/{repo}/labels", "-f", f"name={name}", "-f",
+                  f"color={LABEL_COLORS.get(name, '5319e7' if name.startswith('printer:') else 'bfd4f2')}")
+            labels_known.add(name)
+
+    def desired(i):
+        b, s = bugs[i], status.get(i, {"verdict": "unchecked"})
+        state = "closed" if s.get("verdict") == "fixed" else "open"
+        return (b["title"], issue_body(i, b, s, dependents, numbers, repo),
+                issue_labels(i, b, s, dependents), state)
+
+    created = updated = closed = 0
+    try:
+        # Pass 1: create missing issues (in path order, root causes first).
+        order = sorted(bugs, key=lambda i: (not dependents.get(i), i))
+        for i in order:
+            if i in existing:
+                continue
+            title, body, labels, state = desired(i)
+            ensure_labels(labels)
+            it = write("api", f"repos/{repo}/issues", "--input", "-", input=json.dumps(
+                {"title": title, "body": body, "labels": sorted(labels)}))
+            existing[i] = it
+            numbers[i] = it["number"]
+            created += 1
+            if state == "closed":
+                write("api", "-X", "PATCH", f"repos/{repo}/issues/{it['number']}", "-f",
+                      "state=closed", "-f", "state_reason=completed")
+            print(f"created #{it['number']} {i}", file=sys.stderr)
+        # Pass 2: bring every issue up to date (links to issues created in pass 1, status).
+        for i in order:
+            it = existing[i]
+            title, body, labels, state = desired(i)
+            have = {l["name"] for l in it["labels"]}
+            keep = {l for l in have if l not in SYNC_LABELS and not l.startswith(SYNC_LABEL_PREFIXES)}
+            want_labels = keep | labels
+            patch = {}
+            if it["title"] != title:
+                patch["title"] = title
+            if (it.get("body") or "").strip() != body.strip():
+                patch["body"] = body
+            if have != want_labels:
+                ensure_labels(want_labels)
+                patch["labels"] = sorted(want_labels)
+            if it["state"] != state:
+                patch["state"] = state
+                if state == "closed":
+                    patch["state_reason"] = "completed"
+            if patch:
+                write("api", "-X", "PATCH", f"repos/{repo}/issues/{it['number']}", "--input", "-",
+                      input=json.dumps(patch))
+                updated += 1
+                print(f"updated #{it['number']} {i}: {', '.join(patch)}", file=sys.stderr)
+        # Bugs whose file was removed: close the issue as not planned.
+        for i, it in existing.items():
+            if i not in bugs and it["state"] == "open":
+                write("api", f"repos/{repo}/issues/{it['number']}/comments", "-f",
+                      f"body=The bug file `bugs/{i}.md` was removed from the catalogue.")
+                write("api", "-X", "PATCH", f"repos/{repo}/issues/{it['number']}", "-f",
+                      "state=closed", "-f", "state_reason=not_planned", "-f", "labels[]=removed")
+                closed += 1
+    except TimeoutError:
+        print("stopping early (time or write budget); the next run continues", file=sys.stderr)
+    print(f"sync: {created} created, {updated} updated, {closed} closed, {writes} writes",
+          file=sys.stderr)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -703,9 +935,18 @@ def main():
     p.add_argument("--status", required=True)
     p.add_argument("--repo", default="")
     p.add_argument("--out", required=True)
+    p = sub.add_parser("sync-issues", help="create/update one GitHub issue per bug file")
+    p.add_argument("--root", default="bugs")
+    p.add_argument("--status", required=True)
+    p.add_argument("--repo", required=True)
+    p.add_argument("--bot", default="github-actions[bot]",
+                   help="author of the issues this sync owns")
+    p.add_argument("--delay", type=float, default=9.0, help="seconds after each write")
+    p.add_argument("--max-writes", type=int, default=420)
+    p.add_argument("--max-minutes", type=float, default=300)
     args = ap.parse_args()
     {"check": cmd_check, "status": cmd_status, "summary": cmd_summary,
-     "site": cmd_site}[args.cmd](args)
+     "site": cmd_site, "sync-issues": cmd_sync_issues}[args.cmd](args)
 
 
 if __name__ == "__main__":

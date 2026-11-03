@@ -77,3 +77,22 @@ jobs:
           git commit -qm "Update status (SymPy master $SHA)"
           for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 5; done
           exit 1
+
+  # One readable issue per bug file, generated from the file and status.json.
+  # Runs no bug code. Writes only issues whose content, labels or state changed.
+  issues:
+    needs: commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Sync issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 checker/bugcheck.py sync-issues --status status.json --repo "$GITHUB_REPOSITORY" --max-minutes 320
