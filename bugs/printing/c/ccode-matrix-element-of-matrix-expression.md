@@ -25,6 +25,10 @@ error: invalid types '...[int]' for array subscript
 3.0
 >>> run_code('c++', cxxcode(F), A=[5.0, 0.0, 0.0, 0.0], B=[2.0, 0.0, 0.0, 0.0])
 3.0
+>>> compile_errors('c', ccode(F), A=[float], B=[float]) == ''
+True
+>>> compile_errors('c++', cxxcode(F), A=[float], B=[float]) == ''
+True
 ```
 
 ### Why it is wrong

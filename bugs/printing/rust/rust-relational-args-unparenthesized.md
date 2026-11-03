@@ -25,6 +25,10 @@ True
 True
 >>> compiles('rust', rust_code(Eq(Eq(x, y), z, evaluate=False)), x=float, y=float, z=bool)
 True
+>>> 'comparison operators cannot be chained' in compile_errors('rust', rust_code(Eq(x, Eq(y, z), evaluate=False)), x=bool, y=float, z=float)
+False
+>>> 'comparison operators cannot be chained' in compile_errors('rust', rust_code(Eq(Eq(x, y), z, evaluate=False)), x=float, y=float, z=bool)
+False
 ```
 
 ### Why it is wrong

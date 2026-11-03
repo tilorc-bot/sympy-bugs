@@ -24,6 +24,11 @@ TypeError: can't multiply sequence by non-int of type 'Symbol'
 ### Expected
 ```pycon
 >>> _ = tensorflow_code(MatPow(A, -1))
+>>> try:
+...     tensorflow_code(MatPow(A, n))
+... except NotImplementedError:
+...     print('not supported')
+not supported
 ```
 
 ### Why it is wrong

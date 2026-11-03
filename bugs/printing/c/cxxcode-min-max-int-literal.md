@@ -21,8 +21,10 @@ error: no matching function for call to 'max(int, double...)'
 
 ### Expected
 ```pycon
->>> compiles('c++', cxxcode(Min(x, 2)), x=float), compiles('c++', cxxcode(Max(x, 2), standard='c++98'), x=float)
-(True, True)
+>>> compile_errors('c++', cxxcode(Min(x, 2)), x=float) == ''
+True
+>>> compile_errors('c++', cxxcode(Max(x, 2), standard='c++98'), x=float) == ''
+True
 ```
 
 ### Why it is wrong

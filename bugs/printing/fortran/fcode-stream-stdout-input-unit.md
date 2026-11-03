@@ -19,6 +19,9 @@ AttributeError: 'String' object has no attribute 'splitlines'
 
 ### Expected
 ```pycon
+>>> type(p._print(stdout)).__name__
+'str'
+>>> _ = fcode(stdout, standard=2003, source_format='free')
 >>> q = FCodePrinter({'standard': 2003})
 >>> code = q._print(stdout)
 >>> isinstance(code, str) and code != 'input_unit'

@@ -18,6 +18,8 @@ x + y^{\dagger}
 ```pycon
 >>> latex(Operator(x + y)**2) != latex(x + y**2)
 True
+>>> latex(Dagger(Operator(x + y))) != latex(x + Dagger(Operator(y)))
+True
 ```
 
 ### Why it is wrong

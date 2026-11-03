@@ -16,8 +16,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> '^*^' in latex(udivisor_sigma(n)**2), '^*^' in latex(udivisor_sigma(n, k)**2)
-(False, False)
+>>> '^*^' in latex(udivisor_sigma(n)**2)
+False
+>>> '^*^' in latex(udivisor_sigma(n, k)**2)
+False
 ```
 
 ### Why it is wrong

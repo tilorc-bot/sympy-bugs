@@ -26,8 +26,12 @@ TypeError: 'function' object is not subscriptable
 
 ### Expected
 ```pycon
->>> isinstance(eval(srepr(N), ns), ReferenceFrame), isinstance(eval(srepr(v), ns), Vector)
-(True, True)
+>>> isinstance(eval(srepr(N), ns), ReferenceFrame)
+True
+>>> eval(srepr(N), ns) is sympy.N
+False
+>>> isinstance(eval(srepr(v), ns), Vector)
+True
 ```
 
 ### Why it is wrong

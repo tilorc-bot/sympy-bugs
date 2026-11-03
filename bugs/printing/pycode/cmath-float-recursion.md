@@ -16,6 +16,9 @@ RecursionError: maximum recursion depth exceeded...
 
 ### Expected
 ```pycon
+>>> import cmath
+>>> eval(CmathPrinter().doprint(x + 2.5), {'cmath': cmath, 'x': 1.0}) == 3.5
+True
 >>> lambdify(x, x + 2.5, 'cmath')(1.0) == 3.5
 True
 ```

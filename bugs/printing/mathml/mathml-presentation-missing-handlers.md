@@ -18,11 +18,17 @@ wrong-meaning
 
 ### Expected
 ```pycon
+>>> '<mi>unevaluatedexpr</mi>' in mathml(UnevaluatedExpr(x), printer='presentation')
+False
+>>> '<mi>piecewise</mi>' in mathml(Piecewise((x, x > 0), (y, True)), printer='presentation')
+False
+>>> '<mi>product</mi>' in mathml(Product(x, (x, 1, n)), printer='presentation')
+False
+>>> '<mi>subs</mi>' in mathml(Subs(f(x), x, 1), printer='presentation')
+False
 >>> from sympy import O
->>> cases = {'unevaluatedexpr': UnevaluatedExpr(x), 'piecewise': Piecewise((x, x > 0), (y, True)),
-...          'product': Product(x, (x, 1, n)), 'subs': Subs(f(x), x, 1), 'order': O(x)}
->>> [name for name, e in cases.items() if '<mi>%s</mi>' % name in mathml(e, printer='presentation')]
-[]
+>>> '<mi>order</mi>' in mathml(O(x), printer='presentation')
+False
 ```
 
 ### Why it is wrong

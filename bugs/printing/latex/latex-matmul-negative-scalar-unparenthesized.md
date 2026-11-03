@@ -20,6 +20,8 @@ A \left(-2\right)
 ```pycon
 >>> ' - ' in latex(MatMul(A, -x, B))
 False
+>>> ' - ' in latex(MatMul(A, -x))
+False
 ```
 
 ### Why it is wrong

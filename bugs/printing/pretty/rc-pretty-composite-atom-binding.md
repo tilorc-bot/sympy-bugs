@@ -24,6 +24,10 @@ internal
 ```pycon
 >>> p._print(Rational(2, 3)).binding != prettyForm.ATOM, p._print(Float(-2.5)).binding != prettyForm.ATOM
 (True, True)
+>>> '(' in pretty(Pow(Rational(2, 3), x, evaluate=False))
+True
+>>> '(' in pretty(Rational(-1, 2)**n + x)
+True
 ```
 
 ### Why it is wrong

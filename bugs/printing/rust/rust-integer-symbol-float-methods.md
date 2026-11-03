@@ -24,8 +24,12 @@ error[E0599]: no method named `exp` found for type `i32` in the current scope...
 
 ### Expected
 ```pycon
->>> [compiles('rust', rust_code(e), i=int) for e in (i**2, sin(i), exp(i))]
-[True, True, True]
+>>> compile_errors('rust', rust_code(i**2), i=int) == ''
+True
+>>> compile_errors('rust', rust_code(sin(i)), i=int) == ''
+True
+>>> compile_errors('rust', rust_code(exp(i)), i=int) == ''
+True
 ```
 
 ### Why it is wrong

@@ -25,7 +25,9 @@ k = 1
 ```pycon
 >>> a = pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True)
 >>> b = pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True)
->>> a != b
+>>> pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True) != b
+True
+>>> pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True) != a
 True
 ```
 

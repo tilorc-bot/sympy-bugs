@@ -18,6 +18,9 @@ NameError: name 'notx' is not defined
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(Not(x)), {'sympy': sympy, 'x': y}) == Not(y)
+True
 >>> lambdify(x, Not(x), 'sympy')(y) == Not(y)
 True
 ```

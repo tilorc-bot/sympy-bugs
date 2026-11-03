@@ -15,9 +15,10 @@ B^{b}^{\dagger}
 
 ### Expected
 ```pycon
->>> (r'^{a}^' in latex(adjoint(Symbol('A^a', commutative=False))),
-...  r'^{b}^' in latex(Dagger(Operator('B^b'))))
-(False, False)
+>>> r'^{a}^' in latex(adjoint(Symbol('A^a', commutative=False)))
+False
+>>> r'^{b}^' in latex(Dagger(Operator('B^b')))
+False
 ```
 
 ### Why it is wrong

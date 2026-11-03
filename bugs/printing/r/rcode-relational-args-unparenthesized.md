@@ -18,6 +18,8 @@ x == y == z
 ```pycon
 >>> rcode(Eq(x, Eq(y, z), evaluate=False)) != rcode(Eq(Eq(x, y), z, evaluate=False))
 True
+>>> rcode(Eq(Eq(x, y), z, evaluate=False)) != 'x == y == z'
+True
 ```
 
 ### Why it is wrong

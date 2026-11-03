@@ -21,6 +21,8 @@ cosmetic
 False
 >>> 'mathtt' in latex(ZZ_I)
 False
+>>> 'mathtt' in latex(Poly(x + sqrt(2), x, extension=True))
+False
 ```
 
 ### Why it is wrong

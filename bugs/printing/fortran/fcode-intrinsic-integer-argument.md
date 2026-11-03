@@ -22,8 +22,12 @@ atan2(i, x)
 >>> def passes_bare_i(code):
 ...     call = ast.parse(re.sub(r'(\d)d(\d)', r'\1e\2', code.strip())).body[0].value
 ...     return any(isinstance(a, ast.Name) and a.id == 'i' for a in call.args)
->>> [passes_bare_i(fcode(e, standard=95, source_format='free')) for e in (sin(i), exp(i), atan2(i, x))]
-[False, False, False]
+>>> passes_bare_i(fcode(sin(i), standard=95, source_format='free'))
+False
+>>> passes_bare_i(fcode(exp(i), standard=95, source_format='free'))
+False
+>>> passes_bare_i(fcode(atan2(i, x), standard=95, source_format='free'))
+False
 ```
 
 ### Why it is wrong

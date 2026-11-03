@@ -18,6 +18,8 @@ A {A}\otimes {B}
 ```pycon
 >>> latex(A*TensorProduct(A, B)).startswith(r'A \left(')
 True
+>>> latex(TensorProduct(A, B)*C).startswith(r'\left(')
+True
 ```
 
 ### Why it is wrong

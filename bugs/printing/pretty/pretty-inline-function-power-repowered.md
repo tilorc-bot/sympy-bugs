@@ -15,8 +15,7 @@ sin (x)
 
 ### Expected
 ```pycon
->>> p = pretty(Pow(sin(x)**2, 3, evaluate=False), use_unicode=True)
->>> '⎝sin' in p or '(sin' in p
+>>> any(s in pretty(Pow(sin(x)**2, 3, evaluate=False), use_unicode=True) for s in ('⎝sin', '(sin'))
 True
 ```
 

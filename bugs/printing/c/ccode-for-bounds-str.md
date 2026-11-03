@@ -21,8 +21,8 @@ error: invalid type argument of unary '*' (have 'int')
 
 ### Expected
 ```pycon
->>> compiles('c', ccode(For(i, Range(0, n**2), [aug_assign(x, '+', i)])),
-...          assign_to=('x', float), i=int, n=int)
+>>> compile_errors('c', ccode(For(i, Range(0, n**2), [aug_assign(x, '+', i)])),
+...                      assign_to=('x', float), i=int, n=int) == ''
 True
 ```
 

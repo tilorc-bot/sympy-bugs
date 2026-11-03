@@ -19,6 +19,8 @@ wrong-meaning
 ```pycon
 >>> latex(adjoint(Integral(A, x))).endswith(r'\right)^{\dagger}')
 True
+>>> latex(adjoint(Derivative(F(x), x))).endswith(r'\right)^{\dagger}')
+True
 ```
 
 ### Why it is wrong

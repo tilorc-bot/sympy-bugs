@@ -17,7 +17,7 @@ error[E0308]: `if` and `else` have incompatible types: expected floating-point n
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(sign(i)), i=int)
+>>> compile_errors('rust', rust_code(sign(i)), i=int) == ''
 True
 ```
 

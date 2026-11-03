@@ -21,6 +21,8 @@ lossy
 ```pycon
 >>> eval(srepr(M), ns) == M
 True
+>>> eval(srepr(M), ns).blocks.shape
+(1, 2)
 ```
 
 ### Why it is wrong

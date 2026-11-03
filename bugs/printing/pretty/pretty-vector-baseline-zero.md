@@ -17,8 +17,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> p = pretty(Eq(C.i/x + C.j, C.j), use_unicode=True)
->>> 'i_C' in [line for line in p.splitlines() if '=' in line][0]
+>>> 'i_C' in [line for line in pretty(Eq(C.i/x + C.j, C.j), use_unicode=True).splitlines() if '=' in line][0]
 True
 ```
 

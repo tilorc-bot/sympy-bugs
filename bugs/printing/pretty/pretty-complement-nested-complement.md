@@ -15,9 +15,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> a = pretty(Complement(X, Complement(Y, Z, evaluate=False), evaluate=False), use_unicode=True)
->>> b = pretty(Complement(Complement(X, Y, evaluate=False), Z, evaluate=False), use_unicode=True)
->>> a != b
+>>> pretty(Complement(X, Complement(Y, Z, evaluate=False), evaluate=False), use_unicode=True) != pretty(Complement(Complement(X, Y, evaluate=False), Z, evaluate=False), use_unicode=True)
 True
 ```
 

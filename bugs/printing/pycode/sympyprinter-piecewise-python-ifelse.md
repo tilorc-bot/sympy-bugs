@@ -18,6 +18,9 @@ TypeError: cannot determine truth value of Relational...
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(Piecewise((x, x > 0), (0, True))), {'sympy': sympy, 'x': y}) == Piecewise((y, y > 0), (0, True))
+True
 >>> lambdify(x, Piecewise((x, x > 0), (0, True)), 'sympy')(y) == Piecewise((y, y > 0), (0, True))
 True
 ```

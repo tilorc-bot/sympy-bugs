@@ -16,6 +16,9 @@ nan
 
 ### Expected
 ```pycon
+>>> import numpy, scipy.special
+>>> bool(abs(eval(SciPyPrinter().doprint(subfactorial(k)), {'numpy': numpy, 'scipy': scipy, 'k': 3}) - 2) < 1e-9)
+True
 >>> bool(abs(lambdify(k, subfactorial(k), 'scipy')(3) - 2) < 1e-9)
 True
 ```

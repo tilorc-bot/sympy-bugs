@@ -18,6 +18,8 @@ wrong-meaning
 ```pycon
 >>> 'b^+' in latex(Limit(f(x), x, a + b))
 False
+>>> 'a^+' in latex(Limit(f(x), x, -a))
+False
 ```
 
 ### Why it is wrong

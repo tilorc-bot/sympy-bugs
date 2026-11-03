@@ -14,8 +14,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> p = pretty(ProductSet(U, U), use_unicode=True)
->>> '(' in p or '⎛' in p
+>>> any(c in pretty(ProductSet(U, U), use_unicode=True) for c in '(⎛')
 True
 ```
 

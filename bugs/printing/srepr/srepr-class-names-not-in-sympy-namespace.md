@@ -25,8 +25,12 @@ NameError: name 'ExprCondPair' is not defined
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (p, AccumBounds(1, 2), c)]
-[True, True, True]
+>>> eval(srepr(p), ns) == p
+True
+>>> eval(srepr(AccumBounds(1, 2)), ns) == AccumBounds(1, 2)
+True
+>>> eval(srepr(c), ns) == c
+True
 ```
 
 ### Why it is wrong

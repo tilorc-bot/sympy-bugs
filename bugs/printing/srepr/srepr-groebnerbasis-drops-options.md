@@ -18,6 +18,8 @@ False
 
 ### Expected
 ```pycon
+>>> 'grevlex' in srepr(G)
+True
 >>> eval(srepr(G), ns) == G
 True
 ```

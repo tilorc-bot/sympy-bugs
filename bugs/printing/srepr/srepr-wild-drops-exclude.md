@@ -18,6 +18,8 @@ False
 
 ### Expected
 ```pycon
+>>> srepr(w) != srepr(Wild('w'))
+True
 >>> eval(srepr(w), ns) == w
 True
 ```

@@ -18,6 +18,8 @@ x == y == z
 ```pycon
 >>> julia_code(Eq(x, Eq(y, z), evaluate=False)) != julia_code(Eq(Eq(x, y), z, evaluate=False))
 True
+>>> julia_code(Eq(Eq(x, y), z, evaluate=False)) != 'x == y == z'
+True
 ```
 
 ### Why it is wrong

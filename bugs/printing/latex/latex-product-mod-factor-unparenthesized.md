@@ -17,6 +17,8 @@ wrong-meaning
 ```pycon
 >>> latex(Product(Mod(n, 3), (n, 1, 10))) != latex(Mod(Product(n, (n, 1, 10)), 3, evaluate=False))
 True
+>>> r'\left(n \bmod 3\right)' in latex(Product(Mod(n, 3), (n, 1, 10)))
+True
 ```
 
 ### Why it is wrong

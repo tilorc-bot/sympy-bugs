@@ -25,8 +25,14 @@ True
 
 ### Expected
 ```pycon
->>> [eval(srepr(e), ns) == e for e in (C.x, q, Quantity('meter'))]
-[True, True, True]
+>>> eval(srepr(C.x), ns) == C.x
+True
+>>> eval(srepr(q), ns) == q
+True
+>>> eval(srepr(Quantity('meter')), ns) == Quantity('meter')
+True
+>>> eval(srepr(Quantity('meter')), ns) is meter
+False
 ```
 
 ### Why it is wrong

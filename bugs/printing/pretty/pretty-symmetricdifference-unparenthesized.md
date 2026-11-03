@@ -17,7 +17,9 @@ wrong-meaning
 ```pycon
 >>> a = pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True)
 >>> b = pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True)
->>> a != b
+>>> pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True) != b
+True
+>>> pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True) != a
 True
 ```
 

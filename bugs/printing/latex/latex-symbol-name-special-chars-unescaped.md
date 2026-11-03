@@ -16,10 +16,12 @@ a#b
 
 ### Expected
 ```pycon
->>> (latex(Symbol('a%b') + 1).replace(r'\%', '').count('%'),
-...  latex(Symbol('a&b')).replace(r'\&', '').count('&'),
-...  latex(Symbol('a#b')).replace(r'\#', '').count('#'))
-(0, 0, 0)
+>>> latex(Symbol('a%b') + 1).replace(r'\%', '').count('%')
+0
+>>> latex(Symbol('a&b')).replace(r'\&', '').count('&')
+0
+>>> latex(Symbol('a#b')).replace(r'\#', '').count('#')
+0
 ```
 
 ### Why it is wrong

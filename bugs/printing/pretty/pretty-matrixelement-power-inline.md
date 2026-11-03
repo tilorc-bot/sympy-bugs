@@ -15,8 +15,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> top, bottom = pretty(A[i, j]**2, use_unicode=True).splitlines()
->>> top.index('2') > bottom.index(']')
+>>> (lines := pretty(A[i, j]**2, use_unicode=True).splitlines())[0].index('2') > lines[1].index(']')
 True
 ```
 

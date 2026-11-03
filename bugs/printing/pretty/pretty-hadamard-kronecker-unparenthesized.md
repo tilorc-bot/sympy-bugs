@@ -16,9 +16,7 @@ A ⨂ B∘D
 
 ### Expected
 ```pycon
->>> a = pretty(HadamardProduct(KroneckerProduct(A, B), D4), use_unicode=True)
->>> b = pretty(KroneckerProduct(A, HadamardProduct(B, D2)), use_unicode=True)
->>> a != b
+>>> pretty(HadamardProduct(KroneckerProduct(A, B), D4), use_unicode=True) != pretty(KroneckerProduct(A, HadamardProduct(B, D2)), use_unicode=True)
 True
 ```
 

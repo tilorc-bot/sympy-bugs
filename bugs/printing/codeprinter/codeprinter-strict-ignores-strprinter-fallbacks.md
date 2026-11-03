@@ -25,14 +25,20 @@ error: invalid type argument of unary '*' (have 'int')
 ### Expected
 ```pycon
 >>> from sympy.printing.codeprinter import PrintMethodNotImplementedError
->>> def raises(f, e):
+>>> def raises(f):
 ...     try:
-...         f(e, strict=True)
+...         f()
 ...     except PrintMethodNotImplementedError:
 ...         return True
 ...     return False
->>> [raises(ccode, Sum(x, (x, 1, n))), raises(ccode, A.T), raises(ccode, A.I), raises(jscode, I*x)]
-[True, True, True, True]
+>>> raises(lambda: ccode(Sum(x, (x, 1, n)), strict=True))
+True
+>>> raises(lambda: ccode(A.T, strict=True))
+True
+>>> raises(lambda: ccode(A.I, strict=True))
+True
+>>> raises(lambda: jscode(I*x, strict=True))
+True
 ```
 
 ### Why it is wrong

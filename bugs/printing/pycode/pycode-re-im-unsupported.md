@@ -20,6 +20,9 @@ NameError: name 're' is not defined...
 
 ### Expected
 ```pycon
+>>> import math
+>>> eval(pycode(re(x)), {'math': math, 'x': 2 + 3j}) == 2
+True
 >>> lambdify(x, re(x) + im(x), 'math')(2 + 3j) == 5
 True
 ```

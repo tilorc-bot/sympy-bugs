@@ -17,6 +17,8 @@ xml.parsers.expat.ExpatError: unbound prefix: line 1, column 4
 
 ### Expected
 ```pycon
+>>> 'mml:' not in mathml(Symbol('x_1')) or 'xmlns:mml' in mathml(Symbol('x_1'))
+True
 >>> _ = parseString(mathml(Symbol('x_1')))
 ```
 

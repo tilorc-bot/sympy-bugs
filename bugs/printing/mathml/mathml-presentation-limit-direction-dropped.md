@@ -18,6 +18,9 @@ lossy
 ```pycon
 >>> mathml(Limit(f(x), x, 0, '-'), printer='presentation') != mathml(Limit(f(x), x, 0, '+'), printer='presentation')
 True
+>>> left = mathml(Limit(f(x), x, 0, '-'), printer='presentation')
+>>> mathml(Limit(f(x), x, 0, '+'), printer='presentation') != left
+True
 ```
 
 ### Why it is wrong

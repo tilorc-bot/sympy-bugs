@@ -22,8 +22,8 @@ p1/p2
 
 ### Expected
 ```pycon
->>> run_code('c', ccode(p1/p2), p1=7, p2=4)
-1.75
+>>> run_code('c', ccode(p1/p2), p1=7, p2=4), float((p1/p2).subs({p1: 7, p2: 4}))
+(1.75, 1.75)
 >>> abs(run_code('c', ccode(e), q1=7, q2=4) - float(e.subs({q1: 7, q2: 4}))) < 1e-12
 True
 ```

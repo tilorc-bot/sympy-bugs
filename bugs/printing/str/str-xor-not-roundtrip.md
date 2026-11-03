@@ -15,6 +15,8 @@ x**y
 
 ### Expected
 ```pycon
+>>> '^' in str(Xor(x, y))
+False
 >>> sympify(str(Xor(x, y))) == Xor(x, y)
 True
 ```

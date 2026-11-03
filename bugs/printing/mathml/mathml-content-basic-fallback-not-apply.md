@@ -18,8 +18,14 @@ invalid-output
 
 ### Expected
 ```pycon
->>> [mathml(e).startswith('<apply>') for e in (M.T, M.I, M**3, Determinant(M), Product(x, (x, 1, n)), Equivalent(p, q))]
-[True, True, True, True, True, True]
+>>> mathml(M.T).startswith('<apply>')
+True
+>>> mathml(M**3).startswith('<apply>')
+True
+>>> mathml(Product(x, (x, 1, n))).startswith('<apply>')
+True
+>>> [mathml(e).startswith('<apply>') for e in (M.I, Determinant(M), Equivalent(p, q))]
+[True, True, True]
 ```
 
 ### Why it is wrong

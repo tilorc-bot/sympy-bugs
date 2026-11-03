@@ -25,8 +25,12 @@ error: expected expression, found keyword `fn`...
 ```pycon
 >>> '**' in rust_code(A[i**2, j])
 False
+>>> 'cannot be dereferenced' in compile_errors('rust', rust_code(A[i**2, j]), A=[float], i=int, j=int, m=int)
+False
 >>> 'fn_' in rust_code(A[Symbol('fn'), 0])
 True
+>>> 'found keyword' in compile_errors('rust', rust_code(A[Symbol('fn'), 0]), A=[float], m=int)
+False
 ```
 
 ### Why it is wrong

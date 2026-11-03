@@ -17,6 +17,8 @@ lossy
 ```pycon
 >>> latex(CartanType('A2')) != latex(CartanType('A3'))
 True
+>>> '3' in latex(CartanType('A3'))
+True
 ```
 
 ### Why it is wrong

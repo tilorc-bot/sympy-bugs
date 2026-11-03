@@ -15,8 +15,10 @@ invalid-output
 
 ### Expected
 ```pycon
->>> ccode(d)[0].isalpha(), fcode(d, source_format='free')[0].isalpha()
-(True, True)
+>>> ccode(d + 1)[0].isalpha()
+True
+>>> fcode(d + 1, source_format='free')[0].isalpha()
+True
 ```
 
 ### Why it is wrong

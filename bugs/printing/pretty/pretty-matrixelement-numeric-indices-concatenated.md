@@ -17,6 +17,9 @@ A₁₂₃
 ```pycon
 >>> pretty(A[1, 23], use_unicode=True) != pretty(A[12, 3], use_unicode=True)
 True
+>>> a = pretty(A[1, 23], use_unicode=True)
+>>> pretty(A[12, 3], use_unicode=True) != a
+True
 ```
 
 ### Why it is wrong

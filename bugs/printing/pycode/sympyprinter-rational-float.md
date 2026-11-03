@@ -16,6 +16,9 @@ lossy
 
 ### Expected
 ```pycon
+>>> import sympy
+>>> eval(SymPyPrinter().doprint(x/2), {'sympy': sympy, 'x': y}) == y/2
+True
 >>> lambdify(x, x/2, 'sympy')(y) == y/2
 True
 ```

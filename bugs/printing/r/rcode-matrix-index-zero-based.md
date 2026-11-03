@@ -23,6 +23,8 @@ B[2] = z;
 ```pycon
 >>> '0' in rcode(A[0, 0])
 False
+>>> rcode(A[0, 1]).replace(' ', '') in ('A[1,2]', 'A[4]')
+True
 >>> 'B[0]' in rcode(Matrix([x, y, z]), assign_to=B)
 False
 ```

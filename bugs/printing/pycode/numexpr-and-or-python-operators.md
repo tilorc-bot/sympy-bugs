@@ -16,8 +16,9 @@ numexpr.evaluate('(((x > 0)) or ((y > 0)))', truediv=True)
 
 ### Expected
 ```pycon
->>> code = NumExprPrinter().doprint(And(x > 0, y > 0)) + NumExprPrinter().doprint(Or(x > 0, y > 0))
->>> ' and ' in code or ' or ' in code
+>>> ' and ' in NumExprPrinter().doprint(And(x > 0, y > 0))
+False
+>>> ' or ' in NumExprPrinter().doprint(Or(x > 0, y > 0))
 False
 ```
 

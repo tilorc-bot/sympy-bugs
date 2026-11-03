@@ -14,8 +14,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> e = SingularityFunction(x, a/b, n)
->>> pretty(e, use_unicode=False) == pretty(e, use_unicode=True).replace('─', '-')
+>>> pretty(SingularityFunction(x, a/b, n), use_unicode=False) == pretty(SingularityFunction(x, a/b, n), use_unicode=True).replace('─', '-')
 True
 ```
 

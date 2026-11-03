@@ -19,6 +19,8 @@ x⋅-2
 ```pycon
 >>> pretty(Mul(x, -1, 2, evaluate=False), use_unicode=True) != pretty(Mul(x, -2, evaluate=False), use_unicode=True)
 True
+>>> '1' in pretty(Mul(2, -1, x, evaluate=False), use_unicode=True)
+True
 ```
 
 ### Why it is wrong

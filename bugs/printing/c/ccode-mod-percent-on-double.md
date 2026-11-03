@@ -22,9 +22,9 @@ error: invalid operands to binary % (have 'double' and 'double')
 
 ### Expected
 ```pycon
->>> compiles('c', ccode(Mod(i**2, j)), i=int, j=int)
+>>> compile_errors('c', ccode(Mod(i**2, j)), i=int, j=int) == ''
 True
->>> compiles('c', ccode(Mod(ceiling(r), ceiling(s))), r=float, s=float)
+>>> compile_errors('c', ccode(Mod(ceiling(r), ceiling(s))), r=float, s=float) == ''
 True
 ```
 

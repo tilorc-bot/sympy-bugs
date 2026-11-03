@@ -20,10 +20,10 @@ error[E0308]: mismatched types: expected `f64`, found `i32`...
 
 ### Expected
 ```pycon
->>> compiles('rust', rust_code(p1/p2, assign_to='y'), assign_to=('y', float), p1=int, p2=int)
+>>> compile_errors('rust', rust_code(p1/p2, assign_to='y'), assign_to=('y', float), p1=int, p2=int) == ''
 True
->>> run_code('rust', rust_code(p1/p2), p1=7, p2=2)
-3.5
+>>> run_code('rust', rust_code(p1/p2), p1=7, p2=2), (p1/p2).subs({p1: 7, p2: 2})
+(3.5, 7/2)
 ```
 
 ### Why it is wrong
