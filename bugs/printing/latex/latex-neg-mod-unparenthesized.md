@@ -50,3 +50,6 @@ index fe44b0e..ed66921 100644
 
 ### Source
 Imported from [sympy/sympy#30844](https://redirect.github.com/sympy/sympy/issues/30844).
+
+### Encountered
+- (test entry for the PR check; this PR will be closed)
