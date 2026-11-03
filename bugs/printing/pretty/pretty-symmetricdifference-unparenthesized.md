@@ -15,11 +15,9 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> a = pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True)
->>> b = pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True)
->>> pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True) != b
+>>> pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True) != pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True)
 True
->>> pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True) != a
+>>> pretty(Union(X, SymmetricDifference(Y, Z, evaluate=False), evaluate=False), use_unicode=True) != pretty(SymmetricDifference(Union(X, Y), Z, evaluate=False), use_unicode=True)
 True
 ```
 

@@ -23,11 +23,9 @@ k = 1
 
 ### Expected
 ```pycon
->>> a = pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True)
->>> b = pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True)
->>> pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True) != b
+>>> pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True) != pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True)
 True
->>> pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True) != a
+>>> pretty(Product(Add(k, 1, 1, evaluate=False), (k, 1, n)), use_unicode=True) != pretty(Product(k + 1, (k, 1, n)) + 1, use_unicode=True)
 True
 ```
 

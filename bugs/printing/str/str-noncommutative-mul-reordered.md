@@ -16,8 +16,7 @@ A*2/B
 
 ### Expected
 ```pycon
->>> d = e.doit()
->>> eval(str(e), {'A': A, 'B': B}) == d
+>>> eval(str(e), {'A': A, 'B': B}) == e.doit()
 True
 ```
 

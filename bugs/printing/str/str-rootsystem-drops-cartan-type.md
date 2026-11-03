@@ -16,8 +16,7 @@ RootSystem()
 ```pycon
 >>> str(RootSystem('A2')) != str(RootSystem('B2'))
 True
->>> a = str(RootSystem('A2'))
->>> str(RootSystem('B2')) != a
+>>> str(RootSystem('B2')) != str(RootSystem('A2'))
 True
 ```
 

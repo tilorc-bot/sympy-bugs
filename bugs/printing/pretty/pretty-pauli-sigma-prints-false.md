@@ -21,8 +21,7 @@ lossy
 False
 >>> pretty(SigmaX('1')*SigmaY('2'), use_unicode=True) != pretty(SigmaY('1')*SigmaX('2'), use_unicode=True)
 True
->>> a = pretty(SigmaX('1')*SigmaY('2'), use_unicode=True)
->>> pretty(SigmaY('1')*SigmaX('2'), use_unicode=True) != a
+>>> pretty(SigmaY('1')*SigmaX('2'), use_unicode=True) != pretty(SigmaX('1')*SigmaY('2'), use_unicode=True)
 True
 ```
 

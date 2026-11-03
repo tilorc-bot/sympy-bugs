@@ -1417,6 +1417,14 @@ function outHTML(txt, lang, cls = "") {
   }
   return lines.map(l => `<span class="ln out${cls}">${lang ? hl(l, lang) : esc(l) || " "}</span>`).join("");
 }
+// where src contains k as a whole expression ("e" does not occur in "exec(...)" or "x_e"), or -1
+function find(src, k) {
+  for (let i = src.indexOf(k); i >= 0; i = src.indexOf(k, i + 1)) {
+    const a = src[i - 1] || " ", z = src[i + k.length] || " ";
+    if (!(/\w/.test(k[0]) && /[\w.]/.test(a)) && !(/\w/.test(k[k.length - 1]) && /[\w(]/.test(z))) return i;
+  }
+  return -1;
+}
 // the calls in a statement, f(...) with balanced brackets, at least 10 characters long
 function calls(src) {
   const out = [];
@@ -1434,19 +1442,35 @@ function calls(src) {
 }
 // match each Expected example to the Actual statement whose expression it contains
 function matchExpected(A, E) {
-  const cand = A.map((a, i) => ({ i, key: exprKey(a.source) })).filter(c => c.key && !isSetup(A[c.i]));
-  const at = new Map(), rest = [];
+  // only statements with output can show a "now" line
+  const cand = A.map((a, i) => ({ i, key: exprKey(a.source) })).filter(c => c.key && String(A[c.i].want || "").trim());
+  // Statements without output in Expected (helpers, names) go just before the Actual statement
+  // the next check pairs with; one that repeats an Actual statement is left out.
+  const at = new Map(), before = new Map(), rest = [], known = new Set(A.map(a => String(a.source).trim()));
+  let pending = [];
   for (const e of E) {
     const src = String(e.source || "");
-    if (!String(e.want || "").trim() && !/^_ = /.test(src.trim())) { rest.push({ e, given: true }); continue; }
-    let best = null;
-    for (const c of cand) if (src.includes(c.key) && (!best || c.key.length > best.key.length)) best = c;
-    // else the Actual statement sharing the longest call with it, e.g. rcode(For(...)) in
-    // "'to=-1' in rcode(For(...))" and "'to=1,' in rcode(For(...))"
-    if (!best) { let n = 0; for (const c of cand) for (const k of calls(c.key)) if (k.length > n && src.includes(k)) { n = k.length; best = c; } }
-    if (best) { if (!at.has(best.i)) at.set(best.i, []); at.get(best.i).push(e); } else rest.push({ e });
+    if (!String(e.want || "").trim() && !/^_ = /.test(src.trim())) { if (!known.has(src.trim())) pending.push(e); continue; }
+    // Each Actual statement's longest piece in the check: the whole statement, or one of its
+    // calls (rcode(For(...)) in "'to=-1' in rcode(For(...))" / "'to=1,' in rcode(For(...))").
+    // A piece inside another statement's piece doesn't count (rust_code(e) inside
+    // run_code('rust', rust_code(e))); of the rest the leftmost wins, so "wrong != contrast"
+    // pairs with the wrong line.
+    const hits = [];
+    for (const c of cand) { let h = null;
+      for (const k of [c.key, ...calls(c.key)]) { const at = find(src, k); if (at >= 0 && (!h || k.length > h.end - h.start)) h = { c, start: at, end: at + k.length }; }
+      if (h) hits.push(h); }
+    const outer = hits.filter(h => !hits.some(o => o !== h && o.start <= h.start && h.end <= o.end && o.end - o.start > h.end - h.start));
+    outer.sort((x, y) => x.start - y.start || (y.end - y.start) - (x.end - x.start));
+    const best = outer.length ? outer[0].c : null;
+    if (best) {
+      if (!at.has(best.i)) at.set(best.i, []); at.get(best.i).push(e);
+      if (pending.length) { if (!before.has(best.i)) before.set(best.i, []); before.get(best.i).push(...pending); }
+    } else { rest.push(...pending.map(g => ({ e: g, given: true })), { e }); }
+    pending = [];
   }
-  return { at, rest };
+  rest.push(...pending.map(g => ({ e: g, given: true })));
+  return { at, before, rest };
 }
 // dates instead of bare hashes: "SymPy master as of Nov 2, 2026" (hash in the tooltip and link)
 function fmtDate(d) {
@@ -1475,6 +1499,7 @@ function shouldBody(e, a, lang) {
   const k = a ? exprKey(a.source) : "";
   const prop = k && src.includes(k) ? src.split(k).join("↑") : src;
   const code = hl(prop, "python").replace(/↑/g, `<span class="up">↑</span>`);
+  if (want === "True" && /(==|!=|<=|>=| < | > | not in | in | is not | is )/.test(prop.replace(/(['"])(?:\\.|(?!\1).)*\1/g, "''"))) return { html: `<span class="ln">${code}</span>`, full: prop !== src ? src : "" };
   if (/^(True|False|None)$/.test(want)) return { html: `<span class="ln">${code} <b>is ${want}</b></span>`, full: prop !== src ? src : "" };
   if (!/\n/.test(want) && want.length < 80) return { html: `<span class="ln">${code} <b>==</b> ${hl(want, "python")}</span>`, full: prop !== src ? src : "" };
   return { html: `<span class="ln">${code}</span>${outHTML(want, outLang(src))}`, full: prop !== src ? src : "" };
@@ -1495,8 +1520,9 @@ function integratedBlock(b, secs) {
   const why = secs["Why it is wrong"] || "";
   let h = "", nSetup = 0;
   if (A.length) {
-    const { at, rest } = matchExpected(A, E);
+    const { at, before, rest } = matchExpected(A, E);
     for (const [i, a] of A.entries()) {
+      for (const g of before.get(i) || []) { nSetup++; h += srcHTML(g.source, " setup"); }
       const setup = isSetup(a); if (setup) nSetup++;
       h += srcHTML(a.source, setup ? " setup" : "");
       const lang = outLang(a.source), exp = at.get(i) || [], out = a.ok ? a.want : a.got;
@@ -1506,7 +1532,7 @@ function integratedBlock(b, secs) {
       } else if (String(a.want || "").trim()) h += outHTML(a.want, lang);
     }
     for (const r of rest) {
-      if (r.given) { const s = isSetup(r.e); if (s) nSetup++; h += srcHTML(r.e.source, s ? " setup" : ""); continue; }
+      if (r.given) { nSetup++; h += srcHTML(r.e.source, " setup"); continue; }
       // a check that names no Actual statement: show it as its own statement
       const src = String(r.e.source || "").replace(/\n$/, ""), lang = outLang(src);
       h += srcHTML(/^_ = /.test(src.trim()) ? src.slice(4) : src);
@@ -1519,7 +1545,7 @@ function integratedBlock(b, secs) {
     if (secs.Expected) h += mark("should", `<span class="ln">${esc(docText(secs.Expected))}</span>`, nowTip(b, why));
   }
   const lbl = `⋯ ${nSetup} setup line${nSetup > 1 ? "s" : ""}`;
-  const toggle = nSetup ? `<button type="button" class="setupbar" data-setup data-label="${lbl}" aria-expanded="false" title="Imports and symbol definitions; Copy includes them">${lbl}</button>` : "";
+  const toggle = nSetup ? `<button type="button" class="setupbar" data-setup data-label="${lbl}" aria-expanded="false" title="Imports, symbol definitions and helpers for the checks; Copy includes them">${lbl}</button>` : "";
   const note = st === "reproduces" ? `as printed by ${masterAsOf(sha, date)}` : st === "fixed" ? `recorded output; ${masterAsOf(sha, date)} now passes` : `checked against ${masterAsOf(sha, date)}`;
   return `<section class="ib" aria-label="What SymPy prints now and what it should print"><div class="ibbar"><span class="ibnote">${note}</span>
     <span class="legend" title="Hover, focus or tap a marked line: the − line explains why it is wrong, the + line shows what master gives for the check"><span class="lgn"><span aria-hidden="true">−</span> now</span><span class="lgs"><span aria-hidden="true">+</span> should</span><span class="lgh">hover for why</span></span>

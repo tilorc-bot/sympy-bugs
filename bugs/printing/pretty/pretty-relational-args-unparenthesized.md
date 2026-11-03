@@ -19,11 +19,9 @@ p ∧ q = r
 
 ### Expected
 ```pycon
->>> a = pretty(Eq(Eq(x, y), Eq(y, z)), use_unicode=True)
->>> b = pretty(Eq(x, Eq(Eq(y, y, evaluate=False), z), evaluate=False), use_unicode=True)
->>> pretty(Eq(Eq(x, y), Eq(y, z)), use_unicode=True) != b
+>>> pretty(Eq(Eq(x, y), Eq(y, z)), use_unicode=True) != pretty(Eq(x, Eq(Eq(y, y, evaluate=False), z), evaluate=False), use_unicode=True)
 True
->>> pretty(Eq(x, Eq(Eq(y, y, evaluate=False), z), evaluate=False), use_unicode=True) != a
+>>> pretty(Eq(x, Eq(Eq(y, y, evaluate=False), z), evaluate=False), use_unicode=True) != pretty(Eq(Eq(x, y), Eq(y, z)), use_unicode=True)
 True
 >>> pretty(Eq(And(p, q), r), use_unicode=True) != pretty(And(p, Eq(q, r)), use_unicode=True)
 True

@@ -78,7 +78,10 @@ right output is unambiguous:
 example, written so that it contains the Actual expression (`print(latex(e))` in Actual →
 `print(latex(e))` or `'\\neg' in latex(e)` in Expected). The catalogue page pairs them and
 shows each pair as "now" and "should" lines under the statement. Don't fold several checks
-into one statement (`[f(a), f(b)]`); write one per line. Actual outputs with no matching check
+into one statement (`[f(a), f(b)]`); write one per line. A check that names several Actual
+expressions pairs with the leftmost one (ignoring ones nested inside another), so write the
+wrong one first: `latex(wrong) != latex(contrast)`. When both lines are wrong, write the
+comparison once for each, each with its own line first. Actual outputs with no matching check
 are shown as plain context, so use them only for output that is correct: a contrast
 (`exp(x)` next to `exp_polar(x)`), or an intermediate result a later check uses.
 

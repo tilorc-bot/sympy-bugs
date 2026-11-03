@@ -17,8 +17,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> v = float(f)
->>> abs(float(str(f)) - v) < 1
+>>> abs(float(str(f)) - float(f)) < 1
 True
 >>> float(str(Float(0.1, precision=4))) != 0
 True

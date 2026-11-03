@@ -17,8 +17,7 @@ wrong-meaning
 
 ### Expected
 ```pycon
->>> b = pretty(-(Float(2.5)**n), use_unicode=True)
->>> pretty(Float(-2.5)**n, use_unicode=True) != b
+>>> pretty(Float(-2.5)**n, use_unicode=True) != pretty(-(Float(2.5)**n), use_unicode=True)
 True
 ```
 
