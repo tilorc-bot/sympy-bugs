@@ -1,11 +1,11 @@
 {
  "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
  "sympy_date": "2026-11-27",
- "checked": "2026-11-27",
+ "checked": "2026-11-28",
  "run": {
   "python": "3.13.18",
-  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/46011228175",
-  "checker_commit": "dd1204c2d10d99d7a55f61b223da3de5cbacace4",
+  "run_url": "https://github.com/tilorc-bot/sympy-bugs/actions/runs/46147711073",
+  "checker_commit": "f1057563990f27b7c2aecf73e7bf79824af4f391",
   "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
   "rustc": "rustc 1.100.0 (0ef1bc386 2026-11-09)"
  },
@@ -17,7 +17,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -177,7 +177,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -304,7 +304,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -435,7 +435,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -594,7 +594,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -733,7 +733,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -906,7 +906,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1096,7 +1096,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1216,7 +1216,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1353,7 +1353,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1513,7 +1513,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1640,7 +1640,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -1835,7 +1835,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -1998,7 +1998,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -2130,7 +2130,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c"
@@ -2314,7 +2314,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c",
@@ -2452,7 +2452,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c",
@@ -2549,7 +2549,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust",
@@ -2686,7 +2686,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c",
@@ -2879,7 +2879,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c",
@@ -3021,7 +3021,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "c",
@@ -3223,7 +3223,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -3375,7 +3375,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -3491,7 +3491,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [],
    "printer_methods": [],
@@ -3570,7 +3570,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -3682,7 +3682,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -3802,7 +3802,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -3905,7 +3905,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4008,7 +4008,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4123,7 +4123,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4223,7 +4223,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4323,7 +4323,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4462,7 +4462,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4555,7 +4555,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4660,7 +4660,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4760,7 +4760,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4842,7 +4842,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -4962,7 +4962,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5094,7 +5094,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5176,7 +5176,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5262,7 +5262,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5347,7 +5347,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5446,7 +5446,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "fortran"
@@ -5577,7 +5577,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "glsl"
@@ -5672,7 +5672,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "glsl"
@@ -5763,7 +5763,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "glsl"
@@ -5850,7 +5850,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "glsl"
@@ -5973,7 +5973,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "glsl"
@@ -6065,7 +6065,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "js"
@@ -6170,7 +6170,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "js"
@@ -6272,7 +6272,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "js"
@@ -6365,7 +6365,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "js"
@@ -6466,7 +6466,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "js"
@@ -6589,7 +6589,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -6681,7 +6681,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -6802,7 +6802,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -6891,7 +6891,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -6975,7 +6975,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7050,7 +7050,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7179,7 +7179,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7282,7 +7282,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7395,7 +7395,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7524,7 +7524,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "julia"
@@ -7607,7 +7607,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -7747,7 +7747,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -7864,7 +7864,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -7956,7 +7956,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8067,7 +8067,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8187,7 +8187,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8273,7 +8273,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8380,7 +8380,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8473,7 +8473,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8607,7 +8607,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8705,7 +8705,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8789,7 +8789,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8880,7 +8880,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -8972,7 +8972,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9067,7 +9067,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9150,7 +9150,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9266,7 +9266,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9370,7 +9370,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9449,7 +9449,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9553,7 +9553,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9652,7 +9652,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9769,7 +9769,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9841,7 +9841,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -9928,7 +9928,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10071,7 +10071,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10194,7 +10194,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10272,7 +10272,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10364,7 +10364,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10495,7 +10495,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10582,7 +10582,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10686,7 +10686,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10800,7 +10800,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -10910,7 +10910,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11000,7 +11000,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11113,7 +11113,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11207,7 +11207,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11318,7 +11318,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11401,7 +11401,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11509,7 +11509,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11658,7 +11658,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11757,7 +11757,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11851,7 +11851,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -11954,7 +11954,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12061,7 +12061,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12136,7 +12136,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12242,7 +12242,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12337,7 +12337,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12424,7 +12424,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12525,7 +12525,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12673,7 +12673,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12777,7 +12777,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12881,7 +12881,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -12985,7 +12985,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13112,7 +13112,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13253,7 +13253,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13359,7 +13359,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13486,7 +13486,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13609,7 +13609,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13749,7 +13749,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13837,7 +13837,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -13936,7 +13936,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14041,7 +14041,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14134,7 +14134,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14243,7 +14243,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14353,7 +14353,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14453,7 +14453,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14552,7 +14552,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14684,7 +14684,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14765,7 +14765,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14863,7 +14863,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -14971,7 +14971,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15086,7 +15086,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15188,7 +15188,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15294,7 +15294,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15421,7 +15421,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15522,7 +15522,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15655,7 +15655,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15765,7 +15765,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15867,7 +15867,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -15973,7 +15973,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -16067,7 +16067,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -16173,7 +16173,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "maple"
@@ -16279,7 +16279,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "maple"
@@ -16427,7 +16427,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "maple"
@@ -16535,7 +16535,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathematica"
@@ -16631,7 +16631,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathematica"
@@ -16727,7 +16727,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathematica"
@@ -16856,7 +16856,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathematica"
@@ -16949,7 +16949,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathematica"
@@ -17042,7 +17042,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17129,7 +17129,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17266,7 +17266,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17352,7 +17352,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17451,7 +17451,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17577,7 +17577,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17667,7 +17667,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17773,7 +17773,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17854,7 +17854,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -17948,7 +17948,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18039,7 +18039,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18138,7 +18138,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18252,7 +18252,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18351,7 +18351,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18432,7 +18432,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18526,7 +18526,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18583,7 +18583,7 @@
       "source": "parseString(mathml(x < y, printer='presentation'))\n",
       "ok": false,
       "want": "Traceback (most recent call last):\n...\nxml.parsers.expat.ExpatError: not well-formed (invalid token): line 1, column 21\n",
-      "got": "<xml.dom.minidom.Document object at 0x78799dca8fb0>\n"
+      "got": "<xml.dom.minidom.Document object at 0x745bd0560fb0>\n"
      }
     ],
     "expected": [
@@ -18631,7 +18631,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18738,7 +18738,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -18894,7 +18894,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19001,7 +19001,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19086,7 +19086,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19160,7 +19160,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19247,7 +19247,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19327,7 +19327,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19472,7 +19472,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19574,7 +19574,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19663,7 +19663,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "mathml"
@@ -19767,7 +19767,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "octave"
@@ -19896,7 +19896,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "octave"
@@ -19983,7 +19983,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "octave"
@@ -20074,7 +20074,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "octave"
@@ -20197,7 +20197,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [],
    "printer_methods": [],
@@ -20283,7 +20283,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20383,7 +20383,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20497,7 +20497,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20588,7 +20588,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20677,7 +20677,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20798,7 +20798,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20880,7 +20880,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -20971,7 +20971,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21086,7 +21086,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21175,7 +21175,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21260,7 +21260,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21371,7 +21371,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21464,7 +21464,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21556,7 +21556,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21639,7 +21639,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21734,7 +21734,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21823,7 +21823,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21909,7 +21909,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -21992,7 +21992,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22156,7 +22156,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22267,7 +22267,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22369,7 +22369,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22460,7 +22460,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22556,7 +22556,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22648,7 +22648,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22751,7 +22751,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22866,7 +22866,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -22969,7 +22969,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23098,7 +23098,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23198,7 +23198,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23309,7 +23309,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23412,7 +23412,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23493,7 +23493,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23593,7 +23593,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23733,7 +23733,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23822,7 +23822,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -23945,7 +23945,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24050,7 +24050,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24137,7 +24137,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24252,7 +24252,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24384,7 +24384,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24477,7 +24477,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24583,7 +24583,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24690,7 +24690,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24789,7 +24789,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24883,7 +24883,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -24994,7 +24994,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -25115,7 +25115,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pretty"
@@ -25265,7 +25265,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -25369,7 +25369,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -25478,7 +25478,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -25607,7 +25607,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -25716,7 +25716,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -25849,7 +25849,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -25960,7 +25960,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26090,7 +26090,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26221,7 +26221,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26329,7 +26329,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26425,7 +26425,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26544,7 +26544,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26691,7 +26691,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26791,7 +26791,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -26921,7 +26921,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27028,7 +27028,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27135,7 +27135,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27269,7 +27269,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27384,7 +27384,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27502,7 +27502,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27611,7 +27611,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27735,7 +27735,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27857,7 +27857,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -27968,7 +27968,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -28085,7 +28085,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -28195,7 +28195,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -28302,7 +28302,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28394,7 +28394,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28494,7 +28494,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28606,7 +28606,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28715,7 +28715,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28845,7 +28845,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -28942,7 +28942,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -29048,7 +29048,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -29137,7 +29137,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -29227,7 +29227,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -29333,7 +29333,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "python"
@@ -29438,7 +29438,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -29526,7 +29526,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -29660,7 +29660,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -29779,7 +29779,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -29858,7 +29858,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -29945,7 +29945,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -30045,7 +30045,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -30153,7 +30153,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -30270,7 +30270,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "r"
@@ -30399,7 +30399,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -30549,7 +30549,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -30776,7 +30776,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -30940,7 +30940,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31093,7 +31093,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31290,7 +31290,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31462,7 +31462,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31588,7 +31588,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31715,7 +31715,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -31902,7 +31902,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32037,7 +32037,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32159,7 +32159,7 @@
    "explanation": "neither block matches master: behaviour changed, the file needs updating",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32388,7 +32388,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32596,7 +32596,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32704,7 +32704,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32870,7 +32870,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "rust"
@@ -32992,7 +32992,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "smtlib"
@@ -33077,7 +33077,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "smtlib"
@@ -33209,7 +33209,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33316,7 +33316,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33472,7 +33472,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33591,7 +33591,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33734,7 +33734,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33834,7 +33834,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -33965,7 +33965,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34086,7 +34086,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34211,7 +34211,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34343,7 +34343,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34457,7 +34457,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34538,7 +34538,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34682,7 +34682,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34822,7 +34822,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -34978,7 +34978,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -35081,7 +35081,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -35182,7 +35182,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "srepr"
@@ -35291,7 +35291,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35384,7 +35384,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35529,7 +35529,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35625,7 +35625,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35772,7 +35772,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35881,7 +35881,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -35973,7 +35973,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36066,7 +36066,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36151,7 +36151,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36262,7 +36262,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36374,7 +36374,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36523,7 +36523,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36617,7 +36617,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36717,7 +36717,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36815,7 +36815,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -36910,7 +36910,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "str"
@@ -37002,7 +37002,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [],
    "printer_methods": [],
@@ -37113,7 +37113,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -37210,7 +37210,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "latex"
@@ -37325,7 +37325,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37447,7 +37447,7 @@
    "explanation": "Expected passes on master; Actual no longer matches",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37538,7 +37538,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37646,7 +37646,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37752,7 +37752,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37876,7 +37876,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
@@ -37961,7 +37961,7 @@
    "explanation": "Actual matches master; Expected fails",
    "sympy": "da9c82f412b3c523e086245ae30097fcb609b3b2",
    "sympy_date": "2026-11-27",
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "problems": [],
    "printers": [
     "pycode"
